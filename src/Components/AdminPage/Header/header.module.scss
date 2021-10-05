@@ -1,0 +1,123 @@
+@import '../../../variables';
+
+// :root {
+//   --menu-padding: 136px;
+// }
+.wrapper {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
+  padding: 0 28px;
+  @media (min-width: 768px) {
+    height: 48px;
+  }
+  @media (min-width: 1024px) {
+    height: 68px;
+  }
+}
+.search {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+
+  .searchLogo {
+    width: 12px;
+    height: 12px;
+    padding: 0 4px 0 0;
+  }
+
+  input {
+    flex: 1 1 auto;
+    border: none;
+    outline: none;
+  }
+}
+.account {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex: 0 1 110px;
+  @media (min-width: 768px) {
+    flex: 0 1 160px;
+  }
+
+  @media (min-width: 1024px) {
+    flex: 0 1 320px;
+  }
+
+  .notification {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 42px;
+    box-shadow: 0.5px 0px 0px #cacedb, -0.5px 0px 0px #cacedb;
+
+    @media (min-width: 1024px) {
+      flex: 0 0 68px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .newAlert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 8px;
+      bottom: 15px;
+      width: 14px;
+      height: 14px;
+      color: #ffffff;
+      background: #c4183c;
+      border-radius: 50%;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 9px;
+      line-height: 13px;
+      @media (min-width: 1024px) {
+        bottom: 18px;
+        right: 18px;
+      }
+    }
+  }
+  .user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 0 0 64px;
+    padding: 0 0 0 8px;
+    @media (min-width: 1024px) {
+      flex: 0 0 218px;
+      padding: 0 0 0 24px;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      @media (min-width: 1024px) {
+        margin: 0 4px 0 0;
+        width: 42px;
+        height: 42px;
+      }
+    }
+    span {
+      display: none;
+      @media (min-width: 768px) {
+        display: flex;
+        flex: 1 1 auto;
+        padding: 0 8px;
+      }
+    }
+
+    .dropdown {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+.sidebar {
+  flex: 1 0 48px;
+  @media (min-width: 1024px) {
+    flex: 1 0 285px;
+    height: 100vh;
+    box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11),
+      0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1),
+      0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    box-shadow: inset 0px -1px 0px #e1e5eb;
+
+    @media (min-width: 1024px) {
+      height: 68px;
+    }
+  }
+
+  .svg {
+    width: 22px;
+    height: 22px;
+    @media (min-width: 1024px) {
+      margin: 0 8px 0 0;
+    }
+  }
+
+  .name {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: flex;
+      color: #3d5170;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+
+  .items {
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      font-size: 15px;
+      line-height: 17px;
+      letter-spacing: -0.234375px;
+      color: #3d5170;
+      box-shadow: inset 0px -1px 0px #e1e5eb;
+
+      @media (min-width: 1024px) {
+        justify-content: flex-start;
+        padding: 0 0 0 32px;
+        height: 58px;
+      }
+      &_active {
+        color: #007bff;
+        background: #fbfbfb;
+        box-shadow: inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: #fbfbfb;
+        box-shadow: inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff;
+      }
+
+      .sidebarSvg {
+        margin-right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 1024px) {
+          margin-right: 12px;
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+          @media (min-width: 1024px) {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      span {
+        display: none;
+        @media (min-width: 1024px) {
+          display: flex;
+        }
+      }
+    }
+  }
+}
