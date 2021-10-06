@@ -1,14 +1,12 @@
 @import '../../../variables';
 
-// :root {
-//   --menu-padding: 136px;
-// }
 .wrapper {
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
+  border-bottom: 1px solid $lightGray;
   padding: 0 28px;
   @media (min-width: 768px) {
     height: 48px;
@@ -72,8 +70,8 @@
       bottom: 15px;
       width: 14px;
       height: 14px;
-      color: #ffffff;
-      background: #c4183c;
+      color: $white;
+      background: $red;
       border-radius: 50%;
       font-family: 'Poppins';
       font-style: normal;

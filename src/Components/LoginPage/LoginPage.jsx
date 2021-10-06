@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
 import { login } from '../../redux/actions/user';
 import Input from '../../utils/input';
 import s from './loginPage.module.scss';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const userReducer = useSelector((state) => state.userReducer);
+
+  useEffect(() => {
+    if (userReducer.isAuth) {
+      history.push('/admin');
+    }
+  }, [history, userReducer.isAuth]);
+
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
         <LoginLogo />
         <span className={s.title}>Need for drive</span>
       </div>
-      <form className={s.formWrapper}>
+      <div className={s.formWrapper}>
         <div className={s.ttl}>Вход</div>
         <div className={s.form}>
           <div className={s.inputLabel}>Почта</div>
@@ -23,8 +34,8 @@ export default function LoginPage() {
             label="Email"
             name="username"
             placeholder="Введите Email"
-            // value={email}
-            // setValue={setEmail}
+            value={username}
+            setValue={setUsername}
             type="text"
           />
 
@@ -34,8 +45,8 @@ export default function LoginPage() {
             name="password"
             type="password"
             placeholder="Введите пароль"
-            // value={password}
-            // setValue={setPassword}
+            value={password}
+            setValue={setPassword}
           />
         </div>
         <div className={s.footer}>
@@ -43,12 +54,12 @@ export default function LoginPage() {
           <button
             className={s.button}
             name="Войти"
-            // onClick={() => dispatch(login(email, password))}
+            onClick={() => dispatch(login(username, password))}
           >
             <span> Войти</span>
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

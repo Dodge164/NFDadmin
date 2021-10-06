@@ -1,18 +1,20 @@
 import React from 'react';
 import cn from 'classnames';
-
-import { Link } from 'react-router-dom';
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
-import { ReactComponent as Pencil } from '../../assets/pencil.svg';
-import { ReactComponent as List } from '../../assets/list.svg';
-import { ReactComponent as Order } from '../../assets/order.svg';
-import { ReactComponent as Menu4 } from '../../assets/menu4.svg';
-import { ReactComponent as Menu5 } from '../../assets/menu5.svg';
-import { ReactComponent as Menu6 } from '../../assets/menu6.svg';
-import { ReactComponent as Menu7 } from '../../assets/menu7.svg';
+import NavLinkData from './NavLinkData';
+import { useDispatch } from 'react-redux';
+import { changeNavLink } from '../../redux/actions/navLink';
 import s from './sidebar.module.scss';
+import { useSelector } from 'react-redux';
 
 function Sidebar() {
+  const navReducer = useSelector((state) => state.navReducer);
+  const dispatch = useDispatch();
+
+  function handleClick({ title, id }) {
+    dispatch(changeNavLink({ title, id }));
+  }
+
   return (
     <div className={s.sidebar}>
       <div className={s.logo}>
@@ -20,90 +22,24 @@ function Sidebar() {
         <span className={s.name}>Need for drive</span>
       </div>
       <ul className={s.items}>
-        <Link to="/admin/carCard">
+        {NavLinkData.map((item) => (
           <li
+            onClick={() => handleClick({ title: item.title, id: item.id })}
+            key={item.id}
             className={cn(s.item, {
-              [s.item_active]: true,
+              [s.item_active]: navReducer.currentNavLink?.title === item.title,
             })}
           >
-            <div className={s.sidebarSvg}>
-              <Pencil />
+            <div
+              className={cn(s.sidebarSvg, {
+                [s.active]: navReducer.currentNavLink?.title === item.title,
+              })}
+            >
+              {item.picture}
             </div>
-            <span> Карточка автомобиля</span>
+            <span> {item.title}</span>
           </li>
-        </Link>
-        <Link to="/admin/carList">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <List />
-            </div>
-            <span> Список авто</span>
-          </li>
-        </Link>
-        <Link to="/admin/order">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <Order />
-            </div>
-            <span>Заказы</span>
-          </li>
-        </Link>
-        <Link to="/admin/menu4">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <Menu4 />
-            </div>
-            <span>Menu 4</span>
-          </li>
-        </Link>
-        <Link to="/admin/menu5">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <Menu5 />
-            </div>
-            <span>Menu 5</span>
-          </li>
-        </Link>
-        <Link to="/admin/menu6">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <Menu6 />
-            </div>
-            <span>Menu 6</span>
-          </li>
-        </Link>
-        <Link to="/admin/menu7">
-          <li
-            className={cn(s.item, {
-              [s.item_active]: false,
-            })}
-          >
-            <div className={s.sidebarSvg}>
-              <Menu7 />
-            </div>
-            <span>Menu 7</span>
-          </li>
-        </Link>
+        ))}
       </ul>
     </div>
   );

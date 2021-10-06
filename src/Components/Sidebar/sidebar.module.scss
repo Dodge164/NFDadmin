@@ -1,3 +1,4 @@
+@import '../../variables';
 .sidebar {
   flex: 1 0 48px;
   @media (min-width: 1024px) {
@@ -84,6 +85,13 @@
           @media (min-width: 1024px) {
             width: 24px;
             height: 24px;
+          }
+        }
+        &.active {
+          svg {
+            path {
+              fill: $mainAccent;
+            }
           }
         }
       }
