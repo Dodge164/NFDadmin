@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -5,8 +7,8 @@
   justify-content: space-between;
   height: 68px;
   padding: 0 28px;
-  box-shadow: inset 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
-  @media (min-width: 768px) {
+  // box-shadow: inset 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+  @media (min-width: 400px) {
     flex-direction: row;
   }
 
@@ -24,7 +26,7 @@
         font-size: 14px;
         line-height: 16px;
 
-        color: #007bff;
+        color: $mainAccent;
 
         &:hover {
           cursor: pointer;
@@ -36,17 +38,13 @@
     }
   }
   .copyright {
-    flex: 0 0 180px;
-
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    /* identical to box height */
-
-    color: #818ea3;
-
-    @media (max-width: 768px) {
-      flex: none;
+    flex: none;
+    @media (min-width: 768px) {
+      flex: 0 0 180px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: #818ea3;
     }
   }
 }

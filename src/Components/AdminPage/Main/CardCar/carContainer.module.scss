@@ -1,0 +1,30 @@
+@import '../../../../variables';
+.title {
+  margin: 27px 0 30px 27px;
+  justify-content: center;
+  @media (min-width: 768px) {
+    flex: 0 1 auto;
+  }
+
+  h2 {
+    font-size: 29px;
+    line-height: 33px;
+    letter-spacing: -0.725px;
+    color: #3d5170;
+  }
+}
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $backgroundAdmin;
+  justify-content: space-evenly;
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    justify-content: normal;
+  }
+  @media (min-width: 1440px) {
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 0 28px;
+  }
+}

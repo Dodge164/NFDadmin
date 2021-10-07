@@ -1,0 +1,143 @@
+@import '../../../../../variables';
+.carSettings {
+  display: flex;
+  background: $white;
+  margin: 0 8px 0 0;
+  padding: 0 0 30px 0;
+  @media (min-width: 768px) {
+    height: 512px;
+    box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+    flex: 0 1 50%;
+  }
+  @media (min-width: 1024px) {
+    margin: 0 8px 0 28px;
+    flex: 1 1 auto;
+  }
+  @media (min-width: 1440px) {
+    margin: 0 0 0 28px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 18px;
+    .title {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      height: 58px;
+      font-weight: 500;
+      font-size: 17.5px;
+      line-height: 21px;
+      letter-spacing: -0.4375px;
+      color: #3d5170;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      .input {
+        flex: 1 1 auto;
+
+        .label {
+          margin: 16px 0 8px 0;
+          width: 320px;
+          font-size: 10.5px;
+          line-height: 12px;
+          letter-spacing: -0.18421px;
+          color: $black;
+        }
+        .availableColor {
+          display: flex;
+        }
+        input {
+          display: flex;
+          width: 320px;
+          height: 30px;
+          border: 1px solid #becad6;
+          box-sizing: border-box;
+          border-radius: 4px;
+          padding: 0 11px;
+          font-size: 11px;
+          line-height: 13px;
+          letter-spacing: -0.192982px;
+          @media (min-width: 1024px) {
+            width: 310px;
+          }
+
+          &.carColor {
+            width: 270px;
+          }
+
+          &.inputError {
+            border-color: $red;
+            box-shadow: 0px 2.5px 5.5px rgba(196, 24, 60, 0.1);
+          }
+        }
+        .error {
+          font-family: Helvetica;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 10px;
+          line-height: 11px;
+          letter-spacing: -0.175439px;
+          color: $red;
+          padding-top: 4px;
+          padding-left: 12px;
+        }
+        .carColorButton {
+          display: flex;
+          width: 30px;
+          height: 30px;
+          background-color: $white;
+          margin: 0 0 0 8px;
+          border: 1px solid #becad6;
+          box-sizing: border-box;
+          border-radius: 4px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #e9ecef;
+          }
+
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+            span {
+              font-size: 22px;
+              color: #becad6;
+              padding: 0px 0 6px 0;
+            }
+          }
+        }
+      }
+    }
+    .filters {
+      flex: 1 1 auto;
+    }
+
+    .buttonsBar {
+      flex: 0 0 35px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+
+      button {
+        margin: 12.5px 0 0 0;
+      }
+
+      .buttonGroup {
+        .save {
+          margin: 0 12.5px 0 0;
+        }
+      }
+    }
+  }
+}
