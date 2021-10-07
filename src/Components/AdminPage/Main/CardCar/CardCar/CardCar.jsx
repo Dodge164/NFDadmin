@@ -32,7 +32,7 @@ function CardCar() {
         <div className={s.description}>
           <div className={s.title}>Описание</div>
           <div className={s.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque,
+            Lоrem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque,
             quidem, commodi soluta qui quae quod dolorum sint alias, possimus
             illum assumenda eligendi cumque?
           </div>
