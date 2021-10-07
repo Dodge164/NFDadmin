@@ -19,7 +19,7 @@ function Sidebar() {
     <div className={s.sidebar}>
       <div className={s.logo}>
         <LoginLogo className={s.svg} />
-        <span className={s.name}>Need for drive</span>
+        <span className={s.name}>Need for car</span>
       </div>
       <ul className={s.items}>
         {NavLinkData.map((item) => (

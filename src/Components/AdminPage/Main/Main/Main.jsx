@@ -9,8 +9,9 @@ import s from './main.module.scss';
 import Error500 from '../../../Error500/Error500';
 
 export default function Main() {
-  const navReducer = useSelector((state) => state.navReducer);
-  const { title } = navReducer.currentNavLink;
+  // const navReducer = useSelector((state) => state.navReducer);
+  // const { title } = navReducer.currentNavLink;
+  const { title } = useSelector((state) => state.navReducer.currentNavLink);
 
   return (
     <div className={s.main}>

@@ -17,10 +17,14 @@
   display: flex;
   flex-wrap: wrap;
   background-color: $backgroundAdmin;
-  margin: 0;
-  @media (min-width: 768px) {
+  justify-content: space-evenly;
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    justify-content: normal;
+  }
+  @media (min-width: 1440px) {
     justify-content: center;
     flex-wrap: nowrap;
-    margin: 7px;
+    margin: 0 28px;
   }
 }

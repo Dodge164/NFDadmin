@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
+  // box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
   border-bottom: 1px solid $lightGray;
   padding: 0 28px;
   @media (min-width: 768px) {
@@ -28,6 +28,8 @@
 
   input {
     flex: 1 1 auto;
+    font-size: 13px;
+    line-height: 14.95px;
     border: none;
     outline: none;
   }
@@ -108,6 +110,9 @@
     span {
       display: none;
       @media (min-width: 768px) {
+        font-size: 15px;
+        line-height: 17px;
+        letter-spacing: -0.471429px;
         display: flex;
         flex: 1 1 auto;
         padding: 0 8px;

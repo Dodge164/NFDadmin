@@ -1,13 +1,22 @@
 @import '../../../../../variables';
 .carSettings {
   display: flex;
-  flex: 1 1 auto;
-  height: 100vh;
   background: $white;
-  box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
-  border-radius: 9px;
-  margin: 0px 14px;
-  margin-bottom: 24px;
+  margin: 0 8px 0 0;
+  padding: 0 0 30px 0;
+  @media (min-width: 768px) {
+    height: 512px;
+    box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+    flex: 0 1 50%;
+  }
+  @media (min-width: 1024px) {
+    margin: 0 8px 0 28px;
+    flex: 1 1 auto;
+  }
+  @media (min-width: 1440px) {
+    margin: 0 0 0 28px;
+  }
 
   .container {
     display: flex;
@@ -15,6 +24,7 @@
     width: 100%;
     padding: 0 18px;
     .title {
+      font-family: 'Roboto', sans-serif;
       display: flex;
       align-items: center;
       height: 58px;
@@ -28,12 +38,12 @@
     .row {
       display: flex;
       flex-wrap: wrap;
-      margin: 0px -10.5px;
       .input {
         flex: 1 1 auto;
-        padding: 0px 10.5px;
+
         .label {
           margin: 16px 0 8px 0;
+          width: 320px;
           font-size: 10.5px;
           line-height: 12px;
           letter-spacing: -0.18421px;
@@ -44,16 +54,21 @@
         }
         input {
           display: flex;
-          min-width: 300px;
-          width: 100%;
+          width: 320px;
           height: 30px;
           border: 1px solid #becad6;
           box-sizing: border-box;
           border-radius: 4px;
           padding: 0 11px;
+          font-size: 11px;
+          line-height: 13px;
+          letter-spacing: -0.192982px;
+          @media (min-width: 1024px) {
+            width: 310px;
+          }
 
           &.carColor {
-            min-width: 240px;
+            width: 270px;
           }
 
           &.inputError {
@@ -96,6 +111,7 @@
             span {
               font-size: 22px;
               color: #becad6;
+              padding: 0px 0 6px 0;
             }
           }
         }
