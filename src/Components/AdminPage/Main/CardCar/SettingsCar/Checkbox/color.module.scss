@@ -1,0 +1,64 @@
+@import '../../../../../../variables';
+
+.input {
+  flex: 1 1 auto;
+}
+.label {
+  margin: 16px 0 8px 0;
+  width: 320px;
+  font-size: 10.5px;
+  line-height: 12px;
+  letter-spacing: -0.18421px;
+  color: $black;
+}
+.availableColor {
+  display: flex;
+}
+input {
+  display: flex;
+  width: 320px;
+  height: 30px;
+  border: 1px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0 11px;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: -0.192982px;
+  @media (min-width: 1024px) {
+    width: 310px;
+  }
+
+  &.carColor {
+    width: 270px;
+  }
+}
+
+.carColorButton {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: $white;
+  margin: 0 0 0 8px;
+  border: 1px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e9ecef;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    span {
+      font-size: 22px;
+      color: #becad6;
+      padding: 0px 0 6px 0;
+    }
+  }
+}

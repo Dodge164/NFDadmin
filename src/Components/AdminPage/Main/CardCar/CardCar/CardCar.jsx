@@ -12,7 +12,7 @@ function CardCar() {
         <div className={s.type}>Компакт-кар</div>
         <div className={s.file}>
           <input type="file" className={s.input} id="customFile" />
-          <label className={s.label} for="customFile">
+          <label className={s.label} htmlFor="customFile">
             <span className={s.textt}>Выберите файл...</span>
             <span className={s.button}>Обзор</span>
           </label>
