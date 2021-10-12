@@ -2,7 +2,7 @@ import axios from 'axios';
 import { setUser } from '../reducers/userReducer';
 
 const base = window.btoa(
-  unescape(encodeURIComponent(`random:${process.env.REACT_APP_SECRET}`))
+  unescape(encodeURIComponent(`random:${process.env.REACT_APP_SECRET}`)),
 );
 // console.log('base', base);
 
@@ -21,7 +21,7 @@ export const login = (username, password) => {
               process.env.REACT_APP_X_API_FACTORY_APPLICATION_ID,
             Authorization: `Basic ${base}`,
           },
-        }
+        },
       );
       //  console.log('res data', response.data);
       localStorage.setItem('access_token', response.data.access_token);

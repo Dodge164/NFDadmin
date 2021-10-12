@@ -6,20 +6,18 @@ import { useTypedSelector } from '../../../../../hooks/typeSelectors';
 import s from './settings.module.scss';
 
 export default function SettingsCar() {
- 
   const carReducer = useTypedSelector((state) => state.carReducer);
 
   const dispatch = useDispatch();
 
   const onAddColor = (color: string) => {
     console.log('color', color);
-   dispatch(addColor(color))
-  }
+    dispatch(addColor(color));
+  };
   const onAddName = (name: string) => {
     console.log('name', name);
-   dispatch(addName(name))
-  }
-
+    dispatch(addName(name));
+  };
 
   return (
     <div className={s.carSettings}>
@@ -42,21 +40,49 @@ export default function SettingsCar() {
               className={s.inputError}
               type="text"
               name="carType"
-             
               placeholder="Введите тип автомобиля"
-              
             />
             <div className={s.error}>Пример ошибки</div>
           </div>
-          <ColorInput addColor={onAddColor} />
-          
-          {carReducer.colors?.map((color, index) => {
-           
- return <label><input type="checkbox" key={index} value={color} /><span>{color}</span>
-          </label>
-          })}
+          <div className={s.colorWrapper}>
+            <ColorInput addColor={onAddColor} />
+            {carReducer.colors?.map((color, index) => {
+              return (
+                <>
+                  <label className={s.inputLabel}>
+                    <input
+                      className={s.colorInput}
+                      type="checkbox"
+                      key={index}
+                      value={color}
+                      checked
+                    />
+                    <span className={s.colorName}>{color}</span>
+                  </label>
+                </>
+              );
+            })}
+          </div>
         </div>
-        
+        {/* <div className={s.buttonsGroup}>
+          <div className={s.buttonsCreate}>
+            <Button
+              name="Сохранить"
+              onClickHandler={onClickSaveButton}
+              className={s.save}
+            />
+            <Button
+              name="Отменить"
+              onClickHandler={onClickCanselButton}
+              dataBackground="gray"
+            />
+          </div>
+          <Button className={s.buttonDelete}
+            name="Удалить"
+            onClickHandler={onClickDeleteButton}
+            dataBackground="red"
+          />
+        </div> */}
       </div>
     </div>
   );

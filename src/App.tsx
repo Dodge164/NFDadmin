@@ -5,12 +5,10 @@ import AdminPage from './Components/AdminPage/AdminPage';
 
 function App() {
   return (
-    <>
-      <Switch>
-        <Route path="/" exact component={LoginPage} />
-        <Route path="/admin" exact component={AdminPage} />
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/" exact component={LoginPage} />
+      <Route path="/admin" exact component={AdminPage} />
+    </Switch>
   );
 }
 

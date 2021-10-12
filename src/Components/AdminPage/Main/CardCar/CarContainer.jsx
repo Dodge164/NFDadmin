@@ -2,6 +2,7 @@ import React from 'react';
 import SettingsCar from './SettingsCar';
 import CardCar from './CardCar';
 import s from './carContainer.module.scss';
+import { CardOfCar } from './SettingsCar/formik/formik.tsx';
 
 export default function CarContainer() {
   return (
@@ -12,6 +13,7 @@ export default function CarContainer() {
       <div className={s.cardWrapper}>
         <CardCar />
         <SettingsCar />
+        <CardOfCar />
       </div>
     </>
   );
