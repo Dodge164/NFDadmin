@@ -1,15 +1,18 @@
 @import '../../../../../variables';
 .carSettings {
+  width: 100%;
   font-family: 'HelveticaRegular';
   display: flex;
   background: $white;
   margin: 0 8px 0 0;
-  padding: 0 0 30px 0;
+  padding: 16px 0;
+
   @media (min-width: 768px) {
     height: 512px;
     box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
     border-radius: 9px;
     flex: 0 1 50%;
+    padding: 0 0 30px 0;
   }
   @media (min-width: 1024px) {
     margin: 0 8px 0 28px;
@@ -24,6 +27,7 @@
     flex-direction: column;
     width: 100%;
     padding: 0 18px;
+
     .title {
       font-family: 'Roboto', sans-serif;
       display: flex;
@@ -34,117 +38,106 @@
       line-height: 21px;
       letter-spacing: -0.4375px;
       color: #3d5170;
+      @media (min-width: 1024px) {
+        margin: 0 0 16px 0;
+      }
     }
-
-    .row {
+    .settingsWrapper {
       display: flex;
-      flex-wrap: wrap;
-      .input {
-        flex: 1 1 auto;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        .input {
+          flex: 1 1 auto;
 
-        .label {
-          margin: 16px 0 8px 0;
-          width: 320px;
-          font-size: 10.5px;
-          line-height: 12px;
-          letter-spacing: -0.18421px;
-          color: $black;
-        }
-        .availableColor {
-          display: flex;
-        }
-        input {
-          display: flex;
-          width: 320px;
-          height: 30px;
-          border: 1px solid #becad6;
-          box-sizing: border-box;
-          border-radius: 4px;
-          padding: 0 11px;
-          font-size: 11px;
-          line-height: 13px;
-          letter-spacing: -0.192982px;
-          @media (min-width: 1024px) {
-            width: 310px;
+          .label {
+            font-size: 10.5px;
+            line-height: 12px;
+            letter-spacing: -0.18421px;
+            color: $black;
           }
-
-          &.carColor {
-            width: 270px;
-          }
-
-          &.inputError {
-            border-color: $red;
-            box-shadow: 0px 2.5px 5.5px rgba(196, 24, 60, 0.1);
-          }
-        }
-        .error {
-          font-family: Helvetica;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 10px;
-          line-height: 11px;
-          letter-spacing: -0.175439px;
-          color: $red;
-          padding-top: 4px;
-          padding-left: 12px;
-        }
-        .carColorButton {
-          display: flex;
-          width: 30px;
-          height: 30px;
-          background-color: $white;
-          margin: 0 0 0 8px;
-          border: 1px solid #becad6;
-          box-sizing: border-box;
-          border-radius: 4px;
-
-          &:hover {
-            cursor: pointer;
-            background-color: #e9ecef;
-          }
-
-          div {
+          .availableColor {
             display: flex;
-            justify-content: center;
-            align-items: center;
+          }
+          input {
+            display: flex;
+            width: 310px;
             height: 30px;
+            margin: 4px 0 14px 0;
+            border: 1px solid #becad6;
+            box-sizing: border-box;
+            border-radius: 4px;
+            padding: 0 11px;
+            font-size: 11px;
+            line-height: 13px;
+            letter-spacing: -0.192982px;
+            @media (min-width: 1024px) {
+              width: 310px;
+              margin: 8px 0 16px 0;
+            }
+            @media (min-width: 1440px) {
+              width: 320px;
+              margin: 8px 0 16px 0;
+            }
+
+            &.carColor {
+              width: 270px;
+            }
+
+            &.inputError {
+              border-color: $red;
+              box-shadow: 0px 2.5px 5.5px rgba(196, 24, 60, 0.1);
+            }
+          }
+          .error {
+            font-family: Helvetica;
+            margin: 8px 0 8px 0;
+            font-size: 10px;
+            line-height: 11px;
+            letter-spacing: -0.175439px;
+            color: $red;
+          }
+          .carColorButton {
+            display: flex;
             width: 30px;
-            span {
-              font-size: 22px;
-              color: #becad6;
-              padding: 0px 0 6px 0;
+            height: 30px;
+            background-color: $white;
+            margin: 0 0 0 8px;
+            border: 1px solid #becad6;
+            box-sizing: border-box;
+            border-radius: 4px;
+
+            &:hover {
+              cursor: pointer;
+              background-color: #e9ecef;
+            }
+
+            div {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 30px;
+              width: 30px;
+              span {
+                font-size: 22px;
+                color: #becad6;
+                padding: 0px 0 6px 0;
+              }
             }
           }
         }
       }
-    }
-    .filters {
-      flex: 1 1 auto;
-    }
-
-    .buttonsBar {
-      flex: 0 0 35px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-
-      button {
-        margin: 12.5px 0 0 0;
-      }
-
-      .buttonGroup {
-        .save {
-          margin: 0 12.5px 0 0;
-        }
+      .filters {
+        flex: 1 1 auto;
       }
     }
   }
 }
 .inputLabel {
   display: flex;
-  background-color: aquamarine;
   .colorInput {
     margin: 0 11px 13px 0;
   }
@@ -156,4 +149,77 @@
     font-size: 10px;
     line-height: 12px;
   }
+}
+
+.field {
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.field:focus {
+  border-color: #007eff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 0 3px rgba(0, 126, 255, 0.1);
+  outline: none;
+}
+
+.field .error {
+  border-color: $red;
+  box-shadow: 0px 2.5px 5.5px rgba(196, 24, 60, 0.1);
+}
+
+.inputFeedback {
+  font-family: Helvetica;
+  margin: -12px 0 8px 0;
+  font-size: 10px;
+  line-height: 11px;
+  letter-spacing: -0.175439px;
+  color: $red;
+}
+
+button {
+  width: 110px;
+  height: 30px;
+  border-radius: 4px;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .buttonSubmit {
+    background: $mainAccent;
+    border: 0.5px solid $mainAccent;
+    color: white;
+    // box-sizing: border-box;
+  }
+  .buttonReset {
+    border: 0.5px solid #e9ecef;
+    background: #e9ecef;
+    color: #3d5170;
+  }
+  .buttonDelete {
+    border: 0.5px solid #cb3656;
+    background: #cb3656;
+    color: white;
+  }
+  .buttonsCreate {
+    display: flex;
+    width: 234px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 14px 0;
+  }
+  .deleteBtn {
+    display: flex;
+  }
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
 }

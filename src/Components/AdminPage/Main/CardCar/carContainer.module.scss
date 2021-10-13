@@ -1,8 +1,9 @@
 @import '../../../../variables';
 .title {
-  margin: 27px 0 30px 27px;
+  margin: 16px 0px 16px 8px;
   justify-content: center;
   @media (min-width: 768px) {
+    margin: 16px;
     flex: 0 1 auto;
   }
 
@@ -18,7 +19,7 @@
   flex-wrap: wrap;
   background-color: $backgroundAdmin;
   justify-content: space-evenly;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     flex-wrap: nowrap;
     justify-content: normal;
   }

@@ -7,7 +7,7 @@ module.exports = {
     'plugin:react/recommended',
     // 'airbnb-typescript',
     // 'airbnb/hooks',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -65,7 +65,7 @@ module.exports = {
     //     pathGroupsExcludedImportTypes: ['builtin'],
     //   },
     // ],
-    'prettier/prettier': 'error',
+    // 'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     // 'react/function-component-definition': [

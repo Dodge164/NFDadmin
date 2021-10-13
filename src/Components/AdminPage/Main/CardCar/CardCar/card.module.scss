@@ -1,10 +1,13 @@
 @import '../../../../../variables';
 .wrapper {
+  padding: 20px 0 0 0;
+  width: 100%;
   display: flex;
   background: $white;
   margin: 0 8px 0 0;
   @media (min-width: 768px) {
     margin: 0;
+    padding: 0;
     flex-direction: column;
     align-items: center;
     flex: 0 0 335px;
@@ -13,9 +16,10 @@
     box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
   }
   img {
-    margin: 0;
+    margin: 18px 0 0 0;
     width: 244px;
     height: 110px;
+    object-fit: contain;
     @media (min-width: 1024px) {
       margin: 45px 45px 10px 45px;
     }
@@ -26,7 +30,7 @@
     line-height: 28px;
     text-align: center;
     letter-spacing: -0.6125px;
-    margin-bottom: 4px;
+    margin: 4px 0;
     color: #3d5170;
   }
   .type {
@@ -62,12 +66,12 @@
       letter-spacing: -0.408571px;
       color: #868e96;
       display: flex;
-      width: 80%;
+      width: 85%;
 
       justify-content: space-between;
     }
     .progressBar {
-      width: 80%;
+      width: 85%;
       height: 8px;
 
       box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
@@ -78,7 +82,7 @@
   }
 
   .description {
-    padding: 22px;
+    width: 100%;
     .title {
       font-family: Roboto;
       font-style: normal;
@@ -87,7 +91,7 @@
       line-height: 15px;
       letter-spacing: -0.408571px;
       color: #868e96;
-      margin-bottom: 13.5px;
+      margin: 22px 0 14px 21px;
     }
     .text {
       font-family: Roboto;
@@ -97,6 +101,7 @@
       line-height: 19px;
       letter-spacing: -0.408571px;
       color: #5a6169;
+      margin: 0px 0 14px 21px;
     }
   }
 }
@@ -104,8 +109,10 @@
 .file {
   width: 232px;
   height: 30px;
-  margin-bottom: 24px;
   position: relative;
+  @media (min-width: 768px) {
+    margin: 0 0 24px 0;
+  }
 }
 .input {
   position: relative;
@@ -167,4 +174,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }

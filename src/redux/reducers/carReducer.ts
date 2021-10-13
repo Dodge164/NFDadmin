@@ -1,10 +1,10 @@
-import { Action } from '../actions/carAction';
+import { CarAction } from '../actions/carAction';
 
 interface IThumbnail {
   path: string;
 }
 
-interface ICategoryId {
+export interface ICategoryId {
   description?: string;
   id: string;
   name?: string;
@@ -37,7 +37,7 @@ const initialState = {
   number: '',
 };
 
-const carReducer = (state: ICarState = initialState, action: Action) => {
+const carReducer = (state: ICarState = initialState, action: CarAction) => {
   switch (action.type) {
     case 'ADD_COLOR': {
       return { ...state, colors: [...state.colors, action.payload] };
