@@ -1,14 +1,12 @@
 import axios from 'axios';
-import { ICategoryId } from '../redux/reducers/carReducer';
-import { CategoryTypes } from '../redux/types/categoryTypes';
+import { IData } from '../interfaces/interfaces';
 
 // const queryString = require('query-string');
 
-const API_KEY: string = process.env.REACT_APP_DB_API_KEY ? process.env.REACT_APP_DB_API_KEY : '';
+const API_KEY: string = process.env.REACT_APP_DB_API_KEY
+  ? process.env.REACT_APP_DB_API_KEY
+  : '';
 export const url = process.env.REACT_APP_NFDDB_URL;
-
-interface IData { data : Array<ICategoryId>
-}
 
 const fetchRequest = async (way: string) => {
   const res = await axios.get(`${url}${way}`, {
@@ -40,7 +38,6 @@ export const getCarCategory = async () => {
 //   const res = await fetchRequest('/db/car');
 //   return res.data;
 // };
-
 
 // export const getCarListByCategory = async (catId) => {
 //   const res = await fetchRequest(`/db/car?categoryId=${catId}`);

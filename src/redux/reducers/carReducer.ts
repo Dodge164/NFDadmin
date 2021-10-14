@@ -1,24 +1,5 @@
+import { ICarState } from '../../interfaces/interfaces';
 import { CarAction } from '../actions/carAction';
-
-interface IThumbnail {
-  path: string;
-}
-
-export interface ICategoryId {
-  description?: string;
-  id: string;
-  name?: string;
-}
-export interface ICarState {
-  priceMax: number;
-  priceMin: number;
-  thumbnail: IThumbnail;
-  description: string;
-  categoryId: ICategoryId;
-  colors: string[];
-  name: string;
-  number: string;
-}
 
 const initialState = {
   priceMax: 0,
