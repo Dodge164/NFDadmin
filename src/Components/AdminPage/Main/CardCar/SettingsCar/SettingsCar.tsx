@@ -3,6 +3,7 @@ import { Field, FieldArray, Form, Formik } from 'formik';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+
 import { ICarState } from '../../../../../interfaces/interfaces';
 import { fetchCategory } from '../../../../../redux/actions/categoryAction';
 
@@ -33,27 +34,33 @@ const validationSchema = Yup.object().shape({
   priceMin: Yup.number()
     .required('Поле не заполнено!')
     .min(0, 'Введите стоимость')
-    .integer('Введите целое число')
-    .positive('Стоимость должна быть больше нуля'),
+    .integer('Некорректная стоимость')
+    .positive('Некорректная стоимость'),
   priceMax: Yup.number()
     .required('Поле не заполнено!')
     .min(1, 'Введите стоимость')
-    .integer('Введите целое число')
-    .positive('Стоимость должна быть больше нуля'),
+    .integer('Некорректная стоимость')
+    .positive('Некорректная стоимость'),
   colors: Yup.array().min(1, 'Укажите цвет').required('Поле не заполнено!'),
   description: Yup.string()
     .min(3, 'Введите не менее трех символов')
-    .max(40, 'Доступная длина 40 символов')
+    .max(80, 'Доступная длина 80 символов')
     .required('Поле не заполнено!'),
 });
 
 const handlerSubmit = async (values: ICarState) => {
+  console.log('values :>> ', values);
   await new Promise((resolve) => setTimeout(resolve, 500));
   alert(JSON.stringify(values, null, 2));
 };
 
 export const SettingsCar: FC = () => {
   const [colorInput, setColorInput] = useState('');
+
+  const handlerInputColor = (push: any): void => {
+    push(colorInput);
+    setColorInput('');
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -77,6 +84,7 @@ export const SettingsCar: FC = () => {
           isSubmitting,
           handleSubmit,
           handleReset,
+          resetForm,
         }) => (
           <Form className={s.form} onSubmit={handleSubmit}>
             <div className={s.inputs}>
@@ -100,16 +108,9 @@ export const SettingsCar: FC = () => {
                   <div className={s.inputFeedback}>{errors.name}</div>
                 )}
               </div>
-              {/* <Form>
-                          <label>
-                            <Field type="radio" name="picked" value="One" />
-                              One
-                          </label>
-                          <label>
-                          <Field type="radio" name="picked" value="Two" />
-                              Two
-                          </label>
-              </Form> */}
+              {/* <select name="categoryID">
+                <option value={values.categoryId}>{categoryID}</option>
+              </select> */}
               <div className={s.input}>
                 <label className={s.label} htmlFor="categoryId">
                   Тип автомобиля
@@ -165,79 +166,89 @@ export const SettingsCar: FC = () => {
                 )}
               </div>
               <div className={s.test}>
-              <div className={s.input}>
-                <label className={s.label} htmlFor="colors">
-                  Доступные цвета
-                </label>
-                <FieldArray name="colors">
-                  {({ remove, push }) => (
-                    <>
-                      <div className={s.tttt}>
-                      <div className={s.colorField}>
-                        <Field
-                          name="colors"
-                          placeholder="Выберите цвет ..."
-                          type="text"
-                          value={colorInput}
-                          onChange={(event: any) =>
-                            setColorInput(event.target.value)
-                          }
-                          className={cn(s.field, {
-                            [s.inputError]: errors.colors && touched.colors,
-                          })}
-                        />
-                        {errors.colors && touched.colors && (
-                          <div className={s.inputFeedback}>{errors.colors}</div>
-                        )}
-                        </div>
-                        <button
-                          type="button"
-                          disabled={!colorInput}
-                          className={s.addColorBtn}
-                          onClick={() => push(colorInput)}
-                        >
-                          <div>
-                            <span>+</span>
+                <div className={s.input}>
+                  <label className={s.label} htmlFor="colors">
+                    Доступные цвета
+                  </label>
+                  <FieldArray name="colors">
+                    {({ remove, push }) => (
+                      <>
+                        <div className={s.tttt}>
+                          <div className={s.colorField}>
+                            <Field
+                              name="colors"
+                              placeholder="Выберите цвет ..."
+                              type="text"
+                              value={colorInput}
+                              onChange={(event: any) =>
+                                setColorInput(event.target.value)
+                              }
+                              className={cn(s.field, {
+                                [s.inputError]: errors.colors && touched.colors,
+                              })}
+                            />
+                            {errors.colors && touched.colors && (
+                              <div className={s.inputFeedback}>
+                                {errors.colors}
+                              </div>
+                            )}
                           </div>
-                        </button>
-                      </div>
-                      {values.colors.length > 0 &&
-                        values.colors.map((color, index) => (
-                          <div className="row" key={index}>
-                            <div className="col">
-                              <label htmlFor={`colors.${index}`}>{color}</label>
-                              <Field
-                                onChange={() => remove(index)}
-                                name={`colors.${index}`}
-                                type="checkbox"
-                              />
+                          <button
+                            type="button"
+                            disabled={!colorInput}
+                            className={s.addColorBtn}
+                            onClick={() => handlerInputColor(push)}
+                          >
+                            <div>
+                              <span>+</span>
                             </div>
-                            <div className="col"></div>
-                          </div>
-                        ))}
-                    </>
-                  )}
-                </FieldArray>
-              </div>
+                          </button>
+                        </div>
+                        {values.colors.length > 0 &&
+                          values.colors.map((color, index) => (
+                            <div className="row" key={index}>
+                              <div className="col">
+                                <label htmlFor={`colors.${index}`}>
+                                  {color}
+                                </label>
+                                <Field
+                                  onChange={() => remove(index)}
+                                  name={`colors.${index}`}
+                                  type="checkbox"
+                                />
+                              </div>
+                              <div className="col"></div>
+                            </div>
+                          ))}
+                      </>
+                    )}
+                  </FieldArray>
                 </div>
+              </div>
               <div className={s.input}>
                 <label className={s.label} htmlFor="description">
                   Описание
                 </label>
                 <Field name="description">
- {({ field, form, meta }: any) => (
-   <div>
-     <textarea {...field} value={values.description} placeholder="Введите описание автомобиля ..." className={cn(s.fieldDescription, {
-                    [s.inputError]: errors.description && touched.description,
-                  })}/>
-     {/* {meta.touched &&
-       meta.error && <div className="error">{meta.error}</div>} */}
-       {errors.description && touched.description && (
-                  <div className={s.inputFeedback}>{errors.description}</div>
-                )}
-   </div>
- )}
- </Field>
+                  {({ field, form, meta }: any) => (
+                    <div>
+                      <textarea
+                        {...field}
+                        value={values.description}
+                        placeholder="Введите описание автомобиля ..."
+                        className={cn(s.fieldDescription, {
+                          [s.inputError]:
+                            errors.description && touched.description,
+                        })}
+                      />
+                      {errors.description && touched.description && (
+                        <div className={s.inputFeedback}>
+                          {errors.description}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </Field>
                 {/* <Field
                   id="description"
                   name="description"

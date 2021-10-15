@@ -1,25 +1,39 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
     "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "target": "es5",
+    "jsx": "react-jsx",
+    // "strict": true,
+    "outDir": "./dist",
+    // "allowJs": true,
+    "sourceMap": true,
+    // "esModuleInterop": true,
+    // "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    // "lib": [
+    //   "dom",
+    //   "dom.iterable",
+    //   "esnext"
+    // ],
+    "allowSyntheticDefaultImports": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "moduleResolution": "node",
+    // "resolveJsonModule": true,
+    // "isolatedModules": true,
+    // "noEmit": true,
   },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tsconfig.json",
+    "eslintrc.js"
+  ],
   "include": [
     "src"
   ]

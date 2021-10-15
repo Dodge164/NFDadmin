@@ -1,13 +1,21 @@
+import { TUserAction } from '../actions/userAction';
+import { ICurrentUser, IUserState } from '../../interfaces/interfaces';
+
 const SET_USER = 'SET_USER';
 // const LOGOUT = 'LOGOUT';
 
 const defaultState = {
-  currentUser: {},
+  currentUser: {
+    user_id: '',
+  },
   // isAuth: false,
   isAuth: true,
 };
 
-export default function userReducer(state = defaultState, action) {
+export default function userReducer(
+  state: IUserState = defaultState,
+  action: TUserAction,
+) {
   switch (action.type) {
     case SET_USER:
       return {
@@ -27,5 +35,8 @@ export default function userReducer(state = defaultState, action) {
   }
 }
 
-export const setUser = (user) => ({ type: SET_USER, payload: user });
+export const setUser = (user: ICurrentUser) => ({
+  type: SET_USER,
+  payload: user,
+});
 // export const logout = () => ({ type: LOGOUT });

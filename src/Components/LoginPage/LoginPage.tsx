@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
-import { login } from '../../redux/actions/user';
+import { login } from '../../redux/actions/userAction';
 import Input from '../../utils/input';
+
 import s from './loginPage.module.scss';
 
 export default function LoginPage() {

@@ -1,10 +1,10 @@
-export type CarAction = { type: 'ADD_COLOR' | 'ADD_NAME'; payload: string };
+export type TCarAction = { type: 'ADD_COLOR' | 'ADD_NAME'; payload: string };
 
-export const addColor = (color: string): CarAction => ({
+export const addColor = (color: string): TCarAction => ({
   type: 'ADD_COLOR',
   payload: color,
 });
-export const addName = (name: string): CarAction => ({
+export const addName = (name: string): TCarAction => ({
   type: 'ADD_NAME',
   payload: name,
 });

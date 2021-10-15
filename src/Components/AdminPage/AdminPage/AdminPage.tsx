@@ -1,15 +1,17 @@
-import React, { useLayoutEffect } from 'react';
-import Sidebar from '../../Sidebar';
+import { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import Sidebar from '../../Sidebar';
 import Header from '../Header';
-import s from './adminPage.module.scss';
 import Footer from '../Footer';
 import Main from '../Main/Main';
-import { useSelector } from 'react-redux';
+
+import s from './adminPage.module.scss';
 
 export default function AdminPage() {
   const history = useHistory();
-  const userReducer = useSelector((state) => state.userReducer);
+  const userReducer = useTypedSelector((state) => state.userReducer);
 
   useLayoutEffect(() => {
     if (!userReducer.isAuth) {

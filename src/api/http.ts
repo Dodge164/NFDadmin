@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import axios from 'axios';
+
 import { IData } from '../interfaces/interfaces';
 
 // const queryString = require('query-string');
@@ -6,7 +8,7 @@ import { IData } from '../interfaces/interfaces';
 const API_KEY: string = process.env.REACT_APP_DB_API_KEY
   ? process.env.REACT_APP_DB_API_KEY
   : '';
-export const url = process.env.REACT_APP_NFDDB_URL;
+export const url: string = process.env.REACT_APP_NFDDB_URL!;
 
 const fetchRequest = async (way: string) => {
   const res = await axios.get(`${url}${way}`, {

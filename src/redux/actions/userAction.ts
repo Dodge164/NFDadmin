@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { setUser } from '../reducers/userReducer';
 
 const base = window.btoa(
@@ -6,7 +7,9 @@ const base = window.btoa(
 );
 // console.log('base', base);
 
-export const login = (username, password) => {
+export type TUserAction = { type: 'SET_USER'; payload: string };
+
+export const login = (username: string, password: string) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
