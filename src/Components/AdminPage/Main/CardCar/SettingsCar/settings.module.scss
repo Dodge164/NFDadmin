@@ -253,7 +253,6 @@ select {
   box-sizing: border-box;
   padding: 0.5rem;
   border-radius: 4px;
-  color: gray;
   height: auto;
   border: 1px solid #ccc;
   font-family: Roboto;
@@ -262,15 +261,6 @@ select {
   font-size: 11px;
   line-height: 13px;
   letter-spacing: -0.175439px;
-  select:required:invalid {
-    color: gray;
-  }
-  option[value=''][disabled] {
-    display: none;
-  }
-  option {
-    color: black;
-  }
 }
 .inputColors {
   width: 100%;
