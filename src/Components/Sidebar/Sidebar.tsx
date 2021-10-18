@@ -1,17 +1,18 @@
-import React from 'react';
 import cn from 'classnames';
-import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
-import NavLinkData from './NavLinkData';
 import { useDispatch } from 'react-redux';
+
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
 import { changeNavLink } from '../../redux/actions/navLink';
+
+import NavLinkData from './NavLinkData';
 import s from './sidebar.module.scss';
-import { useSelector } from 'react-redux';
 
 function Sidebar() {
-  const navReducer = useSelector((state) => state.navReducer);
+  const navReducer = useTypedSelector((state) => state.navReducer);
   const dispatch = useDispatch();
 
-  function handleClick({ title, id }) {
+  function handleClick({ title, id }: any) {
     dispatch(changeNavLink({ title, id }));
   }
 

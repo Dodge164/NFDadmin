@@ -1,5 +1,3 @@
-import React from 'react';
-
 import s from './error.module.scss';
 
 function Error500() {

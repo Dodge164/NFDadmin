@@ -14,7 +14,7 @@ export interface IThumbnail {
 export interface ICategoryId {
   description?: string;
   id: string;
-  name?: string;
+  name: string | null;
 }
 
 // States I

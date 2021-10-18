@@ -19,7 +19,7 @@ const initialValues: ICarState = {
   categoryId: {
     description: '',
     id: '',
-    name: '',
+    name: null,
   },
   name: '',
   colors: [],
@@ -31,6 +31,9 @@ const validationSchema = Yup.object().shape({
     .min(3, 'Введите не менее трех символов')
     .max(40, 'Доступная длина 40 символов')
     .required('Поле не заполнено!'),
+  categoryId: Yup.object().shape({
+    name: Yup.string().required('Выберите тип автомобиля'),
+  }),
   priceMin: Yup.number()
     .required('Поле не заполнено!')
     .min(0, 'Введите стоимость')
@@ -49,9 +52,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const handlerSubmit = async (values: ICarState) => {
-  console.log('values :>> ', values);
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  alert(JSON.stringify(values, null, 2));
+  console.log('handlerSubmit :>> ', values);
 };
 
 export const SettingsCar: FC = () => {
@@ -65,7 +66,7 @@ export const SettingsCar: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategory());
-  }, []);
+  }, [dispatch]);
 
   console.log('colorInput :>> ', colorInput);
   return (
@@ -76,16 +77,7 @@ export const SettingsCar: FC = () => {
         onSubmit={handlerSubmit}
         validationSchema={validationSchema}
       >
-        {({
-          values,
-          touched,
-          errors,
-          dirty,
-          isSubmitting,
-          handleSubmit,
-          handleReset,
-          resetForm,
-        }) => (
+        {({ values, touched, errors, isSubmitting, handleSubmit }) => (
           <Form className={s.form} onSubmit={handleSubmit}>
             <div className={s.inputs}>
               {console.log('values :>> ', values)}
@@ -116,15 +108,22 @@ export const SettingsCar: FC = () => {
                   Тип автомобиля
                 </label>
                 <Field
-                  id="categoryId"
-                  name="categoryId"
-                  type="text"
-                  value={values.categoryId}
-                  placeholder="Тип автомобиля ..."
+                  name="categoryId.name"
+                  as="select"
+                  required
                   className={cn(s.field, {
                     [s.inputError]: errors.categoryId && touched.categoryId,
                   })}
-                />
+                >
+                  <option value="" disabled selected>
+                    Выберите тип автомобиля ...
+                  </option>
+                  <option value="Эконом">Эконом</option>
+                  <option value="Комфорт">Комфорт</option>
+                  <option value="Люкс">Люкс</option>
+                  <option value="Спорт">Спорт</option>
+                  <option value="Внедорожник">Внедорожник</option>
+                </Field>
                 {errors.categoryId && touched.categoryId && (
                   <div className={s.inputFeedback}>{errors.categoryId}</div>
                 )}
@@ -165,15 +164,15 @@ export const SettingsCar: FC = () => {
                   <div className={s.inputFeedback}>{errors.priceMax}</div>
                 )}
               </div>
-              <div className={s.test}>
-                <div className={s.input}>
+              <div className={s.colorsForm}>
+                <div className={s.inputColors}>
                   <label className={s.label} htmlFor="colors">
                     Доступные цвета
                   </label>
                   <FieldArray name="colors">
                     {({ remove, push }) => (
                       <>
-                        <div className={s.tttt}>
+                        <div className={s.colorsFormField}>
                           <div className={s.colorField}>
                             <Field
                               name="colors"
@@ -204,11 +203,14 @@ export const SettingsCar: FC = () => {
                             </div>
                           </button>
                         </div>
-                        {values.colors.length > 0 &&
-                          values.colors.map((color, index) => (
-                            <div className="row" key={index}>
-                              <div className="col">
-                                <label htmlFor={`colors.${index}`}>
+                        <div className={s.checkboxes}>
+                          {values.colors.length > 0 &&
+                            values.colors.map((color, index) => (
+                              <div className={s.checkbox} key={index}>
+                                <label
+                                  className={s.checkboxLabel}
+                                  htmlFor={`colors.${index}`}
+                                >
                                   {color}
                                 </label>
                                 <Field
@@ -217,9 +219,8 @@ export const SettingsCar: FC = () => {
                                   type="checkbox"
                                 />
                               </div>
-                              <div className="col"></div>
-                            </div>
-                          ))}
+                            ))}
+                        </div>
                       </>
                     )}
                   </FieldArray>
@@ -230,8 +231,8 @@ export const SettingsCar: FC = () => {
                   Описание
                 </label>
                 <Field name="description">
-                  {({ field, form, meta }: any) => (
-                    <div>
+                  {({ field }: any) => (
+                    <>
                       <textarea
                         {...field}
                         value={values.description}
@@ -246,22 +247,9 @@ export const SettingsCar: FC = () => {
                           {errors.description}
                         </div>
                       )}
-                    </div>
+                    </>
                   )}
                 </Field>
-                {/* <Field
-                  id="description"
-                  name="description"
-                  type="textarea"
-                  value={values.description}
-                  placeholder="Введите описание автомобиля ..."
-                  className={cn(s.fieldDescription, {
-                    [s.inputError]: errors.description && touched.description,
-                  })}
-                /> */}
-                {/* {errors.description && touched.description && (
-                  <div className={s.inputFeedback}>{errors.description}</div>
-                )} */}
               </div>
             </div>
             <footer className={s.footer}>

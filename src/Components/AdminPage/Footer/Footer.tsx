@@ -9,7 +9,10 @@ export default function Footer() {
           <li>Ссылка</li>
         </ul>
       </div>
-      <div className={s.copyright}>Copyright © 2020 Simbirsoft</div>
+      <div className={s.copyright}>
+        <div>Copyright © 2020 </div>
+        <div>Simbirsoft</div>
+      </div>
     </footer>
   );
 }

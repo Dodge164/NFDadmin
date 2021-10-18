@@ -10,9 +10,9 @@ const base = window.btoa(
 export type TUserAction = { type: 'SET_USER'; payload: string };
 
 export const login = (username: string, password: string) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
-      const response = await axios.post(
+      const response: any = await axios.post(
         `${process.env.REACT_APP_API_URL}auth/login/`,
         {
           username,
@@ -20,8 +20,10 @@ export const login = (username: string, password: string) => {
         },
         {
           headers: {
-            'X-Api-Factory-Application-Id':
-              process.env.REACT_APP_X_API_FACTORY_APPLICATION_ID,
+            'X-Api-Factory-Application-Id': process.env
+              .REACT_APP_X_API_FACTORY_APPLICATION_ID
+              ? process.env.REACT_APP_X_API_FACTORY_APPLICATION_ID
+              : '',
             Authorization: `Basic ${base}`,
           },
         },
@@ -30,7 +32,7 @@ export const login = (username: string, password: string) => {
       localStorage.setItem('access_token', response.data.access_token);
       localStorage.setItem('refresh_token', response.data.refresh_token);
       dispatch(setUser(response.data.user_id));
-    } catch (e) {
+    } catch (e: any) {
       alert(e.response.data.message);
     }
   };

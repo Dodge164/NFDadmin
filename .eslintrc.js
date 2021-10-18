@@ -20,7 +20,7 @@ module.exports = {
 
     'plugin:import/recommended',
     // 'plugin:import/typescript',
-    'plugin:import/errors',
+    // 'plugin:import/errors',
     'plugin:import/warnings',
   ],
   parser: '@typescript-eslint/parser',
@@ -64,7 +64,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
-
+    'import/named': 'off',
     // 'import/no-unresolved': 'off',
     // 'import/default': 'off',
     // 'import/no-duplicates': 'off',

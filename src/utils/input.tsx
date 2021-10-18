@@ -1,4 +1,4 @@
-const Input = (value, type, placeholder, setValue) => (
+const Input = (value: any, type: any, placeholder: any, setValue: any) => (
   <input
     onChange={(event) => setValue(event.target.value)}
     value={value}

@@ -2,14 +2,10 @@
 
 .adminPageWrapper {
   display: flex;
-  height: 100vh;
 }
 .wrapper {
-  min-height: 100%;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
-
-  @media (min-width: 768px) {
-  }
+  width: 90%;
 }

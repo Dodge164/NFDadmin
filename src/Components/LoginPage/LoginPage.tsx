@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
 import { login } from '../../redux/actions/userAction';
 import Input from '../../utils/input';
@@ -14,7 +15,7 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const userReducer = useSelector((state) => state.userReducer);
+  const userReducer = useTypedSelector((state) => state.userReducer);
 
   useEffect(() => {
     if (userReducer.isAuth) {

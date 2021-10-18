@@ -1,17 +1,19 @@
 @import '../../../variables';
 
 .wrapper {
-  height: 48px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  // box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
+  height: 41px;
+  padding: 0px 8px 0 0;
+  box-shadow: inset 0px 0px 9.5px rgba(90, 97, 105, 0.12);
   border-bottom: 1px solid $lightGray;
-  padding: 0 28px;
   @media (min-width: 768px) {
     height: 48px;
+    padding: 0 28px;
   }
   @media (min-width: 1024px) {
+    height: 60px;
+  }
+  @media (min-width: 1440px) {
     height: 68px;
   }
 }
@@ -19,6 +21,7 @@
   display: flex;
   flex: 1 1 auto;
   align-items: center;
+  padding: 0 8px;
 
   .searchLogo {
     width: 12px;
@@ -27,7 +30,7 @@
   }
 
   input {
-    flex: 1 1 auto;
+    width: 100%;
     font-size: 13px;
     line-height: 14.95px;
     border: none;
@@ -37,8 +40,7 @@
 .account {
   height: 100%;
   display: flex;
-  justify-content: flex-end;
-  flex: 0 1 110px;
+  flex: 0 0 131px;
   @media (min-width: 768px) {
     flex: 0 1 160px;
   }
@@ -88,9 +90,7 @@
   }
   .user {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    flex: 0 0 64px;
     padding: 0 0 0 8px;
     @media (min-width: 1024px) {
       flex: 0 0 218px;
@@ -108,7 +108,8 @@
       }
     }
     span {
-      display: none;
+      padding: 0 8px;
+      font-size: 11px;
       @media (min-width: 768px) {
         font-size: 15px;
         line-height: 17px;

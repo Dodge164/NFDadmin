@@ -1,4 +1,3 @@
-import React from 'react';
 import noPhoto from '../../../../../assets/noPhoto.png';
 
 import s from './card.module.scss';

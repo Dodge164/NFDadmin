@@ -1,4 +1,3 @@
-import React from 'react';
 import profilePhoto from '../../../assets/profilePhoto.png';
 import { ReactComponent as Search } from '../../../assets/search.svg';
 import { ReactComponent as Notification } from '../../../assets/notification.svg';

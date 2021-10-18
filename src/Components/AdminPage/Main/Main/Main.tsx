@@ -1,17 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import CarContainer from '../CardCar/CarContainer';
 import Menu from '../Menu';
 import Orders from '../Orders';
 import ListCars from '../ListCars';
+import Error500 from '../../../Error500/Error500';
 
 import s from './main.module.scss';
-import Error500 from '../../../Error500/Error500';
 
 export default function Main() {
   // const navReducer = useSelector((state) => state.navReducer);
   // const { title } = navReducer.currentNavLink;
-  const { title } = useSelector((state) => state.navReducer.currentNavLink);
+  const { title } = useTypedSelector(
+    (state) => state.navReducer.currentNavLink,
+  );
 
   return (
     <div className={s.main}>

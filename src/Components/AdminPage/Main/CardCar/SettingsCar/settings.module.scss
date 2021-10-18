@@ -4,37 +4,37 @@
   font-family: 'HelveticaRegular';
   display: flex;
   background: $white;
-  margin: 0 8px 0 0;
+  margin: 8px 8px 0 0;
   flex-direction: column;
-  @media (min-width: 768px) {
-    height: 512px;
-    box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
-    border-radius: 9px;
-    flex: 0 1 50%;
-    padding: 0 0 30px 0;
-  }
+  border-radius: 9px;
+  box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
   @media (min-width: 1024px) {
-    margin: 0 8px 0 28px;
-    flex: 1 1 auto;
+    flex: 0 1 50%;
+    padding: 0 0 14px 0;
+    margin: 0 8px 0 0;
+  }
+  @media (min-width: 1300px) {
+    flex: 0 1 60%;
     padding: 16px;
+    margin: 0;
   }
   @media (min-width: 1440px) {
     margin: 0 0 0 28px;
   }
+  @media (min-width: 1600px) {
+    max-width: 700px;
+  }
 
   .header {
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    align-items: center;
-    height: 58px;
     font-weight: 500;
     font-size: 17.5px;
     line-height: 21px;
     letter-spacing: -0.4375px;
     color: #3d5170;
-    padding: 0 20px;
+    padding: 12px 20px;
     @media (min-width: 1024px) {
-      margin: 0 0 16px 0;
+      padding: 14px 20px;
     }
   }
 
@@ -45,26 +45,50 @@
     align-content: space-between;
     height: 100%;
     .inputs {
-      display: flex;
       width: 100%;
-      flex-wrap: wrap;
-      height: max-content;
+      @media (min-width: 600px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      @media (min-width: 768px) {
+        width: 100%;
+        height: max-content;
+      }
+
       .input {
-        flex: 1 1 320px;
+        flex: 1 1 100%;
+
         display: flex;
         flex-direction: column;
         height: 70px;
+        @media (min-width: 600px) {
+          flex: none;
+
+          width: 40%;
+        }
+        @media (min-width: 768px) {
+          width: 48%;
+        }
+        @media (min-width: 1024px) {
+          flex: 1 1 100%;
+        }
+        @media (min-width: 1300px) {
+          flex: none;
+          width: 48%;
+          max-width: 400px;
+        }
         .label {
           font-size: 10.5px;
           line-height: 12px;
           letter-spacing: -0.18421px;
           color: $black;
         }
+        select:required:invalid {
+          color: gray;
+        }
         .field {
           padding: 0.5rem;
-          // margin: 0px 0 30px 0;
-          // width: 320px;
-          max-width: 320px;
           display: block;
           border-radius: 4px;
           border: 1px solid #ccc;
@@ -86,7 +110,7 @@
         .fieldDescription {
           padding: 0.5rem;
           resize: none;
-          min-width: 320px;
+
           border-radius: 4px;
           border: 1px solid #ccc;
           font-size: 11px;
@@ -100,7 +124,6 @@
         }
         .inputFeedback {
           font-family: Helvetica;
-          // margin: 0 0 30px 0;
           padding: 2px 0 0px 9px;
           font-size: 10px;
           line-height: 11px;
@@ -110,43 +133,11 @@
       }
     }
   }
-  // .input {
-  //   flex: 1 1 auto;
-
-  // input {
-  //   display: flex;
-  //   width: 310px;
-  //   height: 30px;
-  //   margin: 4px 0 14px 0;
-  //   border: 1px solid #becad6;
-  //   box-sizing: border-box;
-  //   border-radius: 4px;
-  //   padding: 0 11px;
-  //   font-size: 11px;
-  //   line-height: 13px;
-  //   letter-spacing: -0.192982px;
-  //   @media (min-width: 1024px) {
-  //     width: 310px;
-  //     margin: 8px 0 16px 0;
-  //   }
-  //   @media (min-width: 1440px) {
-  //     width: 320px;
-  //     margin: 8px 0 16px 0;
-  //   }
-  // }
-  // .error {
-  //   font-family: Helvetica;
-  //   margin: 8px 0 8px 0;
-  //   font-size: 10px;
-  //   line-height: 11px;
-  //   letter-spacing: -0.175439px;
-  //   color: $red;
-  // }
 
   .colorField {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
   }
   .addColorBtn {
     display: flex;
@@ -170,33 +161,17 @@
       }
     }
   }
-  // }
-
-  // .filters {
-  //   flex: 1 1 auto;
-  // }
 }
-// .inputLabel {
-//   display: flex;
-//   .colorInput {
-//     margin: 0 11px 13px 0;
-//   }
-// }
-// .colorWrapper {
-//   background-color: rgb(255, 255, 255);
-//   .colorName {
-//     font-family: Roboto;
-//     font-size: 10px;
-//     line-height: 12px;
-//   }
-// }
 
 .footer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  margin: 0 0 16px 0;
+  @media (min-width: 1024px) {
+    margin: 0;
+  }
   button {
     width: 110px;
     height: 30px;
@@ -207,7 +182,6 @@
     background: $mainAccent;
     border: 0.5px solid $mainAccent;
     color: white;
-    // box-sizing: border-box;
   }
   .buttonReset {
     border: 0.5px solid #e9ecef;
@@ -231,36 +205,106 @@
   }
 }
 
-.test {
-  background-color: aquamarine;
+.colorsForm {
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 40%;
+  }
+  @media (min-width: 768px) {
+    width: 48%;
+  }
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+  @media (min-width: 1300px) {
+    flex: none;
+    width: 48%;
+    max-width: 400px;
+  }
+}
+.colorsFormField {
   display: flex;
-  flex: 1 1 320px;
+  flex: 1 1 100%;
 }
-.tttt {
-  background-color: rgb(153, 255, 127);
+
+.checkboxes {
+}
+.checkbox {
   display: flex;
-  flex: 1 1 320px;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 8px 0 0 0;
 }
-
-textarea {
-  //   width: 320px;
-  //   /*   min-height: 72px; */
-  //   height: 30px;
-  //   padding: 2px;
-
-  //   overflow: hidden;
-  //   background-color: transparent;
-  //   border: 2px solid #000;
-  //   border-radius: 4px;
-  //   font-family: Roboto;
-  //   font-style: normal;
-  //   font-weight: normal;
-  //   font-size: 11px;
-  //   line-height: 13px;
-  //   letter-spacing: -0.175439px;
+.checkboxLabel {
+  margin: 0 0 0 8px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.175439px;
+  color: #495057;
 }
-
-// textarea:focus {
-//   outline: none;
-//   height: 70px;
-// }
+select {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: gray;
+  height: auto;
+  border: 1px solid #ccc;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: -0.175439px;
+  select:required:invalid {
+    color: gray;
+  }
+  option[value=''][disabled] {
+    display: none;
+  }
+  option {
+    color: black;
+  }
+}
+.inputColors {
+  width: 100%;
+  display: inline-table;
+  margin: 0 0 16px 0;
+  height: 70px;
+  @media (min-width: 600px) {
+    flex: none;
+  }
+  @media (min-width: 768px) {
+    flex: none;
+  }
+  @media (min-width: 1024px) {
+    flex: 1 1 100%;
+  }
+  .label {
+    font-size: 10.5px;
+    line-height: 12px;
+    letter-spacing: -0.18421px;
+    color: $black;
+  }
+  select:required:invalid {
+    color: gray;
+  }
+  .field {
+    padding: 0.5rem;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: -0.175439px;
+  }
+}

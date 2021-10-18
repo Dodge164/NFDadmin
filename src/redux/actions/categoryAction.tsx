@@ -9,7 +9,7 @@ import { CategoryTypes } from '../types/categoryTypes';
 // }
 
 export const fetchCategory = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     dispatch({ type: CategoryTypes.FETCH_CATEGORY_START });
     try {
       const res = await getCarCategory();
