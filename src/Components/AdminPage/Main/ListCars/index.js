@@ -1,3 +1,3 @@
-import ListCars from './ListCars';
+import ListCars from './CarListContainer';
 
 export default ListCars;
