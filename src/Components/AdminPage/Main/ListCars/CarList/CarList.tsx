@@ -1,3 +1,5 @@
+import Pagination from '../../../../Pagination';
+
 import s from './carList.module.scss';
 
 function CarList() {
@@ -42,8 +44,7 @@ function CarList() {
               <th>Модель</th>
               <th>Фото</th>
               <th>Категория</th>
-              <th>Город</th>
-              <th>Точка выдачи</th>
+
               <th>Цена мин</th>
               <th>Цена макс</th>
             </tr>
@@ -53,8 +54,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -62,8 +62,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -71,8 +70,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -80,8 +78,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -89,8 +86,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -98,8 +94,7 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
@@ -107,15 +102,16 @@ function CarList() {
               <td className={s.title}>Модель</td>
               <td className={s.col}>Фото</td>
               <td className={s.col}>Категория</td>
-              <td className={s.col}>Город</td>
-              <td className={s.col}>Точка выдачи</td>
+
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className={s.footer}>footer</div>
+      <div className={s.footer}>
+        <Pagination />
+      </div>
     </div>
   );
 }

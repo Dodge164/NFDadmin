@@ -5,12 +5,32 @@
   display: flex;
   flex-direction: column;
   .header {
-    background-color: rgb(181, 233, 161);
+    // background-color: rgb(181, 233, 161);
     display: flex;
-    justify-content: space-between;
     padding: 14px 8px;
-    align-items: center;
+    flex-direction: column;
+    @media (min-width: 540px) {
+      height: 72px;
+      flex-direction: row;
+      margin: 0 0 0 30px;
+    }
+    @media (min-width: 768px) {
+      // justify-content: space-between;
+      // align-items: center;
+    }
     .selectGroup {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      @media (min-width: 540px) {
+        justify-content: flex-start;
+      }
+      @media (min-width: 768px) {
+        margin: 0 30px 0 0;
+      }
+      @media (min-width: 1024px) {
+        margin: 0 8px 0 0;
+      }
       .select {
         width: 110px;
         height: 30px;
@@ -18,11 +38,32 @@
         border: 0.5px solid #becad6;
         box-sizing: border-box;
         border-radius: 4px;
-        margin: 0 15px 0 0;
+        margin: 0 0px 8px 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url(../../../../../assets/doubleArrow.svg) 90% / 5%
+          no-repeat #eee;
+        @media (min-width: 540px) {
+          margin: 0 8px 0px 0;
+        }
+        @media (min-width: 768px) {
+          margin: 0 16px 0px 0;
+        }
+        @media (min-width: 1024px) {
+          margin: 0 15px 0 0;
+        }
       }
     }
     .buttonGroup {
       display: flex;
+      justify-content: space-between;
+      @media (min-width: 540px) {
+        flex-wrap: wrap;
+      }
+      @media (min-width: 768px) {
+        display: flex;
+      }
       button {
         width: 95px;
         height: 30px;
@@ -34,47 +75,40 @@
         font-weight: normal;
         font-size: 11px;
         line-height: 13px;
-        /* identical to box height */
         text-align: center;
         letter-spacing: -0.345714px;
         color: #ffffff;
+        @media (min-width: 540px) {
+        }
+        @media (min-width: 768px) {
+        }
+        @media (min-width: 1024px) {
+        }
       }
       .reset {
         background: $red;
-        margin: 0 15px 0 0;
+        margin: 0 0 0 8px;
+        @media (min-width: 540px) {
+          margin: 0 0 0px 0;
+        }
+        @media (min-width: 768px) {
+          margin: 0 15px 0 0;
+        }
       }
       .apply {
         background: $mainAccent;
+        margin: 0 8px 0 0;
+        @media (min-width: 540px) {
+          margin: 0 0 0 0px;
+        }
       }
     }
   }
 
   .main {
-    background-color: rgb(240, 240, 212);
+    // background-color: rgb(240, 240, 212);
     flex: 1 1 auto;
-    // table {
-    //   width: 100%;
-    //   thead {
-    //     font-family: Helvetica;
-    //     font-style: normal;
-    //     font-weight: bold;
-    //     font-size: 12px;
-    //     line-height: 14px;
-    //     /* identical to box height */
-    //     letter-spacing: -0.377143px;
-    //     color: #3d5170;
-    //     th {
-    //       width: 100px;
-    //     }
-    //   }
 
-    //   td {
-    //     width: 100px;
-    //     font-size: 12px;
-    //     line-height: 14px;
-    //     letter-spacing: -0.377143px;
-    //     font-style: normal;
-    //   }
     .title {
       font-family: Helvetica;
       font-weight: normal;
@@ -89,63 +123,81 @@
       text-align: right;
       color: #818ea3;
     }
-    // }
+
     table {
-      padding: 4px;
-      table-layout: fixed;
-      border-collapse: collapse;
+      // padding: 4px;
+      // table-layout: fixed;
+      // border-collapse: collapse;
       height: 100%;
       width: 100%;
     }
     tr {
       display: flex;
-      overflow: hidden;
-      margin: 4px;
-      align-items: center;
-      justify-content: space-evenly;
+      // overflow: hidden;
+      // margin: 4px;
+      // align-items: center;
+      // justify-content: space-evenly;
     }
 
     th {
       font-family: Helvetica;
       font-style: normal;
       font-weight: bold;
-      font-size: 12px;
-      line-height: 14px;
-      /* identical to box height */
-
+      font-size: 10px;
+      line-height: 12px;
       letter-spacing: -0.377143px;
-
       color: #3d5170;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      height: 32px;
+      width: 54px;
+      height: 100%;
+      @media (min-width: 375px) {
+        // @media (min-width: 540px) {
+        width: 100%;
+        height: 100%;
+      }
+      @media (min-width: 768px) {
+        /* identical to box height */
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        /* identical to box height */
+        width: 150px;
+        height: 32px;
+      }
     }
 
     td {
-      font-size: 12px;
-      line-height: 14px;
       letter-spacing: -0.377143px;
       font-style: normal;
-
+      font-size: 10px;
+      line-height: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      width: 54px;
       height: 100%;
       margin: 8px 0;
-      color: gray;
+      @media (min-width: 375px) {
+        // @media (min-width: 540px) {
+        width: 100%;
+      }
+      @media (min-width: 768px) {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 8px 0;
+      }
+      @media (min-width: 1024px) {
+        /* identical to box height */
+        width: 150px;
+      }
     }
 
     tr:hover {
       background: gray;
       cursor: pointer;
     }
-  }
-
-  .footer {
-    height: 48px;
-    background-color: rgb(201, 188, 235);
   }
 }
