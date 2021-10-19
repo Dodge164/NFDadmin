@@ -3,11 +3,10 @@
   flex: 1 1 auto;
   background-color: $backgroundAdmin;
   margin: 0 0 0 8px;
-  height: calc(100vh - 83px);
+  height: calc(100vh - 84px);
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   @media (min-width: 600px) {
-    overflow: hidden;
   }
   @media (min-width: 768px) {
     height: calc(100vh - 100px);

@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   .header {
-    // background-color: rgb(181, 233, 161);
     display: flex;
     padding: 14px 8px;
     flex-direction: column;
@@ -14,10 +13,7 @@
       flex-direction: row;
       margin: 0 0 0 30px;
     }
-    @media (min-width: 768px) {
-      // justify-content: space-between;
-      // align-items: center;
-    }
+
     .selectGroup {
       display: flex;
       flex-wrap: wrap;
@@ -43,7 +39,7 @@
         -moz-appearance: none;
         appearance: none;
         background: url(../../../../../assets/doubleArrow.svg) 90% / 5%
-          no-repeat #eee;
+          no-repeat #fff;
         @media (min-width: 540px) {
           margin: 0 8px 0px 0;
         }
@@ -78,12 +74,6 @@
         text-align: center;
         letter-spacing: -0.345714px;
         color: #ffffff;
-        @media (min-width: 540px) {
-        }
-        @media (min-width: 768px) {
-        }
-        @media (min-width: 1024px) {
-        }
       }
       .reset {
         background: $red;
@@ -106,7 +96,6 @@
   }
 
   .main {
-    // background-color: rgb(240, 240, 212);
     flex: 1 1 auto;
 
     .title {
@@ -122,21 +111,21 @@
       font-weight: 500;
       text-align: right;
       color: #818ea3;
+      .photo {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     table {
-      // padding: 4px;
-      // table-layout: fixed;
-      // border-collapse: collapse;
+      padding: 4px;
+      table-layout: fixed;
       height: 100%;
       width: 100%;
     }
     tr {
       display: flex;
-      // overflow: hidden;
-      // margin: 4px;
-      // align-items: center;
-      // justify-content: space-evenly;
+      align-items: center;
     }
 
     th {
@@ -150,12 +139,10 @@
       width: 54px;
       height: 100%;
       @media (min-width: 375px) {
-        // @media (min-width: 540px) {
         width: 100%;
         height: 100%;
       }
       @media (min-width: 768px) {
-        /* identical to box height */
         font-size: 12px;
         line-height: 14px;
         display: flex;
@@ -163,7 +150,6 @@
         align-items: center;
       }
       @media (min-width: 1024px) {
-        /* identical to box height */
         width: 150px;
         height: 32px;
       }
@@ -181,7 +167,6 @@
       height: 100%;
       margin: 8px 0;
       @media (min-width: 375px) {
-        // @media (min-width: 540px) {
         width: 100%;
       }
       @media (min-width: 768px) {
@@ -190,7 +175,6 @@
         margin: 8px 0;
       }
       @media (min-width: 1024px) {
-        /* identical to box height */
         width: 150px;
       }
     }

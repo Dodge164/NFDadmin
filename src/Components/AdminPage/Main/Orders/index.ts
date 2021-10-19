@@ -1,3 +1,3 @@
-import Orders from './Orders';
+import OrdersContainer from './OrdersContainer';
 
-export default Orders;
+export default OrdersContainer;

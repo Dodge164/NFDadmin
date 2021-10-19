@@ -1,4 +1,5 @@
 import Pagination from '../../../../Pagination';
+import carPhoto from '../../../../../assets/carPhoto.png';
 
 import s from './carList.module.scss';
 
@@ -44,7 +45,6 @@ function CarList() {
               <th>Модель</th>
               <th>Фото</th>
               <th>Категория</th>
-
               <th>Цена мин</th>
               <th>Цена макс</th>
             </tr>
@@ -52,57 +52,64 @@ function CarList() {
           <tbody>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
             <tr>
               <td className={s.title}>Модель</td>
-              <td className={s.col}>Фото</td>
+              <td className={s.col}>
+                <img className={s.photo} src={carPhoto} alt="car-example" />
+              </td>
               <td className={s.col}>Категория</td>
-
               <td className={s.col}>Цена мин</td>
               <td className={s.col}>Цена макс</td>
             </tr>
