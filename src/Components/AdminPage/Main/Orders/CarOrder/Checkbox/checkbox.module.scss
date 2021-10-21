@@ -1,0 +1,74 @@
+@import '../../../../../../variables';
+
+.checkbox {
+  display: flex;
+  margin: 0 0 8px 0;
+  align-items: flex-start;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    margin: 8px 0 0 0;
+  }
+
+  .active {
+    color: black;
+  }
+  &:hover {
+    border-color: $mainAccent;
+  }
+  &:hover {
+    color: black;
+  }
+}
+
+.checkBtn {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:focus ~ .customCheckbox {
+    border-color: $mainAccent;
+    border: 0.5px solid #0ec261;
+  }
+
+  &:checked ~ .customCheckbox {
+    border: 0.5px solid #0ec261;
+    content: ' ';
+    background-image: url(../../../../../../assets/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    padding: 0 0;
+  }
+  &:active {
+    color: black;
+    &:after {
+      padding: 0 0;
+      color: black;
+    }
+  }
+}
+
+.customCheckbox {
+  margin: 0 4px 0 0;
+  // background-color: white;
+  border: 1px solid gray;
+  height: 12px;
+  width: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: -0.175439px;
+  color: #999999;
+}
+input:checked ~ span {
+  color: black;
+}
