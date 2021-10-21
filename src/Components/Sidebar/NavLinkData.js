@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import { ReactComponent as Pencil } from '../../assets/pencil.svg';
 import { ReactComponent as List } from '../../assets/list.svg';
 import { ReactComponent as Order } from '../../assets/order.svg';

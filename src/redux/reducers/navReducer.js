@@ -21,7 +21,7 @@ export default function navReducer(state = defaultState, action) {
 }
 
 // action ?? reducer
-export const setNavLink = (navReducer) => ({
+export const setNavLink = (link) => ({
   type: SET_NAVLINK,
-  payload: navReducer,
+  payload: link,
 });

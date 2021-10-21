@@ -1,0 +1,119 @@
+@import '../../../../../_variables';
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  .header {
+    display: flex;
+    padding: 14px 8px;
+    flex-direction: column;
+    @media (min-width: 540px) {
+      height: 72px;
+      flex-direction: row;
+      margin: 0 0 0 30px;
+    }
+    @media (min-width: 768px) {
+      justify-content: space-between;
+    }
+
+    .selectGroup {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      @media (min-width: 540px) {
+        justify-content: flex-start;
+      }
+      @media (min-width: 768px) {
+        margin: 0 30px 0 0;
+      }
+      @media (min-width: 1024px) {
+        margin: 0 8px 0 0;
+      }
+      .select {
+        width: 110px;
+        height: 30px;
+        background: #ffffff;
+        border: 0.5px solid #becad6;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin: 0 0px 8px 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url(../../../../../assets/doubleArrow.svg) 90% / 5%
+          no-repeat #fff;
+        @media (min-width: 540px) {
+          margin: 0 8px 0px 0;
+        }
+        @media (min-width: 768px) {
+          margin: 0 16px 0px 0;
+        }
+        @media (min-width: 1024px) {
+          margin: 0 15px 0 0;
+        }
+      }
+    }
+    .buttonContainer {
+      display: flex;
+      justify-content: flex-end;
+      @media (min-width: 1024px) {
+        margin: 0 30px 0 0;
+      }
+      button {
+        width: 95px;
+        height: 30px;
+        border: 0.5px solid #becad6;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-family: Helvetica;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 13px;
+        text-align: center;
+        letter-spacing: -0.345714px;
+        color: #ffffff;
+      }
+
+      .apply {
+        background: $mainAccent;
+        margin: 0 8px 0 0;
+        @media (min-width: 540px) {
+          margin: 0 0 0 0px;
+        }
+      }
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 auto;
+    .photo {
+      width: 138px;
+      height: 63px;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 287px;
+      height: 63px;
+      .item {
+        background-color: rgb(52, 247, 182);
+        display: flex;
+      }
+      .time {
+        background-color: rgb(127, 255, 212);
+      }
+      .color {
+        background-color: rgb(205, 250, 235);
+      }
+    }
+    .exiends {
+      width: 90px;
+      height: 63px;
+    }
+  }
+}

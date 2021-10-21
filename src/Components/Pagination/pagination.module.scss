@@ -1,0 +1,55 @@
+@import '../../variables';
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0;
+  line-height: 17px;
+}
+.pagination ul li {
+  color: #007bff;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.pagination ul li.numb {
+  list-style: none;
+  height: 18px;
+  width: 18px;
+  margin: 0 3px;
+  border-radius: 50%;
+}
+.pagination ul li.numb.first {
+  margin: 0px 3px 0 0px;
+}
+.pagination ul li.numb.last {
+  margin: 0px 0px 0 3px;
+}
+.pagination ul li.dots {
+  font-size: 22px;
+  cursor: default;
+}
+.pagination ul li.btn {
+  padding: 0 8px;
+  border-radius: 50px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover {
+  color: #fff;
+  background: #007bff;
+}
+.left {
+  content: \00ab;
+}
+span {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: -0.471429px;
+}
