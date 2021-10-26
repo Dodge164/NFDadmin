@@ -1,0 +1,46 @@
+@import '../../../../../../_variables';
+
+.buttons {
+  background-color: rgb(255, 255, 255);
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    width: 84px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #becad6;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    letter-spacing: -0.345714px;
+    color: #5a6169;
+    background-repeat: no-repeat;
+    background-position: 10% 50%;
+    padding: 0 0 0 8px;
+  }
+  .buttonDone {
+    border: 0.5px solid #becad6;
+    border-radius: 4px 0px 0px 4px;
+    background-image: url(../../../../../../assets/CheckIcon.svg);
+  }
+
+  .buttonCancel {
+    border: 0.5px solid #becad6;
+    border-radius: 0px;
+    margin: 0 -1px;
+    background-image: url(../../../../../../assets/RejectIcon.svg);
+  }
+
+  .buttonEdit {
+    border: 0.5px solid #becad6;
+    border-radius: 0px 4px 4px 0px;
+    background-image: url(../../../../../../assets/EditIcon.svg);
+  }
+}

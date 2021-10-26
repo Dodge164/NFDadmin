@@ -262,6 +262,7 @@ select {
   line-height: 13px;
   letter-spacing: -0.175439px;
 }
+
 .inputColors {
   width: 100%;
   display: inline-table;
@@ -296,5 +297,8 @@ select {
     font-size: 11px;
     line-height: 13px;
     letter-spacing: -0.175439px;
+    option:not(:checked) {
+      background-color: blue;
+    }
   }
 }

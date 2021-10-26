@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import cn from 'classnames';
 import { Field, FieldArray, Form, Formik } from 'formik';
@@ -20,7 +21,7 @@ const initialValues: ICarState = {
   categoryId: {
     description: '',
     id: '',
-    name: null,
+    name: '',
   },
   name: '',
   colors: [],
@@ -33,7 +34,18 @@ const validationSchema = Yup.object().shape({
     .max(40, 'Доступная длина 40 символов')
     .required('Поле не заполнено!'),
   categoryId: Yup.object().shape({
-    name: Yup.string().required('Выберите тип автомобиля'),
+    name: Yup.string()
+      // .test(
+      //   'categoryId.name',
+      //   'Выберите тип автомобиля',
+      //   function (value: string | undefined) {
+      //     if (value !== undefined && value === 'Выберите тип автомобиля ...') {
+      //       return false;
+      //     }
+      //     return true;
+      //   },
+      // )
+      .required('Выберите тип автомобиля'),
   }),
   priceMin: Yup.number()
     .required('Поле не заполнено!')
@@ -66,7 +78,7 @@ export const SettingsCar: FC = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCategory());
+    // dispatch(fetchCategory());
   }, [dispatch]);
 
   console.log('colorInput :>> ', colorInput);
@@ -111,22 +123,23 @@ export const SettingsCar: FC = () => {
                 <Field
                   name="categoryId.name"
                   as="select"
-                  required
+                  // required
                   className={cn(s.field, {
                     [s.inputError]: errors.categoryId && touched.categoryId,
                   })}
+                  // placeholder="Выберите тип автомобиля ..."
                 >
-                  <option value="" disabled selected>
-                    Выберите тип автомобиля ...
-                  </option>
+                  <option value="">Выберите тип автомобиля ...</option>
                   <option value="Эконом">Эконом</option>
                   <option value="Комфорт">Комфорт</option>
                   <option value="Люкс">Люкс</option>
                   <option value="Спорт">Спорт</option>
                   <option value="Внедорожник">Внедорожник</option>
                 </Field>
-                {errors.categoryId && touched.categoryId && (
-                  <div className={s.inputFeedback}>{errors.categoryId}</div>
+                {errors.categoryId?.name && touched.categoryId?.name && (
+                  <div className={s.inputFeedback}>
+                    {errors.categoryId.name}
+                  </div>
                 )}
               </div>
               <div className={s.input}>
