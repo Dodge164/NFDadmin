@@ -1,13 +1,16 @@
-import { CarListTypes } from '../redux/types/carListTypes';
+import { CarListActionTypes } from '../redux/types/carListTypes';
 import { CategoryTypes } from '../redux/types/categoryTypes';
 
 // http
-export interface IData {
+export interface ICategories {
   data: Array<ICategoryId>;
 }
-export interface ICarList {
-  data: Array<ICarState>;
+export interface ICars {
+  data: Array<ICar>;
 }
+// export interface ICars2 {
+//   data: Array<IInitCarListState>;
+// }
 
 // objects I
 export interface ICurrentUser {
@@ -27,7 +30,7 @@ export interface IUserState {
   currentUser: ICurrentUser;
   isAuth: boolean;
 }
-export interface ICarState {
+export interface ICar {
   priceMax: number;
   priceMin: number;
   thumbnail: IThumbnail;
@@ -43,9 +46,14 @@ export interface IInitState {
   error: string | null;
 }
 export interface IInitCarListState {
-  carList: Array<ICarState>;
+  carList: ICar[];
   isLoading: boolean;
   error: string | null;
+  page: number;
+  limit: number;
+  // currentPage:1,
+  // perPage:10,
+  // totalCount:0
 }
 
 // Actions I
@@ -54,6 +62,37 @@ export interface ICategoryAction {
   payload: Array<ICategoryId>;
 }
 export interface ICarListAction {
-  type: CarListTypes;
-  payload: Array<ICarState>;
+  type: CarListActionTypes;
+  payload: Array<ICar>;
 }
+
+// обрабатываем carList
+// export interface CarListState {
+//   cars: any[];
+//   loading: boolean;
+//   error: null | string;
+//   page: number;
+//   limit: number;
+// }
+
+interface FetchCarListAction {
+  type: CarListActionTypes.FETCH_CARS;
+}
+interface FetchCarListActionSuccess {
+  type: CarListActionTypes.FETCH_CARS_SUCCESS;
+  payload: any[];
+}
+interface FetchCarListActionError {
+  type: CarListActionTypes.FETCH_CARS_ERROR;
+  payload: string;
+}
+interface SetCarListPage {
+  type: CarListActionTypes.SET_CARLIST_PAGE;
+  payload: number;
+}
+
+export type CarListAction =
+  | FetchCarListAction
+  | FetchCarListActionError
+  | FetchCarListActionSuccess
+  | SetCarListPage;

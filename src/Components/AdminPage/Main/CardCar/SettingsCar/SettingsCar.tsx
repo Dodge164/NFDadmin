@@ -6,12 +6,12 @@ import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
-import { ICarState } from '../../../../../interfaces/interfaces';
+import { ICar } from '../../../../../interfaces/interfaces';
 import { fetchCategory } from '../../../../../redux/actions/categoryAction';
 
 import s from './settings.module.scss';
 
-const initialValues: ICarState = {
+const initialValues: ICar = {
   priceMax: 0,
   priceMin: 0,
   thumbnail: {
@@ -64,7 +64,7 @@ const validationSchema = Yup.object().shape({
     .required('Поле не заполнено!'),
 });
 
-const handlerSubmit = async (values: ICarState) => {
+const handlerSubmit = async (values: ICar) => {
   console.log('handlerSubmit :>> ', values);
 };
 

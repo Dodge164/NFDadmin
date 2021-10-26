@@ -1,5 +1,5 @@
-import { ICarState } from '../../interfaces/interfaces';
-import { TCarAction } from '../actions/carAction';
+import { ICar } from '../../interfaces/interfaces';
+import { TCarCardAction } from '../actions/carCardAction';
 
 const initialState = {
   priceMax: 0,
@@ -18,7 +18,7 @@ const initialState = {
   number: '',
 };
 
-const carReducer = (state: ICarState = initialState, action: TCarAction) => {
+const carCardReducer = (state: ICar = initialState, action: TCarCardAction) => {
   switch (action.type) {
     case 'ADD_COLOR': {
       return { ...state, colors: [...state.colors, action.payload] };
@@ -30,4 +30,4 @@ const carReducer = (state: ICarState = initialState, action: TCarAction) => {
       return state;
   }
 };
-export default carReducer;
+export default carCardReducer;

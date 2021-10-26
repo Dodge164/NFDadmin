@@ -1,24 +1,24 @@
+import { Dispatch } from 'react';
+
 import { getCarList } from '../../api/http';
-import { CarListTypes } from '../types/carListTypes';
+import { CarListAction } from '../../interfaces/interfaces';
+import { CarListActionTypes } from '../types/carListTypes';
 
-// interface IError {
-//     message: string;
-//     name: string;
-//     stack: string;
-//     status: number;
-// }
-
-export const fetchCarList = () => {
-  return async (dispatch: any) => {
-    dispatch({ type: CarListTypes.FETCH_CARLIST_START });
+export const fetchCarList = (page: number = 1, limit: number = 7) => {
+  return async (dispatch: Dispatch<CarListAction>) => {
     try {
-      const res = await getCarList();
-      dispatch({ type: CarListTypes.FETCH_CARLIST_SUCCESS, payload: res });
-    } catch (error: any) {
+      dispatch({ type: CarListActionTypes.FETCH_CARS });
+      const res = await getCarList(page, limit);
+      dispatch({ type: CarListActionTypes.FETCH_CARS_SUCCESS, payload: res });
+    } catch (error) {
       dispatch({
-        type: CarListTypes.FETCH_CARLIST_FAILURE,
-        payload: error.message,
+        type: CarListActionTypes.FETCH_CARS_ERROR,
+        payload: 'Произошла ошибка при загрузке',
       });
     }
   };
 };
+
+export function setCarListPage(page: number): CarListAction {
+  return { type: CarListActionTypes.SET_CARLIST_PAGE, payload: page };
+}

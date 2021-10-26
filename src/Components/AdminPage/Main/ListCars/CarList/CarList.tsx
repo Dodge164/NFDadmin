@@ -1,9 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { useActions } from '../../../../../hooks/useActions';
 import Pagination from '../../../../Pagination';
-import carPhoto from '../../../../../assets/carPhoto.png';
 
 import s from './carList.module.scss';
 
-function CarList() {
+const CarList: React.FC = () => {
+  const { carList, error, isLoading, page, limit } = useTypedSelector(
+    (state) => state.carListReducer,
+  );
+  const { fetchCarList } = useActions();
+  // const { fetchCarList, setCarListPage } = useActions();
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  useEffect(() => {
+    fetchCarList(page, limit);
+  }, [page]);
+
+  if (isLoading) {
+    return <h2>Идет загрузка...</h2>;
+  }
+  if (error) {
+    return <h2>{error}</h2>;
+  }
+
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
@@ -50,77 +72,34 @@ function CarList() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
+            {carList.map((car) => (
+              <tr key={car.thumbnail?.path}>
+                <td className={s.title}>{car.name}</td>
+                <td className={s.col}>
+                  <img
+                    className={s.photo}
+                    src={
+                      car?.thumbnail?.path.includes('base64')
+                        ? car?.thumbnail?.path
+                        : BASE_URL + car?.thumbnail?.path
+                    }
+                    alt="car-example"
+                  />
+                </td>
+                <td className={s.col}>{car.categoryId?.name}</td>
+                <td className={s.col}>{car.priceMin.toLocaleString('ru')}</td>
+                <td className={s.col}>{car.priceMax.toLocaleString('ru')}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
+
       <div className={s.footer}>
         <Pagination />
       </div>
     </div>
   );
-}
+};
 
 export default CarList;
