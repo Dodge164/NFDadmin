@@ -35,6 +35,7 @@ const validationSchema = Yup.object().shape({
     .required('Поле не заполнено!'),
   categoryId: Yup.object().shape({
     name: Yup.string()
+
       // .test(
       //   'categoryId.name',
       //   'Выберите тип автомобиля',
@@ -45,6 +46,7 @@ const validationSchema = Yup.object().shape({
       //     return true;
       //   },
       // )
+
       .required('Выберите тип автомобиля'),
   }),
   priceMin: Yup.number()
@@ -123,7 +125,6 @@ export const SettingsCar: FC = () => {
                 <Field
                   name="categoryId.name"
                   as="select"
-                  // required
                   className={cn(s.field, {
                     [s.inputError]: errors.categoryId && touched.categoryId,
                   })}
@@ -137,9 +138,7 @@ export const SettingsCar: FC = () => {
                   <option value="Внедорожник">Внедорожник</option>
                 </Field>
                 {errors.categoryId?.name && touched.categoryId?.name && (
-                  <div className={s.inputFeedback}>
-                    {errors.categoryId.name}
-                  </div>
+                  <div className={s.inputFeedback}>{errors.categoryId}</div>
                 )}
               </div>
               <div className={s.input}>
