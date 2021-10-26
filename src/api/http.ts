@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import axios from 'axios';
 
-import { IData } from '../interfaces/interfaces';
+import { ICarList, IData } from '../interfaces/interfaces';
 
 // const queryString = require('query-string');
 
@@ -40,10 +40,10 @@ export const getCarCategory = async () => {
 //   return res.data;
 // };
 
-// export const getCarList = async () => {
-//   const res = await fetchRequest('/db/car');
-//   return res.data;
-// };
+export const getCarList = async () => {
+  const res: ICarList = await fetchRequest('/db/car');
+  return res.data;
+};
 
 // export const getCarListByCategory = async (catId) => {
 //   const res = await fetchRequest(`/db/car?categoryId=${catId}`);
