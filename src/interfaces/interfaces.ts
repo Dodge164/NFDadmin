@@ -7,6 +7,7 @@ export interface ICategories {
 }
 export interface ICars {
   data: Array<ICar>;
+  count: number;
 }
 // export interface ICars2 {
 //   data: Array<IInitCarListState>;
@@ -49,11 +50,9 @@ export interface IInitCarListState {
   carList: ICar[];
   isLoading: boolean;
   error: string | null;
-  page: number;
+  currentPage: number;
   limit: number;
-  // currentPage:1,
-  // perPage:10,
-  // totalCount:0
+  carsCount: number;
 }
 
 // Actions I
@@ -61,10 +60,10 @@ export interface ICategoryAction {
   type: CategoryTypes;
   payload: Array<ICategoryId>;
 }
-export interface ICarListAction {
-  type: CarListActionTypes;
-  payload: Array<ICar>;
-}
+// export interface ICarListAction {
+//   type: CarListActionTypes;
+//   payload: Array<ICar>;
+// }
 
 // обрабатываем carList
 // export interface CarListState {
@@ -78,9 +77,10 @@ export interface ICarListAction {
 interface FetchCarListAction {
   type: CarListActionTypes.FETCH_CARS;
 }
+
 interface FetchCarListActionSuccess {
   type: CarListActionTypes.FETCH_CARS_SUCCESS;
-  payload: any[];
+  payload: { count: number; data: ICar[] };
 }
 interface FetchCarListActionError {
   type: CarListActionTypes.FETCH_CARS_ERROR;

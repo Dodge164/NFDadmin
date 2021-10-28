@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../../hooks/useActions';
-import Pagination from '../../../../Pagination';
+// import Pagination from '../../../../Pagination';
+import Pagination2 from '../../../../Pagination/Pagination copy';
 
 import s from './carList.module.scss';
 
 const CarList: React.FC = () => {
-  const { carList, error, isLoading, page, limit } = useTypedSelector(
+  const { carList, error, isLoading, currentPage, limit } = useTypedSelector(
     (state) => state.carListReducer,
   );
   const { fetchCarList } = useActions();
@@ -16,8 +17,8 @@ const CarList: React.FC = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    fetchCarList(page, limit);
-  }, [page]);
+    fetchCarList(currentPage, limit);
+  }, [currentPage]);
 
   if (isLoading) {
     return <h2>Идет загрузка...</h2>;
@@ -96,7 +97,8 @@ const CarList: React.FC = () => {
       </div>
 
       <div className={s.footer}>
-        <Pagination />
+        {/* <Pagination /> */}
+        <Pagination2 />
       </div>
     </div>
   );

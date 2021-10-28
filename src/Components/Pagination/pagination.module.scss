@@ -36,9 +36,10 @@
   border-radius: 50px;
 }
 .pagination li.active,
-.pagination ul li.numb:hover,
-.pagination ul li:first-child:hover,
-.pagination ul li:last-child:hover {
+.pagination ul li.numb:hover
+// .pagination ul li:first-child:hover,
+// .pagination ul li:last-child:hover {
+{
   color: #fff;
   background: #007bff;
 }
@@ -52,4 +53,14 @@ span {
   font-size: 15px;
   line-height: 17px;
   letter-spacing: -0.471429px;
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: $red;
+  font-size: 24px;
+  background: transparent;
+  :hover {
+    background: white;
+  }
 }

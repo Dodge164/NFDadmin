@@ -40,9 +40,12 @@ export const getCarCategory = async () => {
 //   return res.data;
 // };
 
-export const getCarList = async (page: number, limit: number) => {
-  const res: ICars = await fetchRequest(`/db/car?page=${page}&limit=${limit}`);
-  return res.data;
+export const getCarList = async (currentPage: number, limit: number) => {
+  const res: ICars = await fetchRequest(
+    `/db/car?page=${currentPage}&limit=${limit}`,
+  );
+
+  return res;
 };
 
 // export const getCarListByCategory = async (catId) => {

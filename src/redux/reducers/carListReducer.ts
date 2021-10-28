@@ -5,8 +5,9 @@ const initialState: IInitCarListState = {
   carList: [],
   isLoading: false,
   error: null,
-  page: 1,
-  limit: 7,
+  currentPage: 0,
+  limit: 5,
+  carsCount: 0,
 };
 
 const carListReducer = (
@@ -18,14 +19,20 @@ const carListReducer = (
       return { ...state, isLoading: true };
     }
     case CarListActionTypes.FETCH_CARS_SUCCESS: {
-      return { ...state, carList: action.payload, isLoading: false };
+      return {
+        ...state,
+        carList: action.payload.data,
+        carsCount: action.payload.count,
+        isLoading: false,
+      };
     }
     case CarListActionTypes.FETCH_CARS_ERROR: {
       return { ...state, isLoading: false, error: action.payload };
     }
     case CarListActionTypes.SET_CARLIST_PAGE: {
-      return { ...state, page: action.payload };
+      return { ...state, currentPage: action.payload };
     }
+
     default:
       return state;
   }
