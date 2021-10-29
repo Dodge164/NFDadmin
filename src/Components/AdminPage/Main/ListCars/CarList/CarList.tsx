@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../../hooks/useActions';
 // import Pagination from '../../../../Pagination';
-import Pagination2 from '../../../../Pagination/Pagination copy';
+// import Pagination2 from '../../../../Pagination/Pagination copy';
+import CustomPagination from '../../../../Pagination/CustomPagination';
 
 import s from './carList.module.scss';
 
@@ -97,8 +98,7 @@ const CarList: React.FC = () => {
       </div>
 
       <div className={s.footer}>
-        {/* <Pagination /> */}
-        <Pagination2 />
+        <CustomPagination />
       </div>
     </div>
   );
