@@ -1,15 +1,10 @@
-/* eslint-disable no-console */
 import { Pagination } from 'antd';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import cn from 'classnames';
+
 import './antd.scss';
 
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import {
-  fetchCarList,
-  setCarListPage,
-} from '../../redux/actions/carListAction';
+import { setCarListPage } from '../../redux/actions/carListAction';
 
 import s from './pagination.module.scss';
 
@@ -23,10 +18,6 @@ export default function CustomPagination() {
   const { currentPage, limit, carsCount } = useTypedSelector(
     (state) => state.carListReducer,
   );
-
-  useEffect(() => {
-    fetchCarList(currentPage, limit);
-  }, [currentPage, limit]);
 
   return (
     <Pagination

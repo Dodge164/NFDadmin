@@ -5,7 +5,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import axios from 'axios';
 
-import { ICars, ICategories } from '../interfaces/interfaces';
+import { ICars } from '../interfaces/carListInterfaces';
+import { ICategories } from '../interfaces/categoriesInterfaces';
 
 // const queryString = require('query-string');
 
@@ -27,7 +28,7 @@ const fetchRequest = async (way: string) => {
 
 export const getCarCategory = async () => {
   const res: ICategories = await fetchRequest('/db/category');
-  return res.data;
+  return res;
 };
 
 // export const getCityList = async () => {
@@ -48,10 +49,16 @@ export const getCarList = async (currentPage: number, limit: number) => {
   return res;
 };
 
-// export const getCarListByCategory = async (catId) => {
-//   const res = await fetchRequest(`/db/car?categoryId=${catId}`);
-//   return res.data;
-// };
+export const getCarListByCategory = async (
+  currentPage: number,
+  limit: number,
+  categoryId: string,
+) => {
+  const res: ICars = await fetchRequest(
+    `/db/car?page=${currentPage}&limit=${limit}&categoryId=${categoryId}`,
+  );
+  return res;
+};
 
 // export const getRateType = async () => {
 //   const res = await fetchRequest('/db/rateType');

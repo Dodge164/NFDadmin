@@ -1,4 +1,4 @@
-import { ICar } from '../../interfaces/interfaces';
+import { ICar } from '../../interfaces/carListInterfaces';
 import { TCarCardAction } from '../actions/carCardAction';
 
 const initialState = {
@@ -16,6 +16,7 @@ const initialState = {
   name: '',
   colors: [],
   number: '',
+  id: '',
 };
 
 const carCardReducer = (state: ICar = initialState, action: TCarCardAction) => {

@@ -6,8 +6,7 @@ import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
-import { ICar } from '../../../../../interfaces/interfaces';
-import { fetchCategory } from '../../../../../redux/actions/categoryAction';
+import { ICar } from '../../../../../interfaces/carListInterfaces';
 
 import s from './settings.module.scss';
 
@@ -26,6 +25,7 @@ const initialValues: ICar = {
   name: '',
   colors: [],
   number: '',
+  id: '',
 };
 
 const validationSchema = Yup.object().shape({

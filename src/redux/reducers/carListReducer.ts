@@ -1,4 +1,7 @@
-import { CarListAction, IInitCarListState } from '../../interfaces/interfaces';
+import {
+  CarListAction,
+  IInitCarListState,
+} from '../../interfaces/carListInterfaces';
 import { CarListActionTypes } from '../types/carListTypes';
 
 const initialState: IInitCarListState = {
