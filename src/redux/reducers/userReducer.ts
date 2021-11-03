@@ -8,8 +8,8 @@ const defaultState = {
   currentUser: {
     user_id: '',
   },
-  // isAuth: false,
-  isAuth: true,
+  isAuth: false,
+  // isAuth: true,
 };
 
 export default function userReducer(

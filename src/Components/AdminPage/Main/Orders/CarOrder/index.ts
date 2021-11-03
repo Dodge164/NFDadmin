@@ -1,3 +1,3 @@
-import CarOrder from './CarOrder';
+import OrderList from './OrderList';
 
-export default CarOrder;
+export default OrderList;

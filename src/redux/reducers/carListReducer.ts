@@ -30,7 +30,12 @@ const carListReducer = (
       };
     }
     case CarListActionTypes.FETCH_CARS_ERROR: {
-      return { ...state, isLoading: false, error: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        // isLoading: true,
+        error: action.payload,
+      };
     }
     case CarListActionTypes.SET_CARLIST_PAGE: {
       return { ...state, currentPage: action.payload };

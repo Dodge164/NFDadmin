@@ -1,4 +1,4 @@
-import Pagination from '../../../../Pagination';
+import OrderPagination from '../../../../Pagination/OrderPagination';
 
 import s from './carOrder.module.scss';
 import Select from './Select';
@@ -15,14 +15,9 @@ const CarOrder = () => {
       </div>
       <div className={s.main}>
         <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
       </div>
       <div className={s.footer}>
-        <Pagination />
+        <OrderPagination />
       </div>
     </div>
   );

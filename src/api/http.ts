@@ -5,10 +5,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import axios from 'axios';
 
+import { IOrders } from '../interfaces/selectInterfaces';
 import { ICars } from '../interfaces/carListInterfaces';
 import { ICategories } from '../interfaces/categoriesInterfaces';
-
-// const queryString = require('query-string');
 
 const API_KEY: string = process.env.REACT_APP_DB_API_KEY
   ? process.env.REACT_APP_DB_API_KEY
@@ -16,11 +15,13 @@ const API_KEY: string = process.env.REACT_APP_DB_API_KEY
 export const url: string = process.env.REACT_APP_NFDDB_URL!;
 
 const fetchRequest = async (way: string) => {
+  const accessToken = window.localStorage.getItem('access_token');
   const res = await axios.get(`${url}${way}`, {
     headers: {
       'X-Api-Factory-Application-Id': API_KEY,
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'text-html',
+      Authorization: `Bearer ${accessToken}`,
     },
   });
   return res.data;
@@ -45,7 +46,6 @@ export const getCarList = async (currentPage: number, limit: number) => {
   const res: ICars = await fetchRequest(
     `/db/car?page=${currentPage}&limit=${limit}`,
   );
-
   return res;
 };
 
@@ -60,14 +60,11 @@ export const getCarListByCategory = async (
   return res;
 };
 
-// export const getRateType = async () => {
-//   const res = await fetchRequest('/db/rateType');
-//   return res.data;
-// };
-
-// export const getRate = async () => {
-//   const res = await fetchRequest('/db/rate');
-//   return res.data;
-// };
+export const getTableOrder = async (currentPage: number, limit: number) => {
+  const res: IOrders = await fetchRequest(
+    `/db/order?page=${currentPage}&limit=${limit}`,
+  );
+  return res;
+};
 
 export default fetchRequest;

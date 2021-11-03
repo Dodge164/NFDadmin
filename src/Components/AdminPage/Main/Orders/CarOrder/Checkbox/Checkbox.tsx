@@ -1,29 +1,27 @@
-// import cn from 'classnames';
+import cn from 'classnames';
 
 import s from './checkbox.module.scss';
 
-const Checkbox = () => {
+interface Props {
+  checked: boolean;
+  label: string;
+}
+
+export default function Checkbox(props: Props) {
   return (
     <>
-      <label className={s.checkbox}>
-        <input type="checkbox" name="extra" className={s.checkBtn} />
+      <label
+        className={cn(s.checkbox, { [s.checked]: props.checked === true })}
+      >
+        {props.label}
+        <input
+          readOnly
+          type="checkbox"
+          checked={props.checked}
+          className={s.checkBtn}
+        />
         <div className={s.customCheckbox} />
-        <span>Полный бак</span>
-      </label>
-
-      <label className={s.checkbox}>
-        <input type="checkbox" name="extra" className={s.checkBtn} />
-        <div className={s.customCheckbox} />
-        <span>Детское кресло</span>
-      </label>
-
-      <label className={s.checkbox}>
-        <input type="checkbox" name="extra" className={s.checkBtn} />
-        <div className={s.customCheckbox} />
-        <span>Правый руль</span>
       </label>
     </>
   );
-};
-
-export default Checkbox;
+}

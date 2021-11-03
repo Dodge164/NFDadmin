@@ -1,4 +1,3 @@
-// objects I
 export interface ICurrentUser {
   user_id: string | null;
 }

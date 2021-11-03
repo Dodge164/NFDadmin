@@ -6,6 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (min-width: 640px) {
+    flex-direction: column;
+  }
+  @media (min-width: 1440px) {
+    flex-direction: row;
+  }
+
   button {
     width: 84px;
     height: 24px;
@@ -27,8 +34,11 @@
   }
   .buttonDone {
     border: 0.5px solid #becad6;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 4px 0px 0px;
     background-image: url(../../../../../../assets/CheckIcon.svg);
+    @media (min-width: 1440px) {
+      border-radius: 4px 0px 0px 4px;
+    }
   }
 
   .buttonCancel {
@@ -36,11 +46,17 @@
     border-radius: 0px;
     margin: 0 -1px;
     background-image: url(../../../../../../assets/RejectIcon.svg);
+    @media (min-width: 1440px) {
+      margin: -1px 0;
+    }
   }
 
   .buttonEdit {
     border: 0.5px solid #becad6;
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0px 0px 4px 4px;
     background-image: url(../../../../../../assets/EditIcon.svg);
+    @media (min-width: 1440px) {
+      border-radius: 0px 4px 4px 0px;
+    }
   }
 }

@@ -9,6 +9,7 @@ import CustomSelect from '../../../../Select';
 import { setSelectedCategory } from '../../../../../redux/actions/categoryAction';
 import { ICar } from '../../../../../interfaces/carListInterfaces';
 import { setCarListPage } from '../../../../../redux/actions/carListAction';
+import Loading from '../../../../../Loading/Loading';
 
 import s from './carList.module.scss';
 
@@ -46,10 +47,10 @@ const CarList: React.FC = () => {
   };
 
   if (isLoading) {
-    return <h2>Идет загрузка...</h2>;
+    return <Loading />;
   }
   if (error) {
-    return <h2>{error}</h2>;
+    return <h2 className={s.warning}>{error}</h2>;
   }
 
   return (
@@ -80,6 +81,7 @@ const CarList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
+            {console.log('carList :>> ', carList)}
             {carList.map((car: ICar) => (
               <tr key={car.id}>
                 <td className={s.title}>{car.name}</td>

@@ -9,7 +9,10 @@ export const fetchCarList = (page: number = 1, limit: number = 7) => {
     try {
       dispatch({ type: CarListActionTypes.FETCH_CARS });
       const res = await getCarList(page, limit);
-      dispatch({ type: CarListActionTypes.FETCH_CARS_SUCCESS, payload: res });
+      dispatch({
+        type: CarListActionTypes.FETCH_CARS_SUCCESS,
+        payload: res,
+      });
     } catch (error) {
       dispatch({
         type: CarListActionTypes.FETCH_CARS_ERROR,
