@@ -14,7 +14,7 @@ export interface IInitCategoriesState {
   categories: ICategoryId[];
   isLoading: boolean;
   error: string | null;
-  selected: string;
+  selectedCategory: string;
 }
 
 interface FetchCategoriesAction {

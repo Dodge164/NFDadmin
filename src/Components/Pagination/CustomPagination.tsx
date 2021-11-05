@@ -1,34 +1,29 @@
 import { Pagination } from 'antd';
-import { useDispatch } from 'react-redux';
 
 import './antd.scss';
 
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { setCarListPage } from '../../redux/actions/carListAction';
-
 import s from './pagination.module.scss';
 
-export default function CustomPagination() {
-  const dispatch = useDispatch();
+interface IPaginationProps {
+  currentPage: number;
+  limit: number;
+  counter: number;
+  onChangePage: (currentPage: number) => void;
+}
 
-  const handleChangePage = (currentPage: number) => {
-    dispatch(setCarListPage(currentPage - 1));
-  };
-
-  const { currentPage, limit, carsCount } = useTypedSelector(
-    (state) => state.carListReducer,
-  );
+export default function CustomPagination(props: IPaginationProps) {
+  const { currentPage, limit, counter, onChangePage } = props;
 
   return (
     <Pagination
       current={currentPage + 1}
       defaultCurrent={currentPage + 1}
-      total={carsCount}
+      total={counter}
       pageSize={limit}
       showSizeChanger={false}
       hideOnSinglePage={true}
       showLessItems
-      onChange={handleChangePage}
+      onChange={onChangePage}
       itemRender={(_, type, originalContent) => {
         switch (type) {
           case 'prev':

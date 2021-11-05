@@ -9,8 +9,10 @@ const initialState: IInitTableOrderState = {
   isLoading: false,
   error: null,
   currentPage: 0,
-  limit: 10,
+  limit: 6,
   ordersCount: 0,
+  period: 0,
+  createdAt: 0,
 };
 
 const tableOrderReducer = (
@@ -27,6 +29,7 @@ const tableOrderReducer = (
         orderList: action.payload.data,
         ordersCount: action.payload.count,
         isLoading: false,
+        // isLoading: true,
       };
     }
     case TableOrderActionTypes.FETCH_TABLE_ORDER_ERROR: {
@@ -34,6 +37,9 @@ const tableOrderReducer = (
     }
     case TableOrderActionTypes.SET_TABLE_ORDER_PAGE: {
       return { ...state, currentPage: action.payload };
+    }
+    case TableOrderActionTypes.SET_TABLE_ORDER_PERIOD: {
+      return { ...state, period: action.payload };
     }
     default:
       return state;

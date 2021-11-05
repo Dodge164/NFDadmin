@@ -3,19 +3,20 @@ import { Select } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ReactComponent as Arrows } from '../../assets/doubleArrow.svg';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { setSelectedCategory } from '../../redux/actions/categoryAction';
+import { ReactComponent as Arrows } from '../../../../../../assets/doubleArrow.svg';
+import { useActions } from '../../../../../../hooks/useActions';
+import { useTypedSelector } from '../../../../../../hooks/useTypedSelector';
+import { ICategoryId } from '../../../../../../interfaces/categoriesInterfaces';
+import { setSelectedCategory } from '../../../../../../redux/actions/categoryAction';
 
 import './antd.scss';
-import s from './select.module.scss';
+import s from './carSelect.module.scss';
 
 const { Option } = Select;
 
-const CustomSelect: React.FC = () => {
+const CarSelect: React.FC = () => {
   const dispatch = useDispatch();
-  const { categories, error, isLoading, selected } = useTypedSelector(
+  const { categories, error, isLoading, selectedCategory } = useTypedSelector(
     (state) => state.categoriesReducer,
   );
 
@@ -45,10 +46,10 @@ const CustomSelect: React.FC = () => {
       <Select
         suffixIcon={<Arrows />}
         onChange={handleChange}
-        defaultValue={selected ? selected : 'Все категории'}
+        defaultValue={selectedCategory ? selectedCategory : 'Все категории'}
       >
         <Option value="Все категории">Все категории</Option>
-        {categories.map((category: any) => (
+        {categories.map((category: ICategoryId) => (
           <Option key={category.id} value={category.id}>
             {category.name}
           </Option>
@@ -58,4 +59,4 @@ const CustomSelect: React.FC = () => {
   );
 };
 
-export default CustomSelect;
+export default CarSelect;

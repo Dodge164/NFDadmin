@@ -5,36 +5,39 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../../hooks/useActions';
 import CustomPagination from '../../../../Pagination/CustomPagination';
-import CustomSelect from '../../../../Select';
 import { setSelectedCategory } from '../../../../../redux/actions/categoryAction';
-import { ICar } from '../../../../../interfaces/carListInterfaces';
 import { setCarListPage } from '../../../../../redux/actions/carListAction';
 import Loading from '../../../../../Loading/Loading';
 
+import CarSelect from './CarSelect';
 import s from './carList.module.scss';
+import Car from './Car';
 
 const CarList: React.FC = () => {
   const dispatch = useDispatch();
-
-  const { carList, error, isLoading, currentPage, limit } = useTypedSelector(
+  const { fetchCarList, fetchCarListByCategory } = useActions();
+  const { error, isLoading, currentPage, limit, carsCount } = useTypedSelector(
     (state) => state.carListReducer,
   );
-  const { selected } = useTypedSelector((state) => state.categoriesReducer);
-  const { fetchCarList, fetchCarListByCategory } = useActions();
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { selectedCategory } = useTypedSelector(
+    (state) => state.categoriesReducer,
+  );
 
   useEffect(() => {
-    if (selected) {
-      fetchCarListByCategory(currentPage, limit, selected);
+    if (selectedCategory) {
+      fetchCarListByCategory(currentPage, limit, selectedCategory);
     } else {
       fetchCarList(currentPage, limit);
     }
   }, [currentPage]);
 
+  const handleChangePage = (currentPageCars: number) => {
+    dispatch(setCarListPage(currentPageCars - 1));
+  };
+
   const handlerApplyClick = () => {
-    if (selected) {
-      fetchCarListByCategory(currentPage, limit, selected);
+    if (selectedCategory) {
+      fetchCarListByCategory(currentPage, limit, selectedCategory);
     } else {
       fetchCarList(currentPage, limit);
     }
@@ -57,7 +60,7 @@ const CarList: React.FC = () => {
     <div className={s.wrapper}>
       <div className={s.header}>
         <div className={s.filter}>
-          <CustomSelect />
+          <CarSelect />
         </div>
         <div className={s.buttonGroup}>
           <button onClick={handlerResetClick} className={s.reset}>
@@ -70,43 +73,16 @@ const CarList: React.FC = () => {
       </div>
 
       <div className={s.main}>
-        <table>
-          <thead>
-            <tr>
-              <th>Модель</th>
-              <th>Фото</th>
-              <th>Категория</th>
-              <th>Цена мин</th>
-              <th>Цена макс</th>
-            </tr>
-          </thead>
-          <tbody>
-            {console.log('carList :>> ', carList)}
-            {carList.map((car: ICar) => (
-              <tr key={car.id}>
-                <td className={s.title}>{car.name}</td>
-                <td className={s.col}>
-                  <img
-                    className={s.photo}
-                    src={
-                      car?.thumbnail?.path.includes('base64')
-                        ? car?.thumbnail?.path
-                        : BASE_URL + car?.thumbnail?.path
-                    }
-                    alt="car-example"
-                  />
-                </td>
-                <td className={s.col}>{car.categoryId?.name}</td>
-                <td className={s.col}>{car.priceMin.toLocaleString('ru')}</td>
-                <td className={s.col}>{car.priceMax.toLocaleString('ru')}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Car />
       </div>
 
       <div className={s.footer}>
-        <CustomPagination />
+        <CustomPagination
+          currentPage={currentPage}
+          limit={limit}
+          counter={carsCount}
+          onChangePage={handleChangePage}
+        />
       </div>
     </div>
   );

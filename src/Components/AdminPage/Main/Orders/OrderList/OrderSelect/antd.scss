@@ -1,12 +1,5 @@
-@import '../../variables';
-
-.select {
+.ant-select {
   width: 110px;
-  height: 30px;
-
-  .ant-select {
-    width: 110px;
-  }
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
@@ -54,10 +47,10 @@
 
 .ant-select-single .ant-select-selector .ant-select-selection-item {
   @media (min-width: 320px) {
-    line-height: 25px;
+    line-height: 30px;
   }
 
   @media (min-width: 640px) {
-    line-height: 28px;
+    line-height: 30px;
   }
 }

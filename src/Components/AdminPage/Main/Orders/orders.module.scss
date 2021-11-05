@@ -30,7 +30,20 @@
   border-radius: 9px;
   // height: 447px;
   @media (min-width: 1024px) {
-    min-height: 560px;
     margin: 0 16px 0 8px;
+  }
+  .blankLoading {
+    margin: 0 8px 0 0;
+    background: #ffffff;
+    box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
+      0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
+      0px 3.5px 35px rgba(90, 97, 105, 0.1);
+    border-radius: 9px;
+    min-height: 400px;
+
+    @media (min-width: 1024px) {
+      min-height: 560px;
+      margin: 0 16px 0 8px;
+    }
   }
 }

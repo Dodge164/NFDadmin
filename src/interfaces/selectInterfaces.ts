@@ -17,6 +17,7 @@ export interface ITableOrder {
   isRightWheel: boolean;
   createdAt: Date;
   updatedAt: Date;
+  id: string;
 }
 
 export interface IRateId {
@@ -25,6 +26,7 @@ export interface IRateId {
 }
 export interface IOrderStatusId {
   name: string;
+  id: string;
   [key: string]: string | number;
 }
 export interface ICityId {
@@ -49,6 +51,8 @@ export interface IInitTableOrderState {
   currentPage: number;
   limit: number;
   ordersCount: number;
+  period: number;
+  createdAt: number;
 }
 
 interface FetchTableOrderAction {
@@ -67,9 +71,14 @@ interface SetTableOrderPage {
   type: TableOrderActionTypes.SET_TABLE_ORDER_PAGE;
   payload: number;
 }
+interface SetTableOrderPeriod {
+  type: TableOrderActionTypes.SET_TABLE_ORDER_PERIOD;
+  payload: number;
+}
 
 export type TableOrderAction =
   | FetchTableOrderAction
   | FetchTableOrderActionError
   | FetchTableOrderActionSuccess
-  | SetTableOrderPage;
+  | SetTableOrderPage
+  | SetTableOrderPeriod;

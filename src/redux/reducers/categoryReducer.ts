@@ -8,7 +8,7 @@ const initialState: IInitCategoriesState = {
   categories: [],
   isLoading: false,
   error: null,
-  selected: '',
+  selectedCategory: '',
 };
 
 const categoriesReducer = (
@@ -26,7 +26,7 @@ const categoriesReducer = (
       return { ...state, isLoading: false, error: action.payload };
     }
     case CategoriesActionTypes.SELECT_CATEGORY: {
-      return { ...state, selected: action.payload };
+      return { ...state, selectedCategory: action.payload };
     }
     default:
       return state;

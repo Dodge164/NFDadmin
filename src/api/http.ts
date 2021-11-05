@@ -8,6 +8,7 @@ import axios from 'axios';
 import { IOrders } from '../interfaces/selectInterfaces';
 import { ICars } from '../interfaces/carListInterfaces';
 import { ICategories } from '../interfaces/categoriesInterfaces';
+import { IStatuses } from '../interfaces/status';
 
 const API_KEY: string = process.env.REACT_APP_DB_API_KEY
   ? process.env.REACT_APP_DB_API_KEY
@@ -32,13 +33,13 @@ export const getCarCategory = async () => {
   return res;
 };
 
-// export const getCityList = async () => {
-//   const res = await fetchRequest('/db/city');
-//   return res.data;
-// };
+export const getCityList = async () => {
+  const res = await fetchRequest('/db/city');
+  return res;
+};
 
-// export const getPointListByCityId = async (cityId) => {
-//   const res = await fetchRequest(`/db/point?cityId=${cityId}`);
+// export const getPointListByCityId = async (cityIdd) => {
+//   const res = await fetchRequest(`/db/point?cityId=${cityIdd}`);
 //   return res.data;
 // };
 
@@ -60,9 +61,30 @@ export const getCarListByCategory = async (
   return res;
 };
 
+export const getStatus = async () => {
+  const res: IStatuses = await fetchRequest('/db/orderStatus');
+  return res;
+};
+
 export const getTableOrder = async (currentPage: number, limit: number) => {
   const res: IOrders = await fetchRequest(
     `/db/order?page=${currentPage}&limit=${limit}`,
+  );
+  return res;
+};
+export const getTableOrderByParams = async (
+  currentPage: number,
+  limit: number,
+  selectedCity: string,
+  selectedStatus: string,
+  createdAt?: number,
+) => {
+  const cityId = selectedCity ? `&cityId=${selectedCity}` : '';
+  const statusId = selectedStatus ? `&orderStatusId=${selectedStatus}` : '';
+  const period = createdAt ? `&createdAt[$gt]=${createdAt}` : '';
+
+  const res: IOrders = await fetchRequest(
+    `/db/order?page=${currentPage}&limit=${limit}${statusId}${cityId}${period}`,
   );
   return res;
 };

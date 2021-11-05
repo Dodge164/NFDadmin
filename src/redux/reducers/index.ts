@@ -6,6 +6,8 @@ import carCardReducer from './carCardReducer';
 import categoriesReducer from './categoryReducer';
 import carListReducer from './carListReducer';
 import tableOrderReducer from './tableOrderReducer';
+import statusReducer from './statusReducer';
+import cityReducer from './cityReducer';
 
 const rootReducer = combineReducers({
   userReducer: userReducer,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   categoriesReducer: categoriesReducer,
   carListReducer: carListReducer,
   tableOrderReducer: tableOrderReducer,
+  statusReducer: statusReducer,
+  cityReducer: cityReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

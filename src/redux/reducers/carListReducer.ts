@@ -27,13 +27,13 @@ const carListReducer = (
         carList: action.payload.data,
         carsCount: action.payload.count,
         isLoading: false,
+        // isLoading: true,
       };
     }
     case CarListActionTypes.FETCH_CARS_ERROR: {
       return {
         ...state,
         isLoading: false,
-        // isLoading: true,
         error: action.payload,
       };
     }

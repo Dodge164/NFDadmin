@@ -8,6 +8,14 @@
     justify-content: center;
     align-items: center;
   }
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 }
 .photoContainer {
   display: flex;
@@ -34,6 +42,9 @@
   // width: 287px;
   height: 63px;
   margin: 8px;
+  @media (min-width: 1200px) {
+    width: 350px;
+  }
 
   .item {
     // background-color: rgb(52, 247, 182);
@@ -115,7 +126,9 @@
   justify-content: center;
   align-items: center;
   margin: 8px;
-  // background-color: rgb(103, 197, 238);
+  @media (min-width: 1200px) {
+    width: 90px;
+  }
 }
 .warning {
   position: relative;
