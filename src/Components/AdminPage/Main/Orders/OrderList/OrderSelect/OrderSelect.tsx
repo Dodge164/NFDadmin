@@ -32,8 +32,7 @@ const OrderSelect: React.FC = () => {
     (state) => state.cityReducer,
   );
 
-  const { fetchStatuses, fetchTableOrder, fetchCities, fetchCategories } =
-    useActions();
+  const { fetchStatuses, fetchCities, fetchCategories } = useActions();
 
   function handleChangeStatus(status: string) {
     dispatch(setSelectedStatus(status !== 'Статус заказа' ? status : ''));
@@ -69,7 +68,6 @@ const OrderSelect: React.FC = () => {
   }
 
   useEffect(() => {
-    fetchTableOrder();
     fetchStatuses();
     fetchCities();
     fetchCategories();

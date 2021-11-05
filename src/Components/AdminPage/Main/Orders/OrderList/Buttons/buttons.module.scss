@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   @media (min-width: 640px) {
-    flex-direction: column;
+    flex-direction: row;
   }
   @media (min-width: 768px) {
     flex-direction: row;
