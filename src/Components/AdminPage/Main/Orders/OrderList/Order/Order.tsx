@@ -5,6 +5,7 @@ import { ITableOrder } from '../../../../../../interfaces/selectInterfaces';
 import noPhoto from '../../../../../../assets/noPhoto.png';
 import Buttons from '../Buttons';
 import Checkbox from '../Checkbox';
+import { putOrderStatusById } from '../../../../../../api/http';
 
 import s from './order.module.scss';
 
@@ -12,10 +13,24 @@ const Order: React.FC = () => {
   const { orderList } = useTypedSelector((state) => state.tableOrderReducer);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+  const handleDone = (orderId: string) => {
+    putOrderStatusById(orderId, {
+      orderStatusId: {
+        id: '5e26a1f0099b810b946c5d8b',
+      },
+    });
+  };
+  const handleCancel = (orderId: string) => {
+    console.log('handleCancel :>> ', orderId);
+  };
+  const handleRestore = (orderId: string) => {
+    console.log('handleRestore :>> ', orderId);
+  };
+
   return (
     <>
       {orderList?.map((order: ITableOrder) => (
-        <div key={order.carId?.id} className={s.order}>
+        <div key={order?.id} className={s.order}>
           <div className={s.photoContainer}>
             <img
               className={s.photo}
@@ -57,7 +72,12 @@ const Order: React.FC = () => {
           <div className={s.price}>
             {order?.price?.toLocaleString('ru') + ' ₽' ?? 'Не задана'}
           </div>
-          <Buttons />
+          <Buttons
+            onClickDone={handleDone}
+            onClickCancel={handleCancel}
+            onClickRestore={handleRestore}
+            orderId={order?.id}
+          />
         </div>
       ))}
     </>

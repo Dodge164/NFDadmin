@@ -34,20 +34,7 @@ const validationSchema = Yup.object().shape({
     .max(40, 'Доступная длина 40 символов')
     .required('Поле не заполнено!'),
   categoryId: Yup.object().shape({
-    name: Yup.string()
-
-      // .test(
-      //   'categoryId.name',
-      //   'Выберите тип автомобиля',
-      //   function (value: string | undefined) {
-      //     if (value !== undefined && value === 'Выберите тип автомобиля ...') {
-      //       return false;
-      //     }
-      //     return true;
-      //   },
-      // )
-
-      .required('Выберите тип автомобиля'),
+    name: Yup.string().required('Выберите тип автомобиля'),
   }),
   priceMin: Yup.number()
     .required('Поле не заполнено!')
@@ -79,11 +66,8 @@ export const SettingsCar: FC = () => {
   };
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    // dispatch(fetchCategory());
-  }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
 
-  console.log('colorInput :>> ', colorInput);
   return (
     <div className={s.settings}>
       <header className={s.header}>Настройки автомобиля</header>
@@ -95,8 +79,6 @@ export const SettingsCar: FC = () => {
         {({ values, touched, errors, isSubmitting, handleSubmit }) => (
           <Form className={s.form} onSubmit={handleSubmit}>
             <div className={s.inputs}>
-              {console.log('values :>> ', values)}
-              {console.log('errors :>> ', errors)}
               <div className={s.input}>
                 <label className={s.label} htmlFor="name">
                   Модель автомобиля
@@ -115,9 +97,7 @@ export const SettingsCar: FC = () => {
                   <div className={s.inputFeedback}>{errors.name}</div>
                 )}
               </div>
-              {/* <select name="categoryID">
-                <option value={values.categoryId}>{categoryID}</option>
-              </select> */}
+
               <div className={s.input}>
                 <label className={s.label} htmlFor="categoryId">
                   Тип автомобиля
@@ -128,7 +108,6 @@ export const SettingsCar: FC = () => {
                   className={cn(s.field, {
                     [s.inputError]: errors.categoryId && touched.categoryId,
                   })}
-                  // placeholder="Выберите тип автомобиля ..."
                 >
                   <option value="">Выберите тип автомобиля ...</option>
                   <option value="Эконом">Эконом</option>
@@ -278,21 +257,14 @@ export const SettingsCar: FC = () => {
                   type="button"
                   className={s.buttonReset}
                   onClick={() => {
-                    console.log('dd');
                     setColorInput('');
-                    // handleReset();
                   }}
-                  // disabled={!dirty || isSubmitting}
                 >
                   <span>Отменить</span>
                 </button>
               </div>
               <div className={s.deleteBtn}>
-                <button
-                  type="button"
-                  className={s.buttonDelete}
-                  // onClick={handleDelete}
-                >
+                <button type="button" className={s.buttonDelete}>
                   <span>Удалить</span>
                 </button>
               </div>

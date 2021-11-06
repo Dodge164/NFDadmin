@@ -55,9 +55,16 @@ export const fetchTableOrderByParams = (
 export function setTableOrderPage(page: number): TableOrderAction {
   return { type: TableOrderActionTypes.SET_TABLE_ORDER_PAGE, payload: page };
 }
+
 export function setPeriod(period: number): TableOrderAction {
   return {
     type: TableOrderActionTypes.SET_TABLE_ORDER_PERIOD,
     payload: period,
+  };
+}
+export function setSelectedPeriod(selectedPeriod: string): TableOrderAction {
+  return {
+    type: TableOrderActionTypes.SELECT_PERIOD,
+    payload: selectedPeriod,
   };
 }

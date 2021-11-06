@@ -10,7 +10,10 @@ import { ICity } from '../../../../../../interfaces/city';
 import { IStatus } from '../../../../../../interfaces/status';
 import { setSelectedCity } from '../../../../../../redux/actions/cityAction';
 import { setSelectedStatus } from '../../../../../../redux/actions/statusAction';
-import { setPeriod } from '../../../../../../redux/actions/tableOrderAction';
+import {
+  setPeriod,
+  setSelectedPeriod,
+} from '../../../../../../redux/actions/tableOrderAction';
 
 import './antd.scss';
 import s from './orderSelect.module.scss';
@@ -20,7 +23,7 @@ const { Option } = Select;
 const OrderSelect: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { error, isLoading } = useTypedSelector(
+  const { error, isLoading, selectedPeriod } = useTypedSelector(
     (state) => state.tableOrderReducer,
   );
 
@@ -65,6 +68,7 @@ const OrderSelect: React.FC = () => {
     }
 
     dispatch(setPeriod(Number(new Date(start))));
+    dispatch(setSelectedPeriod(period));
   }
 
   useEffect(() => {
@@ -85,8 +89,7 @@ const OrderSelect: React.FC = () => {
       <Select
         suffixIcon={<Arrows />}
         onChange={handleChangePeriod}
-        // defaultValue={selected ? selected : 'За все время'}
-        defaultValue="За все время"
+        defaultValue={selectedPeriod ? selectedPeriod : 'За все время'}
       >
         <Option value="За все время">За все время</Option>
         <Option value="За день">За день</Option>

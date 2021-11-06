@@ -25,6 +25,7 @@ const fetchRequest = async (way: string) => {
       Authorization: `Bearer ${accessToken}`,
     },
   });
+  console.log('resGet', res.data);
   return res.data;
 };
 
@@ -88,5 +89,52 @@ export const getTableOrderByParams = async (
   );
   return res;
 };
+
+const fetchPutRequest = async (way: string, data: any) => {
+  const accessToken = window.localStorage.getItem('access_token');
+  const res = await axios.put(`${url}${way}`, data, {
+    headers: {
+      'X-Api-Factory-Application-Id': API_KEY,
+      'Access-Control-Allow-Origin': '*',
+      'Content-type': 'text-html',
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  console.log('resPut', res);
+  return res.data;
+};
+
+export const putOrderStatusById = async (orderId: string, data: any) => {
+  const res = await fetchPutRequest(`/db/order/${orderId}`, data);
+  console.log('res', res);
+  return res;
+};
+// axios({
+//   method: 'PUT',
+//   url: `https://api-factory.simbirsoft1.com/api/db/order/${orderInfo.orderId}`,
+
+//   data: {
+//     orderStatusId: {
+//       id: statusId,
+//     },
+//   },
+//   headers: {
+//     'X-Api-Factory-Application-Id': process.env.REACT_APP_DB_API_KEY,
+//     'Access-Control-Allow-Origin': '*',
+//     'Content-type': 'application/json',
+//   },
+// })
+//   .then((response) => {
+//     setOrderInfo(OrderData);
+//     setStep(0);
+//     history.push('/order');
+//   })
+//   .catch((error) => {
+//     alert('Ошибка подтверждения заказа', error);
+//   });
+// } else {
+// setStep((prev) => prev + 1);
+// }
+// }
 
 export default fetchRequest;

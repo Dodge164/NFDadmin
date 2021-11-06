@@ -12,7 +12,7 @@ const initialState: IInitTableOrderState = {
   limit: 6,
   ordersCount: 0,
   period: 0,
-  createdAt: 0,
+  selectedPeriod: '',
 };
 
 const tableOrderReducer = (
@@ -40,6 +40,9 @@ const tableOrderReducer = (
     }
     case TableOrderActionTypes.SET_TABLE_ORDER_PERIOD: {
       return { ...state, period: action.payload };
+    }
+    case TableOrderActionTypes.SELECT_PERIOD: {
+      return { ...state, selectedPeriod: action.payload };
     }
     default:
       return state;

@@ -14,51 +14,33 @@ import OrderSelect from './OrderSelect';
 
 const OrderList: React.FC = () => {
   const dispatch = useDispatch();
-  const { fetchTableOrder, fetchTableOrderByParams } = useActions();
-  const {
-    currentPage,
-    limit,
-    period,
-    ordersCount,
-    createdAt,
-    error,
-    isLoading,
-  } = useTypedSelector((state) => state.tableOrderReducer);
+  const { fetchTableOrderByParams } = useActions();
+  const { currentPage, limit, period, ordersCount, error, isLoading } =
+    useTypedSelector((state) => state.tableOrderReducer);
 
   const { selectedCity } = useTypedSelector((state) => state.cityReducer);
 
   const { selectedStatus } = useTypedSelector((state) => state.statusReducer);
 
-  // useEffect(() => {
-  //   if (period) {
-  //     fetchTableOrderByParams(
-  //       currentPage,
-  //       limit,
-  //       selectedCity,
-  //       selectedStatus,
-  //       createdAt,
-  //     );
-  //   } else {
-  //     fetchTableOrder(currentPage, limit);
-  //   }
-  // }, [currentPage]);
-
   useEffect(() => {
-    fetchTableOrder(currentPage, limit);
+    fetchTableOrderByParams(
+      currentPage,
+      limit,
+      selectedCity,
+      selectedStatus,
+      period,
+    );
   }, [currentPage]);
 
   const handlerApplyClick = () => {
-    if (period) {
-      fetchTableOrderByParams(
-        currentPage,
-        limit,
-        selectedCity,
-        selectedStatus,
-        createdAt,
-      );
-    } else {
-      fetchTableOrder(currentPage, limit);
-    }
+    fetchTableOrderByParams(
+      currentPage,
+      limit,
+      selectedCity,
+      selectedStatus,
+      period,
+    );
+
     dispatch(setTableOrderPage(0));
   };
 

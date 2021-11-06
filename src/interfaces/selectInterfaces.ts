@@ -52,7 +52,7 @@ export interface IInitTableOrderState {
   limit: number;
   ordersCount: number;
   period: number;
-  createdAt: number;
+  selectedPeriod: string;
 }
 
 interface FetchTableOrderAction {
@@ -75,10 +75,15 @@ interface SetTableOrderPeriod {
   type: TableOrderActionTypes.SET_TABLE_ORDER_PERIOD;
   payload: number;
 }
+interface SelectPeriod {
+  type: TableOrderActionTypes.SELECT_PERIOD;
+  payload: string;
+}
 
 export type TableOrderAction =
   | FetchTableOrderAction
   | FetchTableOrderActionError
   | FetchTableOrderActionSuccess
   | SetTableOrderPage
+  | SelectPeriod
   | SetTableOrderPeriod;
