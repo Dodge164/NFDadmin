@@ -4,3 +4,8 @@ export enum StatusActionTypes {
   FETCH_STATUS_ERROR = 'FETCH_STATUS_ERROR',
   SELECT_STATUS = 'SELECT_STATUS',
 }
+
+export enum TypesAlert {
+  SUCCESS = 'success',
+  ERROR = 'error',
+}

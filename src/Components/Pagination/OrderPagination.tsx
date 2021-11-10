@@ -3,7 +3,7 @@ import { Pagination } from 'antd';
 import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { setTableOrderPage } from '../../redux/actions/tableOrderAction';
+import { setOrdersPage } from '../../redux/actions/ordersAction';
 
 import s from './pagination.module.scss';
 import './antd.scss';
@@ -12,11 +12,11 @@ const OrderPagination = () => {
   const dispatch = useDispatch();
 
   const handleChangePage = (currentPage: number) => {
-    dispatch(setTableOrderPage(currentPage - 1));
+    dispatch(setOrdersPage(currentPage - 1));
   };
 
   const { currentPage, limit, ordersCount } = useTypedSelector(
-    (state) => state.tableOrderReducer,
+    (state) => state.ordersReducer,
   );
 
   return (

@@ -1,11 +1,13 @@
+@import '../../../../../../_variables.scss';
+
 .ant-select {
   width: 110px;
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   position: relative;
-  background-color: #fff;
-  border: 1px solid #becad6;
+  background-color: $white;
+  border: 1px solid $grayLight;
   border-radius: 4px;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -28,7 +30,7 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 12px;
-  color: #868e96;
+  color: $gray3;
 
   @media (min-width: 320px) {
     font-size: 10px !important;

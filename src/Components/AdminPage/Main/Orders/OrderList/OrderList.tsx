@@ -5,25 +5,34 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../../hooks/useActions';
 import CustomPagination from '../../../../Pagination/CustomPagination';
-import { setTableOrderPage } from '../../../../../redux/actions/tableOrderAction';
+import { setOrdersPage } from '../../../../../redux/actions/ordersAction';
 import Loading from '../../../../../Loading/Loading';
 
 import s from './carOrder.module.scss';
-import Order from './Order/Order';
+import Order from './Order';
 import OrderSelect from './OrderSelect';
 
 const OrderList: React.FC = () => {
   const dispatch = useDispatch();
-  const { fetchTableOrderByParams } = useActions();
-  const { currentPage, limit, period, ordersCount, error, isLoading } =
-    useTypedSelector((state) => state.tableOrderReducer);
+  const { fetchOrdersByParams } = useActions();
+  const {
+    currentPage,
+    limit,
+    period,
+    ordersCount,
+    isChanging,
+    error,
+    isLoading,
+  } = useTypedSelector((state) => state.ordersReducer);
+
+  const { type } = useTypedSelector((state) => state.alertReducer);
 
   const { selectedCity } = useTypedSelector((state) => state.cityReducer);
 
   const { selectedStatus } = useTypedSelector((state) => state.statusReducer);
 
   useEffect(() => {
-    fetchTableOrderByParams(
+    fetchOrdersByParams(
       currentPage,
       limit,
       selectedCity,
@@ -32,8 +41,20 @@ const OrderList: React.FC = () => {
     );
   }, [currentPage]);
 
+  useEffect(() => {
+    if (!isChanging && type === 'success') {
+      fetchOrdersByParams(
+        currentPage,
+        limit,
+        selectedCity,
+        selectedStatus,
+        period,
+      );
+    }
+  }, [isChanging]);
+
   const handlerApplyClick = () => {
-    fetchTableOrderByParams(
+    fetchOrdersByParams(
       currentPage,
       limit,
       selectedCity,
@@ -41,11 +62,11 @@ const OrderList: React.FC = () => {
       period,
     );
 
-    dispatch(setTableOrderPage(0));
+    dispatch(setOrdersPage(0));
   };
 
   const handleChangePage = (currentPageOrders: number) => {
-    dispatch(setTableOrderPage(currentPageOrders - 1));
+    dispatch(setOrdersPage(currentPageOrders - 1));
   };
 
   if (isLoading) {

@@ -11,7 +11,7 @@
   font-size: 20px;
   line-height: 33px;
   letter-spacing: -0.725px;
-  color: #3d5170;
+  color: $darkBlue;
   @media (min-width: 768px) {
     font-size: 24px;
     margin: 7px;
@@ -25,7 +25,7 @@
 }
 .carList {
   margin: 0 8px 0 0;
-  background: #ffffff;
+  background: $white;
   box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
     0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
     0px 3.5px 35px rgba(90, 97, 105, 0.1);
@@ -37,7 +37,7 @@
 }
 .blankLoading {
   margin: 0 8px 0 0;
-  background: #ffffff;
+  background: $white;
   box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
     0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
     0px 3.5px 35px rgba(90, 97, 105, 0.1);

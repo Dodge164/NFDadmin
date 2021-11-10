@@ -40,7 +40,7 @@
           font-size: 14px;
         }
 
-        color: $mainAccent;
+        color: $mainBlue;
 
         &:hover {
           cursor: pointer;
@@ -61,7 +61,7 @@
     font-size: 11px;
     line-height: 16px;
     flex: none;
-    color: #818ea3;
+    color: $gray4;
     @media (min-width: 768px) {
       flex-direction: row;
     }

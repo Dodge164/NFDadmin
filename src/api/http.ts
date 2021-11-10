@@ -5,10 +5,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import axios from 'axios';
 
-import { IOrders } from '../interfaces/selectInterfaces';
+import { IOrders, IOrderStatusId } from '../interfaces/selectInterfaces';
 import { ICars } from '../interfaces/carListInterfaces';
 import { ICategories } from '../interfaces/categoriesInterfaces';
 import { IStatuses } from '../interfaces/status';
+import { TypesAlert } from '../redux/types/statusTypes';
+import { setAlert } from '../redux/actions/alertAction';
 
 const API_KEY: string = process.env.REACT_APP_DB_API_KEY
   ? process.env.REACT_APP_DB_API_KEY
@@ -25,7 +27,7 @@ const fetchRequest = async (way: string) => {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  console.log('resGet', res.data);
+
   return res.data;
 };
 
@@ -67,13 +69,13 @@ export const getStatus = async () => {
   return res;
 };
 
-export const getTableOrder = async (currentPage: number, limit: number) => {
+export const getOrders = async (currentPage: number, limit: number) => {
   const res: IOrders = await fetchRequest(
     `/db/order?page=${currentPage}&limit=${limit}`,
   );
   return res;
 };
-export const getTableOrderByParams = async (
+export const getOrdersByParams = async (
   currentPage: number,
   limit: number,
   selectedCity: string,
@@ -90,51 +92,36 @@ export const getTableOrderByParams = async (
   return res;
 };
 
-const fetchPutRequest = async (way: string, data: any) => {
+export interface IData {
+  id: string;
+  orderStatusId: IOrderStatusId;
+}
+const fetchPutRequest = async (way: string, data: IData) => {
   const accessToken = window.localStorage.getItem('access_token');
-  const res = await axios.put(`${url}${way}`, data, {
-    headers: {
-      'X-Api-Factory-Application-Id': API_KEY,
-      'Access-Control-Allow-Origin': '*',
-      'Content-type': 'text-html',
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  console.log('resPut', res);
-  return res.data;
+  try {
+    const res = await axios.put(`${url}${way}`, data, {
+      headers: {
+        'X-Api-Factory-Application-Id': API_KEY,
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return res;
+  } catch (error: any) {
+    setAlert({
+      message: 'Ошибка сервера',
+      isShow: true,
+      type: TypesAlert.ERROR,
+    });
+    return error.response;
+  }
 };
 
-export const putOrderStatusById = async (orderId: string, data: any) => {
+export const putOrderStatusById = async (orderId: string, data: IData) => {
   const res = await fetchPutRequest(`/db/order/${orderId}`, data);
-  console.log('res', res);
   return res;
 };
-// axios({
-//   method: 'PUT',
-//   url: `https://api-factory.simbirsoft1.com/api/db/order/${orderInfo.orderId}`,
-
-//   data: {
-//     orderStatusId: {
-//       id: statusId,
-//     },
-//   },
-//   headers: {
-//     'X-Api-Factory-Application-Id': process.env.REACT_APP_DB_API_KEY,
-//     'Access-Control-Allow-Origin': '*',
-//     'Content-type': 'application/json',
-//   },
-// })
-//   .then((response) => {
-//     setOrderInfo(OrderData);
-//     setStep(0);
-//     history.push('/order');
-//   })
-//   .catch((error) => {
-//     alert('Ошибка подтверждения заказа', error);
-//   });
-// } else {
-// setStep((prev) => prev + 1);
-// }
-// }
 
 export default fetchRequest;

@@ -5,26 +5,33 @@ import { ITableOrder } from '../../../../../../interfaces/selectInterfaces';
 import noPhoto from '../../../../../../assets/noPhoto.png';
 import Buttons from '../Buttons';
 import Checkbox from '../Checkbox';
-import { putOrderStatusById } from '../../../../../../api/http';
+import { useActions } from '../../../../../../hooks/useActions';
+import { OrderStatuses } from '../../../../../../redux/types/ordersTypes';
 
 import s from './order.module.scss';
 
 const Order: React.FC = () => {
-  const { orderList } = useTypedSelector((state) => state.tableOrderReducer);
+  const { fetchOrderStatus } = useActions();
+  const { orderList } = useTypedSelector((state) => state.ordersReducer);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const handleDone = (orderId: string) => {
-    putOrderStatusById(orderId, {
-      orderStatusId: {
-        id: '5e26a1f0099b810b946c5d8b',
-      },
+  const handleCompleteClick = async (orderId: string) => {
+    fetchOrderStatus(orderId, {
+      id: orderId,
+      orderStatusId: { id: OrderStatuses.complete },
     });
   };
-  const handleCancel = (orderId: string) => {
-    console.log('handleCancel :>> ', orderId);
+  const handleCancelClick = (orderId: string) => {
+    fetchOrderStatus(orderId, {
+      id: orderId,
+      orderStatusId: { id: OrderStatuses.cancel },
+    });
   };
-  const handleRestore = (orderId: string) => {
-    console.log('handleRestore :>> ', orderId);
+  const handleRestoreClick = (orderId: string) => {
+    fetchOrderStatus(orderId, {
+      id: orderId,
+      orderStatusId: { id: OrderStatuses.restore },
+    });
   };
 
   return (
@@ -73,9 +80,9 @@ const Order: React.FC = () => {
             {order?.price?.toLocaleString('ru') + ' ₽' ?? 'Не задана'}
           </div>
           <Buttons
-            onClickDone={handleDone}
-            onClickCancel={handleCancel}
-            onClickRestore={handleRestore}
+            onClickDone={handleCompleteClick}
+            onClickCancel={handleCancelClick}
+            onClickRestore={handleRestoreClick}
             orderId={order?.id}
           />
         </div>

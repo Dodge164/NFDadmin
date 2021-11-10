@@ -13,7 +13,7 @@ import { setSelectedStatus } from '../../../../../../redux/actions/statusAction'
 import {
   setPeriod,
   setSelectedPeriod,
-} from '../../../../../../redux/actions/tableOrderAction';
+} from '../../../../../../redux/actions/ordersAction';
 
 import './antd.scss';
 import s from './orderSelect.module.scss';
@@ -24,7 +24,7 @@ const OrderSelect: React.FC = () => {
   const dispatch = useDispatch();
 
   const { error, isLoading, selectedPeriod } = useTypedSelector(
-    (state) => state.tableOrderReducer,
+    (state) => state.ordersReducer,
   );
 
   const { statusList, selectedStatus } = useTypedSelector(

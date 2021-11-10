@@ -1,12 +1,25 @@
 import noPhoto from '../../../../../assets/noPhoto.png';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 
 import s from './card.module.scss';
 
 function CardCar() {
+  const car = useTypedSelector((state) => state.carReducer);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <div className={s.wrapper}>
       <div className={s.mobileWrapper}>
-        <img src={noPhoto} alt="car-example" />
+        <img
+          // className={s.photo}
+          src={
+            car?.thumbnail?.path
+              ? car?.thumbnail?.path.includes('base64')
+                ? car?.thumbnail?.path
+                : BASE_URL + car?.thumbnail?.path
+              : noPhoto
+          }
+          alt="car-example"
+        />
         <div className={s.name}>Модель</div>
         <div className={s.type}>Тип</div>
         <div className={s.file}>

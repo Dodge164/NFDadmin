@@ -1,0 +1,70 @@
+@import '../../_variables';
+@import '../../_mixins';
+
+.alert {
+  z-index: 10;
+  @include df-ai-center;
+  justify-content: space-between;
+  height: 42px;
+  padding: 0 8px;
+  position: absolute;
+  top: 41px;
+  right: 0;
+  width: calc(100% - 32px);
+  @media (min-width: 500px) {
+    width: calc(100% - 48px);
+  }
+  @media (min-width: 768px) {
+    width: calc(100% - 220px);
+  }
+  @media (min-width: 1024px) {
+    width: calc(100% - 260px);
+  }
+  @media (min-width: 1440px) {
+    width: calc(100% - 285px);
+  }
+
+  &.success {
+    background-color: $mainGreen;
+  }
+
+  &.error {
+    background-color: $alertErr;
+  }
+
+  .label {
+    @include df-ai-center;
+
+    .svg {
+      width: 15px;
+      height: 19px;
+      fill: $white;
+      path {
+        fill: $white;
+      }
+    }
+
+    .text {
+      margin: 0 0 0 8px;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      color: $white;
+    }
+  }
+
+  .close {
+    width: 10px;
+    height: 10px;
+    @include df-ai-center;
+    cursor: pointer;
+
+    svg path {
+      fill: $white;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

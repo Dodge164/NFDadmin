@@ -15,7 +15,7 @@
       font-size: 75px;
       line-height: 88px;
       letter-spacing: -5.76923px;
-      color: #cacedb;
+      color: $grayLight2;
     }
     .warning {
       font-family: Helvetica;
@@ -23,7 +23,7 @@
       line-height: 57px;
       text-align: center;
       letter-spacing: -2.5px;
-      color: #3d5170;
+      color: $darkBlue;
       margin: 0 0 15px 0;
     }
     .text {
@@ -32,7 +32,7 @@
       line-height: 23px;
       text-align: center;
       letter-spacing: -0.5px;
-      color: #818ea3;
+      color: $gray4;
       margin: 0 0 35px 0;
     }
 
@@ -40,8 +40,8 @@
       width: 95px;
       height: 30px;
       color: white;
-      background: $mainAccent;
-      border: 0.5px solid $mainAccent;
+      background: $mainBlue;
+      border: 0.5px solid $mainBlue;
       box-sizing: border-box;
       border-radius: 4px;
 

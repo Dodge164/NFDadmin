@@ -1,13 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from '../../../../../../hooks/useTypedSelector';
 import { ICar } from '../../../../../../interfaces/carListInterfaces';
+import { setSelectedCar } from '../../../../../../redux/actions/carCardAction';
+import { changeNavLink } from '../../../../../../redux/actions/navLink';
 
 import s from './car.module.scss';
 
 const Car: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { carList } = useTypedSelector((state) => state.carListReducer);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const handleClickCar = (car: ICar) => {
+    dispatch(setSelectedCar(car));
+    dispatch(changeNavLink({ title: 'Карточка автомобиля', id: 0 }));
+  };
 
   return (
     <table>
@@ -22,7 +32,7 @@ const Car: React.FC = () => {
       </thead>
       <tbody>
         {carList.map((car: ICar) => (
-          <tr key={car.id}>
+          <tr key={car.id} onClick={() => handleClickCar(car)}>
             <td className={s.title}>{car.name}</td>
             <td className={s.col}>
               <img

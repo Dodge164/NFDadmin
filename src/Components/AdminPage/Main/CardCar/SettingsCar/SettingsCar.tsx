@@ -6,27 +6,10 @@ import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { ICar } from '../../../../../interfaces/carListInterfaces';
 
 import s from './settings.module.scss';
-
-const initialValues: ICar = {
-  priceMax: 0,
-  priceMin: 0,
-  thumbnail: {
-    path: '',
-  },
-  description: '',
-  categoryId: {
-    description: '',
-    id: '',
-    name: '',
-  },
-  name: '',
-  colors: [],
-  number: '',
-  id: '',
-};
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -58,6 +41,8 @@ const handlerSubmit = async (values: ICar) => {
 };
 
 export const SettingsCar: FC = () => {
+  const car = useTypedSelector((state) => state.carReducer);
+
   const [colorInput, setColorInput] = useState('');
 
   const handlerInputColor = (push: any): void => {
@@ -72,7 +57,7 @@ export const SettingsCar: FC = () => {
     <div className={s.settings}>
       <header className={s.header}>Настройки автомобиля</header>
       <Formik
-        initialValues={initialValues}
+        initialValues={car}
         onSubmit={handlerSubmit}
         validationSchema={validationSchema}
       >

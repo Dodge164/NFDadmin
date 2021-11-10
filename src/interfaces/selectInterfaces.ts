@@ -1,4 +1,4 @@
-import { TableOrderActionTypes } from '../redux/types/tableOrderTypes';
+import { OrdersActionTypes } from '../redux/types/ordersTypes';
 
 import { ICar } from './carListInterfaces';
 
@@ -25,9 +25,8 @@ export interface IRateId {
   price: number;
 }
 export interface IOrderStatusId {
-  name: string;
   id: string;
-  [key: string]: string | number;
+  [key: string]: string | number; // форма записи всех необязательных полей
 }
 export interface ICityId {
   name: string;
@@ -44,9 +43,10 @@ export interface IOrders {
   count: number;
 }
 
-export interface IInitTableOrderState {
+export interface IInitOrdersState {
   orderList: ITableOrder[];
   isLoading: boolean;
+  isChanging: boolean;
   error: string | null;
   currentPage: number;
   limit: number;
@@ -55,35 +55,50 @@ export interface IInitTableOrderState {
   selectedPeriod: string;
 }
 
-interface FetchTableOrderAction {
-  type: TableOrderActionTypes.FETCH_TABLE_ORDER;
+interface FetchOrdersAction {
+  type: OrdersActionTypes.FETCH_ORDERS;
 }
 
-interface FetchTableOrderActionSuccess {
-  type: TableOrderActionTypes.FETCH_TABLE_ORDER_SUCCESS;
+interface FetchOrdersActionSuccess {
+  type: OrdersActionTypes.FETCH_ORDERS_SUCCESS;
   payload: { count: number; data: ITableOrder[] };
 }
-interface FetchTableOrderActionError {
-  type: TableOrderActionTypes.FETCH_TABLE_ORDER_ERROR;
+interface FetchOrdersActionError {
+  type: OrdersActionTypes.FETCH_ORDERS_ERROR;
   payload: string;
 }
-interface SetTableOrderPage {
-  type: TableOrderActionTypes.SET_TABLE_ORDER_PAGE;
+interface SetOrdersPage {
+  type: OrdersActionTypes.SET_ORDERS_PAGE;
   payload: number;
 }
-interface SetTableOrderPeriod {
-  type: TableOrderActionTypes.SET_TABLE_ORDER_PERIOD;
+interface SetOrdersPeriod {
+  type: OrdersActionTypes.SET_ORDERS_PERIOD;
   payload: number;
 }
 interface SelectPeriod {
-  type: TableOrderActionTypes.SELECT_PERIOD;
+  type: OrdersActionTypes.SELECT_PERIOD;
+  payload: string;
+}
+interface FetchOrderStatus {
+  type: OrdersActionTypes.FETCH_ORDER_STATUS;
+  // payload: string;
+}
+interface FetchOrderStatusSuccess {
+  type: OrdersActionTypes.FETCH_ORDER_STATUS_SUCCESS;
+  // payload: string;
+}
+interface FetchOrderStatusError {
+  type: OrdersActionTypes.FETCH_ORDER_STATUS_ERROR;
   payload: string;
 }
 
-export type TableOrderAction =
-  | FetchTableOrderAction
-  | FetchTableOrderActionError
-  | FetchTableOrderActionSuccess
-  | SetTableOrderPage
+export type OrdersAction =
+  | FetchOrdersAction
+  | FetchOrdersActionError
+  | FetchOrdersActionSuccess
+  | SetOrdersPage
   | SelectPeriod
-  | SetTableOrderPeriod;
+  | FetchOrderStatus
+  | FetchOrderStatusSuccess
+  | FetchOrderStatusError
+  | SetOrdersPeriod;

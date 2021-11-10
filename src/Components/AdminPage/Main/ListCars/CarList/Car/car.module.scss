@@ -17,7 +17,7 @@ table {
       font-size: 10px;
       line-height: 12px;
       letter-spacing: -0.377143px;
-      color: #3d5170;
+      color: $darkBlue;
       width: 54px;
       height: 100%;
       @media (min-width: 375px) {
@@ -62,7 +62,7 @@ table {
     &.title {
       font-family: Helvetica;
       font-weight: normal;
-      color: #3d5170;
+      color: $darkBlue;
       display: flex;
       justify-content: center;
     }
@@ -71,7 +71,7 @@ table {
       font-style: normal;
       font-weight: 500;
       text-align: right;
-      color: #818ea3;
+      color: $gray4;
       .photo {
         width: 150px;
         // width: 50px;
@@ -93,7 +93,7 @@ table {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  color: #3d5170;
+  color: $darkBlue;
   font-size: 24px;
   display: flex;
   justify-content: center;

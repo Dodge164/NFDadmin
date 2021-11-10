@@ -4,14 +4,13 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  // background-color: rgb(242, 151, 114);
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 15px;
   letter-spacing: -0.408571px;
-  color: #889098;
+  color: $gray2;
   @media (min-width: 768px) {
     margin: 0 24px;
   }
@@ -31,7 +30,7 @@
       button {
         width: 95px;
         height: 30px;
-        border: 0.5px solid #becad6;
+        border: 0.5px solid $grayLight;
         box-sizing: border-box;
         border-radius: 4px;
         font-family: Helvetica;
@@ -41,11 +40,11 @@
         line-height: 13px;
         text-align: center;
         letter-spacing: -0.345714px;
-        color: #ffffff;
+        color: $white;
       }
 
       .apply {
-        background: $mainAccent;
+        background: $mainBlue;
         margin: 0 8px 0 8px;
         @media (min-width: 540px) {
           margin: 0 0 0 0px;

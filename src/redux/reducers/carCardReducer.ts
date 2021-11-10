@@ -1,7 +1,7 @@
-import { ICar } from '../../interfaces/carListInterfaces';
-import { TCarCardAction } from '../actions/carCardAction';
+import { CarCardAction, ICar } from '../../interfaces/carListInterfaces';
+import { CarCardActionTypes } from '../types/carCardTypes';
 
-const initialState = {
+const initialState: ICar = {
   priceMax: 0,
   priceMin: 0,
   thumbnail: {
@@ -19,13 +19,19 @@ const initialState = {
   id: '',
 };
 
-const carCardReducer = (state: ICar = initialState, action: TCarCardAction) => {
+const carCardReducer = (
+  state: ICar = initialState,
+  action: CarCardAction,
+): ICar => {
   switch (action.type) {
-    case 'ADD_COLOR': {
+    case CarCardActionTypes.ADD_COLOR: {
       return { ...state, colors: [...state.colors, action.payload] };
     }
-    case 'ADD_NAME': {
+    case CarCardActionTypes.ADD_NAME: {
       return { ...state, name: action.payload };
+    }
+    case CarCardActionTypes.SET_SELECTED_CAR: {
+      return action.payload;
     }
     default:
       return state;

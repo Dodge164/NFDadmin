@@ -30,7 +30,7 @@
       button {
         width: 95px;
         height: 30px;
-        border: 0.5px solid #becad6;
+        border: 0.5px solid $grayLight;
         box-sizing: border-box;
         border-radius: 4px;
         font-family: Helvetica;
@@ -40,7 +40,7 @@
         line-height: 13px;
         text-align: center;
         letter-spacing: -0.345714px;
-        color: #ffffff;
+        color: $white;
       }
     }
     .reset {
@@ -54,7 +54,7 @@
       }
     }
     .apply {
-      background: $mainAccent;
+      background: $mainBlue;
       margin: 0 8px 0 0;
       @media (min-width: 540px) {
         margin: 0 0 0 0px;
@@ -73,7 +73,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  color: #3d5170;
+  color: $darkBlue;
   font-size: 24px;
   display: flex;
   justify-content: center;

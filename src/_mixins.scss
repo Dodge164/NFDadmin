@@ -1,0 +1,15 @@
+@mixin df-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin df-ai-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin df-jc-center {
+  display: flex;
+  justify-content: center;
+}

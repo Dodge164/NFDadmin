@@ -6,7 +6,7 @@ import OrderList from './OrderList';
 import s from './orders.module.scss';
 
 export default function OrdersContainer() {
-  const { isLoading } = useTypedSelector((state) => state.tableOrderReducer);
+  const { isLoading } = useTypedSelector((state) => state.ordersReducer);
 
   return (
     <>

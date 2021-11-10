@@ -1,3 +1,4 @@
+import { CarCardActionTypes } from '../redux/types/carCardTypes';
 import { CarListActionTypes } from '../redux/types/carListTypes';
 
 import { ICategoryId } from './categoriesInterfaces';
@@ -54,3 +55,18 @@ export type CarListAction =
   | FetchCarListActionError
   | FetchCarListActionSuccess
   | SetCarListPage;
+
+interface AddColor {
+  type: CarCardActionTypes.ADD_COLOR;
+  payload: string;
+}
+interface AddName {
+  type: CarCardActionTypes.ADD_NAME;
+  payload: string | null;
+}
+interface SetSelectedCar {
+  type: CarCardActionTypes.SET_SELECTED_CAR;
+  payload: ICar;
+}
+
+export type CarCardAction = AddColor | AddName | SetSelectedCar;
