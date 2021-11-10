@@ -16,7 +16,6 @@ function App() {
 
   const handleCloseAlert = () => {
     dispatch(closeAlert());
-    console.log('нажали');
   };
   return (
     <>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 
 import { ReactComponent as Ready } from '../../assets/ready.svg';
@@ -18,12 +18,12 @@ interface Props {
 export default function Alert(props: Props) {
   const { type, onClose } = props;
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     onClose();
-  //   }, 3000);
-  //   return () => clearTimeout(timeout);
-  // }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onClose();
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div
