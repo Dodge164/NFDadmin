@@ -68,7 +68,9 @@ const Order: React.FC = () => {
               {moment(order?.dateTo).format('DD.MM.YYYY h:mm')}
             </div>
             <div className={s.color}>
-              Цвет: <span>{order.color ?? 'Не задан'}</span>
+              {/* //TODO */}
+              Цвет:{' '}
+              <span>{order.color?.length > 0 ? order.color : 'Не задан'}</span>
             </div>
           </div>
           <div className={s.extends}>
@@ -77,7 +79,9 @@ const Order: React.FC = () => {
             <Checkbox checked={order.isRightWheel} label="Правый руль" />
           </div>
           <div className={s.price}>
-            {order?.price?.toLocaleString('ru') + ' ₽' ?? 'Не задана'}
+            {/* //TODO */}
+            {(order.price && order?.price?.toLocaleString('ru') + ' ₽') ??
+              'Не задана'}
           </div>
           <Buttons
             onClickDone={handleCompleteClick}

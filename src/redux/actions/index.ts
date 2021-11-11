@@ -5,6 +5,7 @@ import * as categoriesActionCreators from './categoryAction';
 import * as statusesActionCreators from './statusAction';
 import * as citiesActionCreators from './cityAction';
 import * as alertActionCreators from './alertAction';
+import * as carActionCreators from './carCardAction';
 
 export default {
   ...carListActionCreators,
@@ -13,4 +14,5 @@ export default {
   ...statusesActionCreators,
   ...citiesActionCreators,
   ...alertActionCreators,
+  ...carActionCreators,
 };

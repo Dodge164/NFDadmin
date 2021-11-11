@@ -4,16 +4,21 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
 import { changeNavLink } from '../../redux/actions/navLink';
+import { resetCar } from '../../redux/actions/carCardAction';
 
 import NavLinkData from './NavLinkData';
 import s from './sidebar.module.scss';
 
 function Sidebar() {
   const navReducer = useTypedSelector((state) => state.navReducer);
+  const car = useTypedSelector((state) => state.carReducer);
   const dispatch = useDispatch();
 
   function handleClick({ title, id }: any) {
     dispatch(changeNavLink({ title, id }));
+    if (car.id) {
+      dispatch(resetCar());
+    }
   }
 
   return (

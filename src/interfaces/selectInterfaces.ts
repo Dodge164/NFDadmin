@@ -11,7 +11,8 @@ export interface ITableOrder {
   dateFrom: Date;
   dateTo: Date;
   rateId: IRateId;
-  price: number;
+  /* //TODO */
+  price: number | null;
   isFullTank: boolean;
   isNeedChildChair: boolean;
   isRightWheel: boolean;
@@ -22,7 +23,8 @@ export interface ITableOrder {
 
 export interface IRateId {
   rateTypeId: { unit: string; name: string };
-  price: number;
+  /* //TODO */
+  price: number | null;
 }
 export interface IOrderStatusId {
   id: string;
@@ -81,11 +83,9 @@ interface SelectPeriod {
 }
 interface FetchOrderStatus {
   type: OrdersActionTypes.FETCH_ORDER_STATUS;
-  // payload: string;
 }
 interface FetchOrderStatusSuccess {
   type: OrdersActionTypes.FETCH_ORDER_STATUS_SUCCESS;
-  // payload: string;
 }
 interface FetchOrderStatusError {
   type: OrdersActionTypes.FETCH_ORDER_STATUS_ERROR;

@@ -41,11 +41,11 @@
   }
 
   .form {
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    align-content: space-between;
     padding: 0 20px;
-    height: 100%;
+    align-content: space-between;
     .inputs {
       width: 100%;
       @media (min-width: 600px) {
@@ -59,10 +59,10 @@
       }
 
       .input {
-        flex: 1 1 100%;
-        display: flex;
-        flex-direction: column;
         height: 70px;
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: column;
         @media (min-width: 600px) {
           flex: none;
           width: 40%;
@@ -79,10 +79,10 @@
           max-width: 400px;
         }
         .label {
+          color: $black;
           font-size: 10.5px;
           line-height: 12px;
           letter-spacing: -0.18421px;
-          color: $black;
         }
         select:required:invalid {
           color: $gray;
@@ -90,14 +90,12 @@
         .field {
           padding: 0.5rem;
           display: block;
-          border-radius: 4px;
-          border: 1px solid $grayLight4;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
+          @include Roboto-500;
           font-size: 11px;
           line-height: 13px;
           letter-spacing: -0.175439px;
+          border-radius: 4px;
+          border: 1px solid $grayLight4;
         }
 
         .field:focus {
@@ -123,35 +121,33 @@
           box-shadow: 0px 2.5px 5.5px rgba(196, 24, 60, 0.1);
         }
         .inputFeedback {
+          color: $red;
           font-family: Helvetica;
           padding: 2px 0 0px 9px;
           font-size: 10px;
           line-height: 11px;
           letter-spacing: -0.175439px;
-          color: $red;
         }
       }
     }
   }
 
   .colorField {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
   .addColorBtn {
     display: flex;
     width: 30px;
     height: 30px;
-    background-color: $white;
     margin: 0 0 0 8px;
-    border: 1px solid $grayLight;
-    box-sizing: border-box;
     border-radius: 4px;
+    box-sizing: border-box;
+    background-color: $white;
+    border: 1px solid $grayLight;
     div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include df-center;
       height: 30px;
       width: 30px;
       span {
@@ -173,32 +169,37 @@
     margin: 0;
   }
   button {
+    @include Helvetica-normal;
     width: 110px;
     height: 30px;
+    font-size: 11.5px;
+    line-height: 13px;
+    text-align: center;
     border-radius: 4px;
+    letter-spacing: -0.0821429px;
   }
 
   .buttonSubmit {
+    color: $white;
     background: $mainBlue;
     border: 0.5px solid $mainBlue;
-    color: $white;
   }
   .buttonReset {
-    border: 0.5px solid $grayLight3;
-    background: $grayLight3;
     color: $darkBlue;
+    background: $grayLight3;
+    border: 0.5px solid $grayLight3;
   }
   .buttonDelete {
-    border: 0.5px solid $alertErr;
-    background: $alertErr;
     color: $white;
+    background: $alertErr;
+    border: 0.5px solid $alertErr;
   }
   .buttonsCreate {
     display: flex;
     width: 234px;
+    margin: 0 0 14px 0;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 14px 0;
   }
   .deleteBtn {
     display: flex;
@@ -229,33 +230,27 @@
 }
 
 .checkbox {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
+  @include df-ai-center;
   margin: 8px 0 0 0;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 .checkboxLabel {
+  @include df-ai-center;
+  @include Roboto-500;
   margin: 0 0 0 8px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+  color: $gray6;
   font-size: 10px;
   line-height: 12px;
-  display: flex;
-  align-items: center;
   letter-spacing: -0.175439px;
-  color: $gray6;
 }
 select {
+  @include Roboto-500;
   box-sizing: border-box;
+  height: auto;
   padding: 0.5rem;
   border-radius: 4px;
-  height: auto;
   border: 1px solid $grayLight4;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 11px;
   line-height: 13px;
   letter-spacing: -0.175439px;
@@ -285,16 +280,14 @@ select {
     color: $gray;
   }
   .field {
-    padding: 0.5rem;
+    @include Roboto-500;
     display: block;
-    border-radius: 4px;
-    border: 1px solid $grayLight4;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
+    padding: 0.5rem;
     font-size: 11px;
     line-height: 13px;
+    border-radius: 4px;
     letter-spacing: -0.175439px;
+    border: 1px solid $grayLight4;
     option:not(:checked) {
       background-color: $mainBlue;
     }

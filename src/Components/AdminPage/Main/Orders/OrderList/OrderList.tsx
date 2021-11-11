@@ -31,15 +31,27 @@ const OrderList: React.FC = () => {
 
   const { selectedStatus } = useTypedSelector((state) => state.statusReducer);
 
-  useEffect(() => {
-    fetchOrdersByParams(
-      currentPage,
-      limit,
-      selectedCity,
-      selectedStatus,
-      period,
-    );
-  }, [currentPage]);
+  // useEffect(() => {
+  //   fetchOrdersByParams(
+  //     currentPage,
+  //     limit,
+  //     selectedCity,
+  //     selectedStatus,
+  //     period,
+  //   );
+  // }, [currentPage]);
+
+  // useEffect(() => {
+  //   if (!isChanging && type === 'success') {
+  //     fetchOrdersByParams(
+  //       currentPage,
+  //       limit,
+  //       selectedCity,
+  //       selectedStatus,
+  //       period,
+  //     );
+  //   }
+  // }, [isChanging]);
 
   useEffect(() => {
     if (!isChanging && type === 'success') {
@@ -51,7 +63,7 @@ const OrderList: React.FC = () => {
         period,
       );
     }
-  }, [isChanging]);
+  }, [isChanging, currentPage]);
 
   const handlerApplyClick = () => {
     fetchOrdersByParams(

@@ -6,7 +6,7 @@
 import axios from 'axios';
 
 import { IOrders, IOrderStatusId } from '../interfaces/selectInterfaces';
-import { ICars } from '../interfaces/carListInterfaces';
+import { ICar, ICars } from '../interfaces/carListInterfaces';
 import { ICategories } from '../interfaces/categoriesInterfaces';
 import { IStatuses } from '../interfaces/status';
 import { TypesAlert } from '../redux/types/statusTypes';
@@ -40,11 +40,6 @@ export const getCityList = async () => {
   const res = await fetchRequest('/db/city');
   return res;
 };
-
-// export const getPointListByCityId = async (cityIdd) => {
-//   const res = await fetchRequest(`/db/point?cityId=${cityIdd}`);
-//   return res.data;
-// };
 
 export const getCarList = async (currentPage: number, limit: number) => {
   const res: ICars = await fetchRequest(
@@ -96,7 +91,7 @@ export interface IData {
   id: string;
   orderStatusId: IOrderStatusId;
 }
-const fetchPutRequest = async (way: string, data: IData) => {
+const fetchPutRequest = async (way: string, data: IData | ICar) => {
   const accessToken = window.localStorage.getItem('access_token');
   try {
     const res = await axios.put(`${url}${way}`, data, {
@@ -118,9 +113,66 @@ const fetchPutRequest = async (way: string, data: IData) => {
     return error.response;
   }
 };
+const fetchPostRequest = async (way: string, data: IData | ICar) => {
+  const accessToken = window.localStorage.getItem('access_token');
+  try {
+    const res = await axios.post(`${url}${way}`, data, {
+      headers: {
+        'X-Api-Factory-Application-Id': API_KEY,
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return res;
+  } catch (error: any) {
+    setAlert({
+      message: 'Ошибка сервера',
+      isShow: true,
+      type: TypesAlert.ERROR,
+    });
+    return error.response;
+  }
+};
+const fetchDeleteRequest = async (way: string) => {
+  const accessToken = window.localStorage.getItem('access_token');
+  try {
+    const res = await axios.delete(`${url}${way}`, {
+      headers: {
+        'X-Api-Factory-Application-Id': API_KEY,
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return res;
+  } catch (error: any) {
+    setAlert({
+      message: 'Ошибка сервера',
+      isShow: true,
+      type: TypesAlert.ERROR,
+    });
+    return error.response;
+  }
+};
 
 export const putOrderStatusById = async (orderId: string, data: IData) => {
   const res = await fetchPutRequest(`/db/order/${orderId}`, data);
+  return res;
+};
+
+export const putCarById = async (carId: string, car: ICar) => {
+  const res = await fetchPutRequest(`/db/car/${carId}`, car);
+  return res;
+};
+export const postNewCar = async (car: ICar) => {
+  const res = await fetchPostRequest('/db/car/', car);
+  return res;
+};
+export const deleteCarById = async (carId: string) => {
+  const res = await fetchDeleteRequest(`/db/car/${carId}`);
   return res;
 };
 

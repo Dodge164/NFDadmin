@@ -13,3 +13,14 @@
   display: flex;
   justify-content: center;
 }
+
+@mixin Helvetica-normal {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+}
+@mixin Roboto-500 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+}

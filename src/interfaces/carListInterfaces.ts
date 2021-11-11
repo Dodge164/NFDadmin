@@ -4,15 +4,18 @@ import { CarListActionTypes } from '../redux/types/carListTypes';
 import { ICategoryId } from './categoriesInterfaces';
 
 export interface ICar {
-  priceMax: number;
-  priceMin: number;
-  thumbnail: IThumbnail;
-  description: string | null;
-  categoryId: ICategoryId;
-  colors: string[];
   name: string | null;
+  categoryId: ICategoryId;
+  priceMin: number;
+  priceMax: number;
+  colors: string[];
+  description: string | null;
+  thumbnail: IThumbnail;
   number: string | null;
-  id: string;
+  id: string | undefined;
+  isCardSaved: boolean;
+  isLoading: boolean;
+  [key: string | number]: any;
 }
 
 export interface IThumbnail {
@@ -56,17 +59,63 @@ export type CarListAction =
   | FetchCarListActionSuccess
   | SetCarListPage;
 
-interface AddColor {
-  type: CarCardActionTypes.ADD_COLOR;
-  payload: string;
-}
-interface AddName {
-  type: CarCardActionTypes.ADD_NAME;
-  payload: string | null;
+export interface IValue {
+  key: string;
+  value: string | number | string[] | IThumbnail | ICategoryId[] | ICategoryId;
 }
 interface SetSelectedCar {
   type: CarCardActionTypes.SET_SELECTED_CAR;
   payload: ICar;
 }
+interface ResetCar {
+  type: CarCardActionTypes.RESET_CAR;
+}
 
-export type CarCardAction = AddColor | AddName | SetSelectedCar;
+interface UpdateCard {
+  type: CarCardActionTypes.UPDATE_CARD;
+  payload: IValue;
+}
+interface PutCarFetching {
+  type: CarCardActionTypes.PUT_CAR_FETCHING;
+}
+interface PutCarSuccess {
+  type: CarCardActionTypes.PUT_CAR_SUCCESS;
+}
+interface PutCarError {
+  type: CarCardActionTypes.PUT_CAR_ERROR;
+  payload: string;
+}
+interface PostCarFetching {
+  type: CarCardActionTypes.POST_CAR_FETCHING;
+}
+interface PostCarSuccess {
+  type: CarCardActionTypes.POST_CAR_SUCCESS;
+}
+interface PostCarError {
+  type: CarCardActionTypes.POST_CAR_ERROR;
+  payload: string;
+}
+interface DeleteCarByIdFetching {
+  type: CarCardActionTypes.DELETE_CAR_BY_ID_FETCHING;
+}
+interface DeleteCarByIdSuccess {
+  type: CarCardActionTypes.DELETE_CAR_BY_ID_SUCCESS;
+}
+interface DeleteCarByIdError {
+  type: CarCardActionTypes.DELETE_CAR_BY_ID_ERROR;
+  payload: string;
+}
+//TODO
+export type CarCardAction =
+  | SetSelectedCar
+  | ResetCar
+  | UpdateCard
+  | PutCarFetching
+  | PutCarSuccess
+  | PutCarError
+  | PostCarFetching
+  | PostCarSuccess
+  | PostCarError
+  | DeleteCarByIdFetching
+  | DeleteCarByIdSuccess
+  | DeleteCarByIdError;
