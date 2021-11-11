@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useDispatch } from 'react-redux';
 
 import noPhoto from '../../../../../assets/noPhoto.png';
@@ -26,9 +27,17 @@ export default function CardCar() {
 
   const handleSelectFile = async (event: any) => {
     const file = event.target.files[0];
+    console.log('file :>> ', file);
+    console.log('e.t.f :>> ', event.target.files);
+    console.log('event :>> ', event);
     const base64 = await convertBase64(file);
-    const path: IThumbnail = { path: base64 as string };
-    dispatch(updateCard({ key: 'thumbnail', value: path }));
+    const path: IThumbnail = {
+      path: base64 as string,
+      size: file.size,
+      originalname: file.name,
+      mimetype: file.type,
+    };
+    updateCard({ key: 'thumbnail', value: path });
   };
 
   const handleProgress = () => {

@@ -20,6 +20,9 @@ export interface ICar {
 
 export interface IThumbnail {
   path: string;
+  size?: number;
+  originalname?: string;
+  mimetype?: string;
 }
 
 export interface ICars {

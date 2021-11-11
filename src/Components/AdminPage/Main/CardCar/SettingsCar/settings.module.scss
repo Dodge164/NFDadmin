@@ -227,6 +227,14 @@
 .colorsFormField {
   display: flex;
   flex: 1 1 100%;
+  .inputFeedback {
+    color: $red;
+    font-family: Helvetica;
+    padding: 2px 0 0px 9px;
+    font-size: 10px;
+    line-height: 11px;
+    letter-spacing: -0.175439px;
+  }
 }
 
 .checkbox {
