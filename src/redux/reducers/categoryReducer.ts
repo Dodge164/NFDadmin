@@ -1,28 +1,35 @@
-import { ICategoryAction, IInitState } from '../../interfaces/interfaces';
-import { CategoryTypes } from '../types/categoryTypes';
+import {
+  CategoriesAction,
+  IInitCategoriesState,
+} from '../../interfaces/categoriesInterfaces';
+import { CategoriesActionTypes } from '../types/categoryTypes';
 
-const initialState: IInitState = {
+const initialState: IInitCategoriesState = {
   categories: [],
   isLoading: false,
   error: null,
+  selectedCategory: '',
 };
 
-const categoryReducer = (
-  state: IInitState = initialState,
-  action: ICategoryAction,
-) => {
+const categoriesReducer = (
+  state = initialState,
+  action: CategoriesAction,
+): IInitCategoriesState => {
   switch (action.type) {
-    case CategoryTypes.FETCH_CATEGORY_START: {
+    case CategoriesActionTypes.FETCH_CATEGORIES: {
       return { ...state, isLoading: true };
     }
-    case CategoryTypes.FETCH_CATEGORY_SUCCESS: {
-      return { ...state, categories: action.payload, isLoading: false };
+    case CategoriesActionTypes.FETCH_CATEGORIES_SUCCESS: {
+      return { ...state, categories: action.payload.data, isLoading: false };
     }
-    case CategoryTypes.FETCH_CATEGORY_FAILURE: {
+    case CategoriesActionTypes.FETCH_CATEGORIES_ERROR: {
       return { ...state, isLoading: false, error: action.payload };
+    }
+    case CategoriesActionTypes.SELECT_CATEGORY: {
+      return { ...state, selectedCategory: action.payload };
     }
     default:
       return state;
   }
 };
-export default categoryReducer;
+export default categoriesReducer;

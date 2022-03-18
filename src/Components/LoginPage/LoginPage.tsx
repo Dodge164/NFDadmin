@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ReactComponent as LoginLogo } from '../../assets/logo.svg';
 import { login } from '../../redux/actions/userAction';
-import Input from '../../utils/input';
 
 import s from './loginPage.module.scss';
 
@@ -33,23 +32,21 @@ export default function LoginPage() {
         <div className={s.ttl}>Вход</div>
         <div className={s.form}>
           <div className={s.inputLabel}>Почта</div>
-          <Input
-            label="Email"
-            name="username"
-            placeholder="Введите Email"
+          <input
             value={username}
-            setValue={setUsername}
             type="text"
+            placeholder="Введите Email"
+            onChange={(event) => setUsername(event.target.value)}
+            name="username"
           />
 
           <div className={s.inputLabel}>Пароль</div>
-          <Input
-            label="Пароль"
-            name="password"
+          <input
+            value={password}
             type="password"
             placeholder="Введите пароль"
-            value={password}
-            setValue={setPassword}
+            onChange={(event) => setPassword(event.target.value)}
+            name="password"
           />
         </div>
         <div className={s.footer}>

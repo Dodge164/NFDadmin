@@ -1,48 +1,52 @@
 @import '../../../../variables';
-.wrapper {
-  display: flex;
-  // height: 100%;
-  height: calc(100% - 200px);
-  flex-direction: column;
-  .title {
-    padding: 8px 0;
-    font-family: Helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 33px;
-    letter-spacing: -0.725px;
-    color: #3d5170;
-    @media (min-width: 768px) {
-      font-size: 24px;
-      margin: 7px;
-      flex: 0 1 auto;
-      padding: 0;
-    }
-    @media (min-width: 1024px) {
-      font-size: 29px;
-      margin: 12px 16px;
-    }
+// .wrapper {
+//   display: flex;
+//   height: calc(100% - 200px);
+//   flex-direction: column;
+.title {
+  padding: 8px 0;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.725px;
+  color: $darkBlue;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    margin: 7px;
+    flex: 0 1 auto;
+    padding: 0;
   }
-  .carList {
-    margin: 0 8px 0 0;
-    background: #ffffff;
-    box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
-      0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
-      0px 3.5px 35px rgba(90, 97, 105, 0.1);
-    border-radius: 9px;
-    // height: 447px;
-    // height: fit-content;
-    // @media (min-width: 768px) {
-    //   margin: 0 8px 0 4px;
-    // }
-    @media (min-width: 1024px) {
-      margin: 0 16px 0 8px;
-    }
-    //   @media (min-width: 1440px) {
-    //     justify-content: center;
-    //     flex-wrap: nowrap;
-    //     margin: 0 28px;
-    //   }
+  @media (min-width: 1024px) {
+    font-size: 29px;
+    margin: 12px 16px;
   }
 }
+.carList {
+  margin: 0 8px 0 0;
+  background: $white;
+  box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
+    0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
+    0px 3.5px 35px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+
+  @media (min-width: 1024px) {
+    margin: 0 16px 0 8px;
+  }
+}
+.blankLoading {
+  margin: 0 8px 0 0;
+  background: $white;
+  box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
+    0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
+    0px 3.5px 35px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+  min-height: 400px;
+
+  @media (min-width: 1024px) {
+    min-height: 560px;
+    margin: 0 16px 0 8px;
+  }
+}
+// }

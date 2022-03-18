@@ -1,24 +1,27 @@
+import { Dispatch } from 'react';
+
 import { getCarCategory } from '../../api/http';
-import { CategoryTypes } from '../types/categoryTypes';
+import { CategoriesAction } from '../../interfaces/categoriesInterfaces';
+import { CategoriesActionTypes } from '../types/categoryTypes';
 
-// interface IError {
-//     message: string;
-//     name: string;
-//     stack: string;
-//     status: number;
-// }
-
-export const fetchCategory = () => {
-  return async (dispatch: any) => {
-    dispatch({ type: CategoryTypes.FETCH_CATEGORY_START });
+export const fetchCategories = () => {
+  return async (dispatch: Dispatch<CategoriesAction>) => {
     try {
+      dispatch({ type: CategoriesActionTypes.FETCH_CATEGORIES });
       const res = await getCarCategory();
-      dispatch({ type: CategoryTypes.FETCH_CATEGORY_SUCCESS, payload: res });
-    } catch (error: any) {
       dispatch({
-        type: CategoryTypes.FETCH_CATEGORY_FAILURE,
-        payload: error.message,
+        type: CategoriesActionTypes.FETCH_CATEGORIES_SUCCESS,
+        payload: res,
+      });
+    } catch (error) {
+      dispatch({
+        type: CategoriesActionTypes.FETCH_CATEGORIES_ERROR,
+        payload: 'Произошла ошибка при загрузке',
       });
     }
   };
 };
+
+export function setSelectedCategory(category: string): CategoriesAction {
+  return { type: CategoriesActionTypes.SELECT_CATEGORY, payload: category };
+}

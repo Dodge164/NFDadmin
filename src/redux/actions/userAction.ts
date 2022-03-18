@@ -5,7 +5,6 @@ import { setUser } from '../reducers/userReducer';
 const base = window.btoa(
   unescape(encodeURIComponent(`random:${process.env.REACT_APP_SECRET}`)),
 );
-// console.log('base', base);
 
 export type TUserAction = { type: 'SET_USER'; payload: string };
 
@@ -28,7 +27,7 @@ export const login = (username: string, password: string) => {
           },
         },
       );
-      //  console.log('res data', response.data);
+
       localStorage.setItem('access_token', response.data.access_token);
       localStorage.setItem('refresh_token', response.data.refresh_token);
       dispatch(setUser(response.data.user_id));

@@ -1,24 +1,23 @@
 @import '../../../../../variables';
+@import '../../../../../mixins';
 .wrapper {
-  // padding: 20px 0 0 0;
   width: 100%;
-  // display: flex;
-  background: $white;
   margin: 0 8px 0 0;
+  background: $white;
   border-radius: 9px;
   box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
   @media (min-width: 1024px) {
     margin: 0;
     padding: 0;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 335px;
     height: 512px;
+    flex: 0 0 335px;
+    align-items: center;
+    flex-direction: column;
   }
   img {
-    margin: 18px 0 0 0;
     width: 244px;
     height: 110px;
+    margin: 18px 0 0 0;
     object-fit: contain;
     @media (min-width: 1024px) {
       margin: 18px 0px 10px 0px;
@@ -29,89 +28,50 @@
   }
 
   .name {
+    margin: 4px 0;
+    color: $darkBlue;
     font-size: 16.5px;
     line-height: 16px;
     text-align: center;
     letter-spacing: -0.6125px;
-    margin: 4px 0;
-    color: #3d5170;
   }
   @media (min-width: 768px) {
     font-size: 24.5px;
     line-height: 28px;
   }
   .type {
+    color: $gray4;
+    margin: 0 0 10px 0;
     font-size: 12.5px;
     line-height: 14px;
     text-align: center;
     letter-spacing: -0.3125px;
-    color: #818ea3;
-    margin: 0 0 10px 0;
   }
 
   input {
     display: none;
   }
 
-  .progress {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 60px;
-    letter-spacing: -0.408571px;
-    color: #868e96;
-    background: $white;
-    @media (min-width: 768px) {
-      box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12),
-        0px 1px 0px rgba(0, 0, 0, 0.12);
-    }
-    .progressInfo {
-      font-size: 13px;
-      line-height: 15px;
-      letter-spacing: -0.408571px;
-      color: #868e96;
-      display: flex;
-      width: 85%;
-
-      justify-content: space-between;
-    }
-    .progressBar {
-      width: 85%;
-      height: 8px;
-
-      box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 4px;
-      .bar {
-      }
-    }
-  }
-
   .description {
     width: 100%;
     .title {
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: 500;
+      @include Roboto-500;
+      color: $gray3;
       font-size: 13px;
       line-height: 15px;
-      letter-spacing: -0.408571px;
-      color: #868e96;
       margin: 8px 0 14px 21px;
+      letter-spacing: -0.408571px;
       @media (min-width: 768px) {
         margin: 22px 0 14px 21px;
       }
     }
     .text {
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
+      @include Roboto-500;
+      color: $darkBlue2;
       font-size: 13.5px;
       line-height: 19px;
-      letter-spacing: -0.408571px;
-      color: #5a6169;
       margin: 0px 0 14px 21px;
+      letter-spacing: -0.408571px;
     }
   }
 }
@@ -127,22 +87,22 @@
 .input {
   position: relative;
   z-index: 2;
-  width: 100%;
-  height: var(--bs-form-file-height);
   margin: 0;
   opacity: 0;
+  width: 100%;
+  height: var(--bs-form-file-height);
 }
 
 .label {
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
-  display: flex;
-  height: var(--bs-form-file-height);
-  border-color: #ced4da;
   border-radius: 0.25rem;
+  border-color: $grayLight2;
+  height: var(--bs-form-file-height);
 }
 
 .textt {
@@ -153,10 +113,10 @@
   overflow: hidden;
   font-size: 10px;
   line-height: 12px;
-  color: #495057;
+  color: $gray6;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background-color: #fff;
+  background-color: $white;
   border-color: inherit;
   border-style: solid;
   border-width: 1px;
@@ -170,8 +130,8 @@
   flex-shrink: 0;
   padding: 0.375rem 0.75rem;
   margin-left: -1px;
-  color: #495057;
-  background-color: #e9ecef;
+  color: $gray6;
+  background-color: $grayLight3;
   border-color: inherit;
   border-style: solid;
   border-width: 1px;
@@ -181,8 +141,7 @@
   line-height: 12px;
 }
 .mobileWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  @include df-ai-center;
+  flex-direction: column;
 }

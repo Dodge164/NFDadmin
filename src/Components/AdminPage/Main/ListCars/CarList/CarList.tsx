@@ -1,126 +1,91 @@
-import Pagination from '../../../../Pagination';
-import carPhoto from '../../../../../assets/carPhoto.png';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { useActions } from '../../../../../hooks/useActions';
+import CustomPagination from '../../../../Pagination/CustomPagination';
+import { setSelectedCategory } from '../../../../../redux/actions/categoryAction';
+import { setCarListPage } from '../../../../../redux/actions/carListAction';
+import Loading from '../../../../../Loading/Loading';
+
+import CarSelect from './CarSelect';
 import s from './carList.module.scss';
+import Car from './Car';
 
-function CarList() {
+const CarList: React.FC = () => {
+  const dispatch = useDispatch();
+  const { fetchCarList, fetchCarListByCategory } = useActions();
+  const { error, isLoading, currentPage, limit, carsCount } = useTypedSelector(
+    (state) => state.carListReducer,
+  );
+  const { selectedCategory } = useTypedSelector(
+    (state) => state.categoriesReducer,
+  );
+
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchCarListByCategory(currentPage, limit, selectedCategory);
+    } else {
+      fetchCarList(currentPage, limit);
+    }
+  }, [currentPage]);
+
+  const handleChangePage = (currentPageCars: number) => {
+    dispatch(setCarListPage(currentPageCars - 1));
+  };
+
+  const handlerApplyClick = () => {
+    if (selectedCategory) {
+      fetchCarListByCategory(currentPage, limit, selectedCategory);
+    } else {
+      fetchCarList(currentPage, limit);
+    }
+    dispatch(setCarListPage(0));
+  };
+
+  const handlerResetClick = () => {
+    fetchCarList(currentPage, limit);
+    dispatch(setSelectedCategory(''));
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <h2 className={s.warning}>{error}</h2>;
+  }
+
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
-        <div className={s.selectGroup}>
-          <select className={s.select} name="filter_01" id="filter_01">
-            <option value="filter_01">filter_01.1</option>
-            <option value="filter_01">filter_01.2</option>
-            <option value="filter_01">filter_01.3</option>
-            <option value="filter_01">filter_01.4</option>
-          </select>
-          <select className={s.select} name="filter_01" id="filter_01">
-            <option value="filter_02">filter_02.1</option>
-            <option value="filter_02">filter_02.2</option>
-            <option value="filter_02">filter_02.3</option>
-            <option value="filter_02">filter_02.4</option>
-          </select>
-          <select className={s.select} name="filter_01" id="filter_01">
-            <option value="filter_03">filter_03.1</option>
-            <option value="filter_03">filter_03.2</option>
-            <option value="filter_03">filter_03.3</option>
-            <option value="filter_03">filter_03.4</option>
-          </select>
-          <select className={s.select} name="filter_01" id="filter_01">
-            <option value="filter_04">filter_04.1</option>
-            <option value="filter_04">filter_04.2</option>
-            <option value="filter_04">filter_04.3</option>
-            <option value="filter_04">filter_04.4</option>
-          </select>
+        <div className={s.filter}>
+          <CarSelect />
         </div>
         <div className={s.buttonGroup}>
-          <button className={s.reset}>Reset</button>
-          <button className={s.apply}>Apply</button>
+          <button onClick={handlerResetClick} className={s.reset}>
+            Reset
+          </button>
+          <button onClick={handlerApplyClick} className={s.apply}>
+            Apply
+          </button>
         </div>
       </div>
+
       <div className={s.main}>
-        <table>
-          <thead>
-            <tr>
-              <th>Модель</th>
-              <th>Фото</th>
-              <th>Категория</th>
-              <th>Цена мин</th>
-              <th>Цена макс</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-            <tr>
-              <td className={s.title}>Модель</td>
-              <td className={s.col}>
-                <img className={s.photo} src={carPhoto} alt="car-example" />
-              </td>
-              <td className={s.col}>Категория</td>
-              <td className={s.col}>Цена мин</td>
-              <td className={s.col}>Цена макс</td>
-            </tr>
-          </tbody>
-        </table>
+        <Car />
       </div>
+
       <div className={s.footer}>
-        <Pagination />
+        <CustomPagination
+          currentPage={currentPage}
+          limit={limit}
+          counter={carsCount}
+          onChangePage={handleChangePage}
+        />
       </div>
     </div>
   );
-}
+};
 
 export default CarList;

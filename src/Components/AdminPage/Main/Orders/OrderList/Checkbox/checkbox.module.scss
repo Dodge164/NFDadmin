@@ -1,0 +1,39 @@
+@import '../../../../../../variables';
+@import '../../../../../../mixins';
+
+.checkbox {
+  @include df-ai-center;
+  margin: 0 0 8px 0;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+
+  @media (min-width: 768px) {
+    margin: 8px 0 0 0;
+  }
+  &.checked {
+    color: black;
+  }
+}
+.checkBtn {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:checked ~ .customCheckbox {
+    border: 0.5px solid $mainGreen;
+    content: ' ';
+    background-image: url(../../../../../../assets/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $mainGreen;
+    padding: 0 0;
+  }
+}
+
+.customCheckbox {
+  @include df-center;
+  margin: 0 4px 0 0;
+  border: 1px solid $grayLight;
+  height: 12px;
+  width: 12px;
+}

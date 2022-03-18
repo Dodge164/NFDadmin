@@ -47,7 +47,7 @@
         padding: 1px 12px 0 12px;
         height: 30px;
         width: 100%;
-        border: 0.5px solid #becad6;
+        border: 0.5px solid $grayLight;
         box-sizing: border-box;
         border-radius: 3px;
       }
@@ -72,10 +72,10 @@
       > span {
         font-size: 10.5px;
         line-height: 12px;
-        color: $mainAccent;
+        color: $mainBlue;
       }
       .button {
-        background: $mainAccent;
+        background: $mainBlue;
         background-blend-mode: darken;
         border-radius: 4px;
         width: 110px;
@@ -88,10 +88,10 @@
         }
 
         &:hover {
-          background: darken($mainAccent, 20%);
+          background: darken($mainBlue, 20%);
         }
         &:active {
-          background: darken($mainAccent, 10%);
+          background: darken($mainBlue, 10%);
         }
 
         > span {

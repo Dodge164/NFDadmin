@@ -1,24 +1,46 @@
-import { getCarList } from '../../api/http';
-import { CarListTypes } from '../types/carListTypes';
+import { Dispatch } from 'react';
 
-// interface IError {
-//     message: string;
-//     name: string;
-//     stack: string;
-//     status: number;
-// }
+import { getCarList, getCarListByCategory } from '../../api/http';
+import { CarListAction } from '../../interfaces/carListInterfaces';
+import { CarListActionTypes } from '../types/carListTypes';
 
-export const fetchCarList = () => {
-  return async (dispatch: any) => {
-    dispatch({ type: CarListTypes.FETCH_CARLIST_START });
+export const fetchCarList = (page: number = 1, limit: number = 7) => {
+  return async (dispatch: Dispatch<CarListAction>) => {
     try {
-      const res = await getCarList();
-      dispatch({ type: CarListTypes.FETCH_CARLIST_SUCCESS, payload: res });
-    } catch (error: any) {
+      dispatch({ type: CarListActionTypes.FETCH_CARS });
+      const res = await getCarList(page, limit);
       dispatch({
-        type: CarListTypes.FETCH_CARLIST_FAILURE,
-        payload: error.message,
+        type: CarListActionTypes.FETCH_CARS_SUCCESS,
+        payload: res,
+      });
+    } catch (error) {
+      dispatch({
+        type: CarListActionTypes.FETCH_CARS_ERROR,
+        payload: 'Произошла ошибка при загрузке',
       });
     }
   };
 };
+
+export const fetchCarListByCategory = (
+  page: number = 1,
+  limit: number = 7,
+  categoryId: string,
+) => {
+  return async (dispatch: Dispatch<CarListAction>) => {
+    try {
+      dispatch({ type: CarListActionTypes.FETCH_CARS });
+      const res = await getCarListByCategory(page, limit, categoryId);
+      dispatch({ type: CarListActionTypes.FETCH_CARS_SUCCESS, payload: res });
+    } catch (error) {
+      dispatch({
+        type: CarListActionTypes.FETCH_CARS_ERROR,
+        payload: 'Произошла ошибка при загрузке',
+      });
+    }
+  };
+};
+
+export function setCarListPage(page: number): CarListAction {
+  return { type: CarListActionTypes.SET_CARLIST_PAGE, payload: page };
+}

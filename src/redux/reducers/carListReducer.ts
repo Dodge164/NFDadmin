@@ -1,26 +1,45 @@
-import { ICarListAction, IInitCarListState } from '../../interfaces/interfaces';
-import { CarListTypes } from '../types/carListTypes';
+import {
+  CarListAction,
+  IInitCarListState,
+} from '../../interfaces/carListInterfaces';
+import { CarListActionTypes } from '../types/carListTypes';
 
 const initialState: IInitCarListState = {
   carList: [],
   isLoading: false,
   error: null,
+  currentPage: 0,
+  limit: 5,
+  carsCount: 0,
 };
 
 const carListReducer = (
-  state: IInitCarListState = initialState,
-  action: ICarListAction,
-) => {
+  state = initialState,
+  action: CarListAction,
+): IInitCarListState => {
   switch (action.type) {
-    case CarListTypes.FETCH_CARLIST_START: {
+    case CarListActionTypes.FETCH_CARS: {
       return { ...state, isLoading: true };
     }
-    case CarListTypes.FETCH_CARLIST_SUCCESS: {
-      return { ...state, carList: action.payload, isLoading: false };
+    case CarListActionTypes.FETCH_CARS_SUCCESS: {
+      return {
+        ...state,
+        carList: action.payload.data,
+        carsCount: action.payload.count,
+        isLoading: false,
+      };
     }
-    case CarListTypes.FETCH_CARLIST_FAILURE: {
-      return { ...state, isLoading: false, error: action.payload };
+    case CarListActionTypes.FETCH_CARS_ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     }
+    case CarListActionTypes.SET_CARLIST_PAGE: {
+      return { ...state, currentPage: action.payload };
+    }
+
     default:
       return state;
   }

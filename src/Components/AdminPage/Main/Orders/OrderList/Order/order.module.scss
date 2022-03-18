@@ -1,0 +1,147 @@
+@import '../../../../../../_variables';
+
+.order {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 540px) {
+    display: grid;
+    justify-content: center;
+  }
+  @media (min-width: 640px) {
+    margin: 16px 0;
+    padding: 0 0 16px 0;
+    border-bottom: 0.5px solid $grayLight;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .photoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    .photo {
+      width: 150px;
+      height: 100px;
+      object-fit: contain;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 8px;
+    @media (min-width: 1200px) {
+      width: 350px;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 8px 0;
+      @media (min-width: 1024px) {
+        align-items: center;
+        flex-direction: row;
+      }
+      @media (min-width: 1024px) {
+      }
+      align-items: flex-start;
+      & > * {
+        margin-right: 8px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .model {
+        text-transform: uppercase;
+        color: $black;
+      }
+      span {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: -0.408571px;
+      }
+      .city {
+        font-weight: 400;
+        color: $black;
+      }
+    }
+    .time {
+      margin: 0 0 8px 0;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: -0.408571px;
+      color: $gray2;
+    }
+    .color {
+      span {
+        text-transform: capitalize;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: -0.408571px;
+        color: $black;
+      }
+    }
+  }
+  .extends {
+    height: 63px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @media (min-width: 768px) {
+      height: auto;
+    }
+  }
+  .price {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.754286px;
+    color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    @media (min-width: 540px) {
+      justify-content: flex-start;
+    }
+    @media (min-width: 1200px) {
+      width: 90px;
+    }
+  }
+  .warning {
+    position: relative;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: $darkBlue;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+  }
+}
