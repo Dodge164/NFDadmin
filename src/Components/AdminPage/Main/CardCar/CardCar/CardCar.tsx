@@ -27,9 +27,9 @@ export default function CardCar() {
 
   const handleSelectFile = async (event: any) => {
     const file = event.target.files[0];
-    console.log('file :>> ', file);
-    console.log('e.t.f :>> ', event.target.files);
-    console.log('event :>> ', event);
+    // console.log('file :>> ', file);
+    // console.log('e.t.f :>> ', event.target.files);
+    // console.log('event :>> ', event);
     const base64 = await convertBase64(file);
     const path: IThumbnail = {
       path: base64 as string,
